@@ -587,3 +587,16 @@ GRANT EXECUTE ON FUNCTION admin_get_gallery_photos() TO anon, authenticated;
 GRANT EXECUTE ON FUNCTION admin_create_gallery_photo(TEXT, TEXT, INT) TO anon, authenticated;
 GRANT EXECUTE ON FUNCTION admin_update_gallery_photo(UUID, TEXT, TEXT, INT) TO anon, authenticated;
 GRANT EXECUTE ON FUNCTION admin_delete_gallery_photo(UUID) TO anon, authenticated;
+
+-- =========================================================
+-- RE-CREATE PUBLIC READ POLICIES FOR BOTH ANON & AUTHENTICATED
+-- (Allows logged-in admins to view the invite pages properly)
+-- =========================================================
+DROP POLICY IF EXISTS "Allow public read of event config" ON event_config;
+CREATE POLICY "Allow public read of event config" ON event_config FOR SELECT USING (true);
+
+DROP POLICY IF EXISTS "Allow public read of timeline" ON timeline_milestones;
+CREATE POLICY "Allow public read of timeline" ON timeline_milestones FOR SELECT USING (true);
+
+DROP POLICY IF EXISTS "Allow public read of prayers" ON prayers_guestbook;
+CREATE POLICY "Allow public read of prayers" ON prayers_guestbook FOR SELECT USING (true);

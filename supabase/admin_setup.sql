@@ -566,24 +566,24 @@ END;
 $$;
 
 -- =========================================================
--- GRANT EXECUTE PRIVILEGES TO ANON ROLE
+-- GRANT EXECUTE PRIVILEGES TO ANON AND AUTHENTICATED ROLES
 -- (Required for frontend to execute RPC functions)
 -- =========================================================
-GRANT EXECUTE ON FUNCTION admin_get_guests(TEXT, TEXT, INT, INT) TO anon;
-GRANT EXECUTE ON FUNCTION admin_get_stats() TO anon;
-GRANT EXECUTE ON FUNCTION admin_create_guest(TEXT, TEXT, TEXT, TEXT) TO anon;
-GRANT EXECUTE ON FUNCTION admin_update_guest(UUID, TEXT, TEXT, TEXT, TEXT, TEXT, BOOLEAN, INT) TO anon;
-GRANT EXECUTE ON FUNCTION admin_delete_guest(UUID) TO anon;
-GRANT EXECUTE ON FUNCTION admin_bulk_create_guests(JSONB) TO anon;
-GRANT EXECUTE ON FUNCTION admin_get_prayers(INT, INT) TO anon;
-GRANT EXECUTE ON FUNCTION admin_delete_prayer(UUID) TO anon;
-GRANT EXECUTE ON FUNCTION admin_update_event_config(TEXT, JSONB) TO anon;
-GRANT EXECUTE ON FUNCTION admin_get_event_configs() TO anon;
-GRANT EXECUTE ON FUNCTION admin_get_timeline_milestones() TO anon;
-GRANT EXECUTE ON FUNCTION admin_create_timeline_milestone(INT, TEXT, TEXT, TEXT, INT) TO anon;
-GRANT EXECUTE ON FUNCTION admin_update_timeline_milestone(UUID, INT, TEXT, TEXT, TEXT, INT) TO anon;
-GRANT EXECUTE ON FUNCTION admin_delete_timeline_milestone(UUID) TO anon;
-GRANT EXECUTE ON FUNCTION admin_get_gallery_photos() TO anon;
-GRANT EXECUTE ON FUNCTION admin_create_gallery_photo(TEXT, TEXT, INT) TO anon;
-GRANT EXECUTE ON FUNCTION admin_update_gallery_photo(UUID, TEXT, TEXT, INT) TO anon;
-GRANT EXECUTE ON FUNCTION admin_delete_gallery_photo(UUID) TO anon;
+GRANT EXECUTE ON FUNCTION admin_get_guests(TEXT, TEXT, INT, INT) TO anon, authenticated;
+GRANT EXECUTE ON FUNCTION admin_get_stats() TO anon, authenticated;
+GRANT EXECUTE ON FUNCTION admin_create_guest(TEXT, TEXT, TEXT, TEXT) TO anon, authenticated;
+GRANT EXECUTE ON FUNCTION admin_update_guest(UUID, TEXT, TEXT, TEXT, TEXT, TEXT, BOOLEAN, INT) TO anon, authenticated;
+GRANT EXECUTE ON FUNCTION admin_delete_guest(UUID) TO anon, authenticated;
+GRANT EXECUTE ON FUNCTION admin_bulk_create_guests(JSONB) TO anon, authenticated;
+GRANT EXECUTE ON FUNCTION admin_get_prayers(INT, INT) TO anon, authenticated;
+GRANT EXECUTE ON FUNCTION admin_delete_prayer(UUID) TO anon, authenticated;
+GRANT EXECUTE ON FUNCTION admin_update_event_config(TEXT, JSONB) TO anon, authenticated;
+GRANT EXECUTE ON FUNCTION admin_get_event_configs() TO anon, authenticated;
+GRANT EXECUTE ON FUNCTION admin_get_timeline_milestones() TO anon, authenticated;
+GRANT EXECUTE ON FUNCTION admin_create_timeline_milestone(INT, TEXT, TEXT, TEXT, INT) TO anon, authenticated;
+GRANT EXECUTE ON FUNCTION admin_update_timeline_milestone(UUID, INT, TEXT, TEXT, TEXT, INT) TO anon, authenticated;
+GRANT EXECUTE ON FUNCTION admin_delete_timeline_milestone(UUID) TO anon, authenticated;
+GRANT EXECUTE ON FUNCTION admin_get_gallery_photos() TO anon, authenticated;
+GRANT EXECUTE ON FUNCTION admin_create_gallery_photo(TEXT, TEXT, INT) TO anon, authenticated;
+GRANT EXECUTE ON FUNCTION admin_update_gallery_photo(UUID, TEXT, TEXT, INT) TO anon, authenticated;
+GRANT EXECUTE ON FUNCTION admin_delete_gallery_photo(UUID) TO anon, authenticated;

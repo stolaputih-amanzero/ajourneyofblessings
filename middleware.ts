@@ -29,7 +29,24 @@ export async function middleware(request: NextRequest) {
 
   const url = request.nextUrl
 
-  // Check if we are on an invite route
+  // 1. Check if we are on an admin route
+  if (url.pathname.startsWith('/admin')) {
+    const { data: { user } } = await supabase.auth.getUser()
+
+    if (url.pathname === '/admin/login') {
+      if (user && user.email === 'admin@meinita.amanloka.com') {
+        url.pathname = '/admin'
+        return NextResponse.redirect(url)
+      }
+    } else {
+      if (!user || user.email !== 'admin@meinita.amanloka.com') {
+        url.pathname = '/admin/login'
+        return NextResponse.redirect(url)
+      }
+    }
+  }
+
+  // 2. Check if we are on an invite route
   if (url.pathname.startsWith('/invite/')) {
     const token = url.pathname.split('/')[2]
 

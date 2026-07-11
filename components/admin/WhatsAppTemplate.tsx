@@ -25,20 +25,31 @@ type Guest = {
   phone: string | null
 }
 
-const DEFAULT_TEMPLATE = `Shalom {title} {full_name},
+const DEFAULT_TEMPLATE = `Shalom,
+Kepada yang terhormat,
+{title}{full_name}
 
-Dengan penuh sukacita, kami mengundang Anda ke Ibadah Emeritus:
+Dengan penuh ucapan syukur atas kasih setia Tuhan, kami memiliki kehormatan untuk mengundang Bapak/Ibu/Saudara(i) dalam Ibadah Syukur Emeritus (Purna Bakti Organik) atas pelayanan dari:
+
 ✨ Pdt. Ny. Meinita M.E. Wungo-Damping ✨
-"Keep Shining in His Grace"
+(38 Tahun Pelayanan yang Penuh Kesetiaan)
 
-📅 {event_date}
-⏰ {event_time}
-📍 {event_location}
+Ibadah syukur dengan tema "Keep Shining in His Grace" ini akan diselenggarakan pada:
 
-Buka undangan digital Anda:
+📅 Hari/Tanggal: {event_date}
+⏰ Waktu: {event_time}
+📍 Tempat: {event_location}
+
+Merupakan suatu kehormatan dan sukacita yang besar bagi kami apabila Bapak/Ibu/Saudara(i) berkenan hadir bersama-sama dengan kami dalam ibadah syukur ini.
+
+Untuk detail acara, lokasi presisi, dan konfirmasi kehadiran (RSVP), mohon berkenan membuka tautan undangan digital eksklusif Anda berikut ini:
+
 {invitation_link}
 
-Tuhan Yesus memberkati.`
+Teriring salam dan doa kami,
+Panitia & Keluarga
+
+Tuhan Yesus Memberkati.`
 
 export default function WhatsAppTemplate() {
   const supabase = createClient()

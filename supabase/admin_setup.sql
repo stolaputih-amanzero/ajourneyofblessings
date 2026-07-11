@@ -249,7 +249,7 @@ BEGIN
             v_token
         );
         insert_count := insert_count + 1;
-    END FOR;
+    END LOOP;
 
     RETURN insert_count;
 END;

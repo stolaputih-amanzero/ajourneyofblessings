@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", ui-serif, Georgia, serif;
+  
+  --color-primary: #0A192F;    /* Deep Navy */
+  --color-accent: #D4AF37;     /* Warm Gold */
+  --color-background: #FDFBF7; /* Soft Cream */
+}
+
+@layer base {
+  body {
+    @apply bg-[#05101E] text-[var(--color-primary)] font-sans antialiased m-0 overflow-x-hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif tracking-tight;
+  }
+}
+
+/* Utilities for elegant animations and mobile constraints */
+@layer utilities {
+  .mobile-container {
+    @apply max-w-[375px] mx-auto w-full min-h-screen bg-[var(--color-background)] shadow-2xl relative flex flex-col border-[8px] border-[#0A192F] overflow-y-auto overflow-x-hidden [&::-webkit-scrollbar]:hidden;
+  }
+  
+  /* The desktop fallback background */
+  .desktop-fallback {
+    @apply bg-[#05101E] min-h-screen w-full flex justify-center items-center;
+  }
+
+  /* PREMIUM DESIGN UTILITIES */
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#E6C875] via-[#FFDF73] to-[#B8860B] drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)];
+  }
+
+  .premium-glass {
+    @apply bg-[#0A192F]/40 backdrop-blur-md border-t border-l border-white/10 border-r border-b border-black/20 shadow-[0_8px_32px_rgba(0,0,0,0.3)] shadow-inner drop-shadow-xl;
+  }
+
+  .bg-spotlight {
+    background-image: radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.15) 0%, rgba(10, 25, 47, 1) 60%);
+  }
+
+  .metallic-shadow {
+    @apply shadow-[inset_0_1px_1px_rgba(255,255,255,0.4),0_4px_12px_rgba(0,0,0,0.5)];
+  }
+}

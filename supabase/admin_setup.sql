@@ -464,6 +464,107 @@ BEGIN
 END;
 $$;
 
+-- 15. Admin: Get gallery photos
+CREATE OR REPLACE FUNCTION admin_get_gallery_photos()
+RETURNS TABLE (
+    id UUID,
+    image_url TEXT,
+    caption TEXT,
+    order_index INT,
+    created_at TIMESTAMPTZ
+)
+LANGUAGE plpgsql
+SECURITY DEFINER
+AS $$
+BEGIN
+    -- Verify admin
+    IF (SELECT auth.uid()) != (SELECT id FROM auth.users WHERE email = 'admin@meinita.amanloka.com') THEN
+        RAISE EXCEPTION 'Unauthorized';
+    END IF;
+
+    RETURN QUERY
+    SELECT gp.id, gp.image_url, gp.caption, gp.order_index, gp.created_at
+    FROM gallery_photos gp
+    ORDER BY gp.order_index ASC, gp.created_at DESC;
+END;
+$$;
+
+-- 16. Admin: Create gallery photo
+CREATE OR REPLACE FUNCTION admin_create_gallery_photo(
+    p_image_url TEXT,
+    p_caption TEXT,
+    p_order_index INT
+)
+RETURNS UUID
+LANGUAGE plpgsql
+SECURITY DEFINER
+AS $$
+DECLARE
+    new_id UUID;
+BEGIN
+    -- Verify admin
+    IF (SELECT auth.uid()) != (SELECT id FROM auth.users WHERE email = 'admin@meinita.amanloka.com') THEN
+        RAISE EXCEPTION 'Unauthorized';
+    END IF;
+
+    INSERT INTO gallery_photos (image_url, caption, order_index)
+    VALUES (p_image_url, p_caption, p_order_index)
+    RETURNING id INTO new_id;
+
+    RETURN new_id;
+END;
+$$;
+
+-- 17. Admin: Update gallery photo
+CREATE OR REPLACE FUNCTION admin_update_gallery_photo(
+    p_id UUID,
+    p_image_url TEXT,
+    p_caption TEXT,
+    p_order_index INT
+)
+RETURNS VOID
+LANGUAGE plpgsql
+SECURITY DEFINER
+AS $$
+BEGIN
+    -- Verify admin
+    IF (SELECT auth.uid()) != (SELECT id FROM auth.users WHERE email = 'admin@meinita.amanloka.com') THEN
+        RAISE EXCEPTION 'Unauthorized';
+    END IF;
+
+    UPDATE gallery_photos
+    SET 
+        image_url = p_image_url,
+        caption = p_caption,
+        order_index = p_order_index
+    WHERE id = p_id;
+
+    IF NOT FOUND THEN
+        RAISE EXCEPTION 'Photo not found';
+    END IF;
+END;
+$$;
+
+-- 18. Admin: Delete gallery photo
+CREATE OR REPLACE FUNCTION admin_delete_gallery_photo(p_id UUID)
+RETURNS VOID
+LANGUAGE plpgsql
+SECURITY DEFINER
+AS $$
+BEGIN
+    -- Verify admin
+    IF (SELECT auth.uid()) != (SELECT id FROM auth.users WHERE email = 'admin@meinita.amanloka.com') THEN
+        RAISE EXCEPTION 'Unauthorized';
+    END IF;
+
+    DELETE FROM gallery_photos WHERE id = p_id;
+
+    IF NOT FOUND THEN
+        RAISE EXCEPTION 'Photo not found';
+    END IF;
+END;
+$$;
+
 -- =========================================================
 -- GRANT EXECUTE PRIVILEGES TO ANON ROLE
 -- (Required for frontend to execute RPC functions)
@@ -482,3 +583,7 @@ GRANT EXECUTE ON FUNCTION admin_get_timeline_milestones() TO anon;
 GRANT EXECUTE ON FUNCTION admin_create_timeline_milestone(INT, TEXT, TEXT, TEXT, INT) TO anon;
 GRANT EXECUTE ON FUNCTION admin_update_timeline_milestone(UUID, INT, TEXT, TEXT, TEXT, INT) TO anon;
 GRANT EXECUTE ON FUNCTION admin_delete_timeline_milestone(UUID) TO anon;
+GRANT EXECUTE ON FUNCTION admin_get_gallery_photos() TO anon;
+GRANT EXECUTE ON FUNCTION admin_create_gallery_photo(TEXT, TEXT, INT) TO anon;
+GRANT EXECUTE ON FUNCTION admin_update_gallery_photo(UUID, TEXT, TEXT, INT) TO anon;
+GRANT EXECUTE ON FUNCTION admin_delete_gallery_photo(UUID) TO anon;

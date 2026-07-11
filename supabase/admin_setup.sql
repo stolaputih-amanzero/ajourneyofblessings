@@ -1,7 +1,7 @@
--- =========================================================
--- ADMIN RPC FUNCTIONS FOR KEEP SHINING DASHBOARD
--- Architect: Senior Full-Stack Developer
--- =========================================================
+-- ALTER TABLE to ensure columns exist for new admin capabilities
+ALTER TABLE guests ADD COLUMN IF NOT EXISTS email TEXT;
+ALTER TABLE guests ADD COLUMN IF NOT EXISTS phone TEXT;
+ALTER TABLE guests ADD COLUMN IF NOT EXISTS table_number TEXT;
 
 -- Helper: Generate Unique Guest Token
 CREATE OR REPLACE FUNCTION generate_unique_guest_token()

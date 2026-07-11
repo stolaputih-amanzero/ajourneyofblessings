@@ -356,6 +356,114 @@ BEGIN
 END;
 $$;
 
+-- 11. Admin: Get timeline milestones
+CREATE OR REPLACE FUNCTION admin_get_timeline_milestones()
+RETURNS TABLE (
+    id UUID,
+    year INT,
+    title TEXT,
+    description TEXT,
+    image_url TEXT,
+    order_index INT
+)
+LANGUAGE plpgsql
+SECURITY DEFINER
+AS $$
+BEGIN
+    -- Verify admin
+    IF (SELECT auth.uid()) != (SELECT id FROM auth.users WHERE email = 'admin@meinita.amanloka.com') THEN
+        RAISE EXCEPTION 'Unauthorized';
+    END IF;
+
+    RETURN QUERY
+    SELECT tm.id, tm.year, tm.title, tm.description, tm.image_url, tm.order_index 
+    FROM timeline_milestones tm
+    ORDER BY tm.year ASC, tm.order_index ASC;
+END;
+$$;
+
+-- 12. Admin: Create timeline milestone
+CREATE OR REPLACE FUNCTION admin_create_timeline_milestone(
+    p_year INT,
+    p_title TEXT,
+    p_description TEXT,
+    p_image_url TEXT,
+    p_order_index INT
+)
+RETURNS UUID
+LANGUAGE plpgsql
+SECURITY DEFINER
+AS $$
+DECLARE
+    new_id UUID;
+BEGIN
+    -- Verify admin
+    IF (SELECT auth.uid()) != (SELECT id FROM auth.users WHERE email = 'admin@meinita.amanloka.com') THEN
+        RAISE EXCEPTION 'Unauthorized';
+    END IF;
+
+    INSERT INTO timeline_milestones (year, title, description, image_url, order_index)
+    VALUES (p_year, p_title, p_description, p_image_url, p_order_index)
+    RETURNING id INTO new_id;
+
+    RETURN new_id;
+END;
+$$;
+
+-- 13. Admin: Update timeline milestone
+CREATE OR REPLACE FUNCTION admin_update_timeline_milestone(
+    p_id UUID,
+    p_year INT,
+    p_title TEXT,
+    p_description TEXT,
+    p_image_url TEXT,
+    p_order_index INT
+)
+RETURNS VOID
+LANGUAGE plpgsql
+SECURITY DEFINER
+AS $$
+BEGIN
+    -- Verify admin
+    IF (SELECT auth.uid()) != (SELECT id FROM auth.users WHERE email = 'admin@meinita.amanloka.com') THEN
+        RAISE EXCEPTION 'Unauthorized';
+    END IF;
+
+    UPDATE timeline_milestones
+    SET 
+        year = p_year,
+        title = p_title,
+        description = p_description,
+        image_url = p_image_url,
+        order_index = p_order_index
+    WHERE id = p_id;
+
+    IF NOT FOUND THEN
+        RAISE EXCEPTION 'Milestone not found';
+    END IF;
+END;
+$$;
+
+-- 14. Admin: Delete timeline milestone
+CREATE OR REPLACE FUNCTION admin_delete_timeline_milestone(p_id UUID)
+RETURNS VOID
+LANGUAGE plpgsql
+SECURITY DEFINER
+AS $$
+BEGIN
+    -- Verify admin
+    IF (SELECT auth.uid()) != (SELECT id FROM auth.users WHERE email = 'admin@meinita.amanloka.com') THEN
+        RAISE EXCEPTION 'Unauthorized';
+    END IF;
+
+    DELETE FROM timeline_milestones WHERE id = p_id;
+
+    IF NOT FOUND THEN
+        RAISE EXCEPTION 'Milestone not found';
+    END IF;
+END;
+$$;
+
 -- =========================================================
 -- GRANT EXECUTE PRIVILEGES TO ANON ROLE
 -- (Required for frontend to execute RPC functions)
@@ -370,3 +478,7 @@ GRANT EXECUTE ON FUNCTION admin_get_prayers(INT, INT) TO anon;
 GRANT EXECUTE ON FUNCTION admin_delete_prayer(UUID) TO anon;
 GRANT EXECUTE ON FUNCTION admin_update_event_config(TEXT, JSONB) TO anon;
 GRANT EXECUTE ON FUNCTION admin_get_event_configs() TO anon;
+GRANT EXECUTE ON FUNCTION admin_get_timeline_milestones() TO anon;
+GRANT EXECUTE ON FUNCTION admin_create_timeline_milestone(INT, TEXT, TEXT, TEXT, INT) TO anon;
+GRANT EXECUTE ON FUNCTION admin_update_timeline_milestone(UUID, INT, TEXT, TEXT, TEXT, INT) TO anon;
+GRANT EXECUTE ON FUNCTION admin_delete_timeline_milestone(UUID) TO anon;

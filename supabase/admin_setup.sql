@@ -335,6 +335,27 @@ BEGIN
 END;
 $$;
 
+-- 10. Admin: Get all global configurations
+CREATE OR REPLACE FUNCTION admin_get_event_configs()
+RETURNS TABLE (
+    key TEXT,
+    value JSONB,
+    updated_at TIMESTAMPTZ
+)
+LANGUAGE plpgsql
+SECURITY DEFINER
+AS $$
+BEGIN
+    -- Verify admin
+    IF (SELECT auth.uid()) != (SELECT id FROM auth.users WHERE email = 'admin@meinita.amanloka.com') THEN
+        RAISE EXCEPTION 'Unauthorized';
+    END IF;
+
+    RETURN QUERY
+    SELECT ec.key, ec.value, ec.updated_at FROM event_config ec;
+END;
+$$;
+
 -- =========================================================
 -- GRANT EXECUTE PRIVILEGES TO ANON ROLE
 -- (Required for frontend to execute RPC functions)
@@ -348,3 +369,4 @@ GRANT EXECUTE ON FUNCTION admin_bulk_create_guests(JSONB) TO anon;
 GRANT EXECUTE ON FUNCTION admin_get_prayers(INT, INT) TO anon;
 GRANT EXECUTE ON FUNCTION admin_delete_prayer(UUID) TO anon;
 GRANT EXECUTE ON FUNCTION admin_update_event_config(TEXT, JSONB) TO anon;
+GRANT EXECUTE ON FUNCTION admin_get_event_configs() TO anon;

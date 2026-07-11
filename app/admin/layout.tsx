@@ -1,4 +1,7 @@
+'use client'
+
 import React from 'react'
+import { usePathname } from 'next/navigation'
 import AdminSidebar from '@/components/admin/AdminSidebar'
 import { ToastProvider } from '@/components/admin/Toast'
 
@@ -7,6 +10,19 @@ export default function AdminLayout({
 }: {
   children: React.ReactNode
 }) {
+  const pathname = usePathname()
+  const isLoginPage = pathname === '/admin/login'
+
+  if (isLoginPage) {
+    return (
+      <ToastProvider>
+        <div className="min-h-screen bg-[#0A192F] text-white">
+          {children}
+        </div>
+      </ToastProvider>
+    )
+  }
+
   return (
     <ToastProvider>
       <div className="min-h-screen bg-[#FDFBF7] flex flex-col md:flex-row text-[#0A192F]">

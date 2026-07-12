@@ -59,12 +59,19 @@ function TimelineItem({ milestone, isLast }: { milestone: Milestone; isLast: boo
                         initial={{ opacity: 0, y: 10 }}
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
                         transition={{ duration: 0.5, delay: 0.3 }}
-                        className="mt-4 rounded-lg overflow-hidden border border-[#D4AF37]/20 shadow-xl bg-[#020C1B]/60 flex items-center justify-center"
+                        className="mt-4 rounded-xl overflow-hidden border border-[#D4AF37]/20 shadow-xl bg-[#020C1B] relative aspect-[16/9] w-full flex items-center justify-center"
                     >
+                        {/* Ambient Blurred Background (fills the borders softly) */}
+                        <img
+                            src={milestone.image_url}
+                            alt=""
+                            className="absolute inset-0 w-full h-full object-cover blur-lg opacity-40 scale-110 pointer-events-none select-none"
+                        />
+                        {/* Sharp Foreground Image (Full Uncropped Content) */}
                         <img
                             src={milestone.image_url}
                             alt={milestone.title}
-                            className="w-full h-auto max-h-64 object-contain"
+                            className="relative z-10 max-w-full max-h-full object-contain"
                             loading="lazy"
                         />
                     </motion.div>

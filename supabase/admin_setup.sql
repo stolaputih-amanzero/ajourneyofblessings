@@ -3,24 +3,63 @@ ALTER TABLE guests ADD COLUMN IF NOT EXISTS email TEXT;
 ALTER TABLE guests ADD COLUMN IF NOT EXISTS phone TEXT;
 ALTER TABLE guests ADD COLUMN IF NOT EXISTS table_number TEXT;
 
--- Helper: Generate Unique Guest Token
-CREATE OR REPLACE FUNCTION generate_unique_guest_token()
+-- Helper: Slugify text (convert 'Bpk. Yusuf Sitorus' to 'bpk-yusuf-sitorus')
+CREATE OR REPLACE FUNCTION slugify(val TEXT)
 RETURNS TEXT
 LANGUAGE plpgsql
 AS $$
 DECLARE
+    v_slug TEXT;
+BEGIN
+    v_slug := lower(val);
+    v_slug := regexp_replace(v_slug, '[^a-z0-9\s-]', '', 'g');
+    v_slug := regexp_replace(trim(v_slug), '[\s-]+', '-', 'g');
+    RETURN v_slug;
+END;
+$$;
+
+-- Helper: Generate Unique Guest Token (named-slug with clash handling)
+CREATE OR REPLACE FUNCTION generate_unique_guest_token(p_name TEXT DEFAULT NULL)
+RETURNS TEXT
+LANGUAGE plpgsql
+AS $$
+DECLARE
+    base_slug TEXT;
     new_token TEXT;
+    counter INT;
     done BOOL;
 BEGIN
+    IF p_name IS NULL OR p_name = '' THEN
+        -- Fallback to random 8 character string if name is not provided
+        done := false;
+        WHILE NOT done LOOP
+            new_token := substring(md5(random()::text) from 1 for 8);
+            IF NOT EXISTS (SELECT 1 FROM guests WHERE unique_token = new_token) THEN
+                done := true;
+            END IF;
+        END LOOP;
+        RETURN new_token;
+    END IF;
+
+    -- Generate base slug
+    base_slug := slugify(p_name);
+    IF base_slug = '' OR base_slug IS NULL THEN
+        base_slug := 'undangan';
+    END IF;
+    
+    new_token := base_slug;
+    counter := 1;
     done := false;
+    
     WHILE NOT done LOOP
-        -- Generate random 8 character alphanumeric string
-        new_token := substring(md5(random()::text) from 1 for 8);
-        -- Check uniqueness in guests table
         IF NOT EXISTS (SELECT 1 FROM guests WHERE unique_token = new_token) THEN
             done := true;
+        ELSE
+            new_token := base_slug || '-' || counter;
+            counter := counter + 1;
         END IF;
     END LOOP;
+    
     RETURN new_token;
 END;
 $$;
@@ -140,7 +179,7 @@ BEGIN
         RAISE EXCEPTION 'Unauthorized';
     END IF;
 
-    v_token := generate_unique_guest_token();
+    v_token := generate_unique_guest_token(p_full_name);
 
     INSERT INTO guests (title, full_name, email, phone, unique_token)
     VALUES (p_title, p_full_name, p_email, p_phone, v_token)
@@ -230,11 +269,11 @@ BEGIN
     LOOP
         -- Generate token if missing or duplicate
         IF guest_record.unique_token IS NULL OR guest_record.unique_token = '' THEN
-            v_token := generate_unique_guest_token();
+            v_token := generate_unique_guest_token(guest_record.full_name);
         ELSE
             v_token := guest_record.unique_token;
             IF EXISTS (SELECT 1 FROM guests WHERE unique_token = v_token) THEN
-                v_token := generate_unique_guest_token();
+                v_token := generate_unique_guest_token(guest_record.full_name);
             END IF;
         END IF;
 

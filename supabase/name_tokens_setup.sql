@@ -18,7 +18,9 @@ BEGIN
 END;
 $$;
 
--- 2. Perbarui fungsi pembuat token unik dengan dukungan berbasis nama dan penanganan tabrakan nama
+-- 2. Hapus fungsi lama tanpa parameter untuk mencegah konflik overloading di Postgres
+DROP FUNCTION IF EXISTS generate_unique_guest_token();
+
 CREATE OR REPLACE FUNCTION generate_unique_guest_token(p_name TEXT DEFAULT NULL)
 RETURNS TEXT
 LANGUAGE plpgsql

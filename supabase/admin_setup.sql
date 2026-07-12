@@ -19,6 +19,7 @@ END;
 $$;
 
 -- Helper: Generate Unique Guest Token (named-slug with clash handling)
+DROP FUNCTION IF EXISTS generate_unique_guest_token();
 CREATE OR REPLACE FUNCTION generate_unique_guest_token(p_name TEXT DEFAULT NULL)
 RETURNS TEXT
 LANGUAGE plpgsql

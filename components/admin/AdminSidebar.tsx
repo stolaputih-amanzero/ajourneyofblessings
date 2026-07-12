@@ -87,7 +87,7 @@ export default function AdminSidebar() {
             animate={{ opacity: 0.5 }}
             exit={{ opacity: 0 }}
             onClick={toggleMobile}
-            className="md:hidden fixed inset-0 bg-black z-45"
+            className="md:hidden fixed inset-0 bg-black/60 z-[45]"
           />
         )}
       </AnimatePresence>

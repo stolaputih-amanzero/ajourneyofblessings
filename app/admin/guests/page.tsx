@@ -455,11 +455,11 @@ Tuhan Yesus memberkati.`
           </p>
         </div>
 
-        <div className="flex flex-wrap gap-2.5">
+        <div className="grid grid-cols-3 sm:flex sm:flex-wrap gap-2 w-full sm:w-auto">
           {/* Add Guest Button */}
           <button
             onClick={() => setIsAddModalOpen(true)}
-            className="flex items-center space-x-2 bg-gradient-to-r from-[#D4AF37] to-[#F3E5AB] text-[#0A192F] px-4 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider hover:shadow-lg hover:shadow-[#D4AF37]/25 transition-all cursor-pointer"
+            className="flex items-center justify-center space-x-2 bg-gradient-to-r from-[#D4AF37] to-[#F3E5AB] text-[#0A192F] px-3 sm:px-4 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider hover:shadow-lg hover:shadow-[#D4AF37]/25 transition-all cursor-pointer w-full sm:w-auto"
           >
             <UserPlus className="w-3.5 h-3.5" />
             <span>Tambah</span>
@@ -468,14 +468,14 @@ Tuhan Yesus memberkati.`
           {/* Export CSV Button */}
           <button
             onClick={handleExportCSV}
-            className="flex items-center space-x-2 bg-white/5 hover:bg-white/10 border border-white/10 px-4 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all cursor-pointer"
+            className="flex items-center justify-center space-x-2 bg-white/5 hover:bg-white/10 border border-white/10 px-3 sm:px-4 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all cursor-pointer w-full sm:w-auto"
           >
             <Download className="w-3.5 h-3.5 text-[#D4AF37]" />
             <span>Ekspor</span>
           </button>
 
           {/* Import CSV Input */}
-          <label className="flex items-center space-x-2 bg-white/5 hover:bg-white/10 border border-white/10 px-4 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all cursor-pointer">
+          <label className="flex items-center justify-center space-x-2 bg-white/5 hover:bg-white/10 border border-white/10 px-3 sm:px-4 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all cursor-pointer w-full sm:w-auto">
             {importing ? (
               <Loader2 className="w-3.5 h-3.5 animate-spin text-[#D4AF37]" />
             ) : (
@@ -694,10 +694,9 @@ Tuhan Yesus memberkati.`
               </table>
             </div>
 
-            {/* Mobile Grid Card View */}
             <div className="md:hidden divide-y divide-white/5">
               {guests.map((g) => (
-                <div key={g.id} className="p-5 space-y-4 hover:bg-white/2">
+                <div key={g.id} className="p-4 sm:p-5 space-y-3 hover:bg-white/2">
                   <div className="flex items-start justify-between">
                     <div className="flex items-center space-x-3">
                       <input
@@ -722,26 +721,32 @@ Tuhan Yesus memberkati.`
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-2 text-[11px] text-white/60 pl-7">
+                  <div className="space-y-1.5 text-[11px] text-white/60 pl-7">
                     {g.phone && (
                       <span className="flex items-center">
                         <Phone className="w-3 h-3 text-[#D4AF37] mr-1.5 shrink-0" />
                         {g.phone}
                       </span>
                     )}
+                    {g.email && (
+                      <span className="flex items-center truncate">
+                        <Mail className="w-3 h-3 text-white/40 mr-1.5 shrink-0" />
+                        {g.email}
+                      </span>
+                    )}
                     {g.table_number && (
                       <span className="flex items-center font-bold text-[#D4AF37]">
-                        <Grid className="w-3.5 h-3.5 text-[#D4AF37] mr-1.5 shrink-0" />
+                        <Grid className="w-3 h-3 text-[#D4AF37] mr-1.5 shrink-0" />
                         Meja: {g.table_number}
                       </span>
                     )}
                   </div>
 
                   {/* Actions Footer */}
-                  <div className="flex items-center justify-end space-x-3 pt-2 pl-7">
+                  <div className="flex flex-wrap items-center justify-end gap-2 pt-2 pl-7">
                     <button
                       onClick={() => handleCopyLink(g.unique_token)}
-                      className="flex items-center space-x-1.5 bg-white/5 border border-white/10 hover:bg-white/10 px-3 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-wider cursor-pointer"
+                      className="flex items-center justify-center space-x-1.5 bg-white/5 border border-white/10 hover:bg-white/10 px-3 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-wider cursor-pointer"
                     >
                       {copiedToken === g.unique_token ? (
                         <>
@@ -760,7 +765,7 @@ Tuhan Yesus memberkati.`
                         href={getWhatsAppLink(g)}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center space-x-1.5 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 hover:bg-emerald-500/20 px-3 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-wider cursor-pointer"
+                        className="flex items-center justify-center space-x-1.5 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 hover:bg-emerald-500/20 px-3 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-wider cursor-pointer"
                       >
                         <Send className="w-3 h-3" />
                         <span>Kirim WA</span>
@@ -771,7 +776,7 @@ Tuhan Yesus memberkati.`
                         setEditingGuest(g)
                         setIsEditModalOpen(true)
                       }}
-                      className="p-1.5 rounded border border-white/10 bg-white/5 text-white/80 cursor-pointer"
+                      className="p-1.5 rounded border border-white/10 bg-white/5 text-white/80 hover:bg-white/10 cursor-pointer flex items-center justify-center"
                     >
                       <Edit className="w-3.5 h-3.5" />
                     </button>
@@ -780,7 +785,7 @@ Tuhan Yesus memberkati.`
                         setDeletingGuest(g)
                         setIsDeleteModalOpen(true)
                       }}
-                      className="p-1.5 rounded border border-red-500/20 bg-red-500/10 text-red-400 cursor-pointer"
+                      className="p-1.5 rounded border border-red-500/20 bg-red-500/10 text-red-400 hover:bg-red-500/20 cursor-pointer flex items-center justify-center"
                     >
                       <Trash2 className="w-3.5 h-3.5" />
                     </button>
@@ -795,7 +800,7 @@ Tuhan Yesus memberkati.`
       {/* Pagination */}
       {totalPages > 1 && (
         <div className="flex items-center justify-between border-t border-white/5 pt-4 text-xs text-white/50">
-          <span>Halaman {page} dari {totalPages} ({totalCount} tamu)</span>
+          <span>Hal {page} / {totalPages} <span className="hidden sm:inline">({totalCount} tamu)</span></span>
           <div className="flex items-center space-x-2">
             <button
               onClick={() => setPage(prev => Math.max(prev - 1, 1))}

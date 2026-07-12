@@ -351,7 +351,7 @@ export default function WhatsAppTemplate() {
         </div>
 
         {/* Action Buttons */}
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <button
             onClick={handleCopy}
             disabled={!selectedGuest}

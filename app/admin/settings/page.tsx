@@ -332,11 +332,11 @@ export default function SettingsPage() {
         </div>
 
         {/* Submit */}
-        <div className="flex justify-end pt-2">
+        <div className="flex justify-center sm:justify-end pt-2">
           <button
             type="submit"
             disabled={saving}
-            className="flex items-center space-x-2 bg-gradient-to-r from-[#D4AF37] to-[#F3E5AB] text-[#0A192F] px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider hover:shadow-lg hover:shadow-[#D4AF37]/25 transition-all cursor-pointer disabled:opacity-50"
+            className="flex items-center justify-center space-x-2 bg-gradient-to-r from-[#D4AF37] to-[#F3E5AB] text-[#0A192F] px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider hover:shadow-lg hover:shadow-[#D4AF37]/25 transition-all cursor-pointer disabled:opacity-50 w-full sm:w-auto"
           >
             {saving ? (
               <Loader2 className="w-4 h-4 animate-spin" />

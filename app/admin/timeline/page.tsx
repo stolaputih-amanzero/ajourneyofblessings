@@ -236,23 +236,25 @@ export default function TimelinePage() {
               key={m.id} 
               className="premium-glass bg-white/5 border border-white/10 hover:border-[#D4AF37]/35 rounded-2xl p-5 flex flex-col sm:flex-row gap-5 items-start sm:items-center justify-between shadow-md group transition-all"
             >
-              <div className="flex gap-4 items-start sm:items-center">
-                {/* Year tag */}
-                <div className="w-16 py-2 rounded-lg bg-gradient-to-b from-[#0A192F] to-[#020C1B] border border-[#D4AF37]/30 text-[#D4AF37] text-center shrink-0 shadow-inner">
-                  <span className="text-xs uppercase tracking-wider font-bold">Tahun</span>
-                  <span className="text-sm font-serif font-bold block">{m.year}</span>
-                </div>
-                
-                {/* Photo Thumbnail */}
-                {m.image_url ? (
-                  <img src={m.image_url} alt={m.title} className="w-14 h-14 rounded-lg object-cover border border-white/10 shrink-0" />
-                ) : (
-                  <div className="w-14 h-14 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-white/20 shrink-0">
-                    <Layers className="w-5 h-5" />
+              <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center w-full">
+                {/* Year tag & Photo row on mobile */}
+                <div className="flex items-center gap-3 w-full sm:w-auto shrink-0">
+                  <div className="w-16 py-2 rounded-lg bg-gradient-to-b from-[#0A192F] to-[#020C1B] border border-[#D4AF37]/30 text-[#D4AF37] text-center shadow-inner">
+                    <span className="text-[9px] uppercase tracking-wider font-bold block">Tahun</span>
+                    <span className="text-sm font-serif font-bold block">{m.year}</span>
                   </div>
-                )}
+                  
+                  {/* Photo Thumbnail */}
+                  {m.image_url ? (
+                    <img src={m.image_url} alt={m.title} className="w-12 h-12 rounded-lg object-cover border border-white/10" />
+                  ) : (
+                    <div className="w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-white/20">
+                      <Layers className="w-4 h-4" />
+                    </div>
+                  )}
+                </div>
 
-                <div className="space-y-1">
+                <div className="space-y-1 flex-1">
                   <h3 className="text-sm font-serif font-bold text-white leading-tight">{m.title}</h3>
                   <p className="text-xs text-white/60 font-sans leading-relaxed max-w-xl">{m.description || 'Tidak ada deskripsi'}</p>
                   <span className="inline-block text-[9px] uppercase tracking-wider text-[#D4AF37]/50 font-bold">Urutan: {m.order_index}</span>
@@ -386,6 +388,7 @@ export default function TimelinePage() {
               onClick={() => {
                 setIsEditModalOpen(false)
                 setEditingMilestone(null)
+                setImageUrl(null)
               }}
               className="absolute inset-0 bg-black"
             />
@@ -401,6 +404,7 @@ export default function TimelinePage() {
                   onClick={() => {
                     setIsEditModalOpen(false)
                     setEditingMilestone(null)
+                    setImageUrl(null)
                   }}
                   className="text-white/40 hover:text-white cursor-pointer"
                 >
@@ -464,6 +468,7 @@ export default function TimelinePage() {
                     onClick={() => {
                       setIsEditModalOpen(false)
                       setEditingMilestone(null)
+                      setImageUrl(null)
                     }}
                     className="px-4 py-2 border border-white/10 hover:bg-white/5 rounded-lg font-bold cursor-pointer"
                   >

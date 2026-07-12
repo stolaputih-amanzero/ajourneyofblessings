@@ -143,7 +143,7 @@ export default function PrayersPage() {
         </div>
         <button
           onClick={handleExportCSV}
-          className="flex items-center space-x-2 bg-gradient-to-r from-[#D4AF37] to-[#F3E5AB] text-[#0A192F] px-4 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider hover:shadow-lg transition-all cursor-pointer shrink-0"
+          className="flex items-center justify-center space-x-2 bg-gradient-to-r from-[#D4AF37] to-[#F3E5AB] text-[#0A192F] px-4 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider hover:shadow-lg transition-all cursor-pointer w-full sm:w-auto shrink-0"
         >
           <Download className="w-3.5 h-3.5" />
           <span>Ekspor Buku Tamu</span>

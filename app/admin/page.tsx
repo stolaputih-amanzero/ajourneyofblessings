@@ -120,7 +120,7 @@ export default async function AdminPage() {
       {/* Stats Grid */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Card 1: Total Guests */}
-        <div className="premium-glass bg-white/5 border border-white/10 rounded-2xl p-5 flex flex-col justify-between shadow-lg">
+        <div className="premium-glass bg-white/5 border border-white/10 rounded-2xl p-4 sm:p-5 flex flex-col justify-between shadow-lg">
           <div className="flex items-center justify-between">
             <span className="text-[9px] uppercase tracking-widest text-white/50 font-bold">Total Undangan</span>
             <span className="p-2 rounded-lg bg-white/5 border border-white/10 text-white/80">
@@ -134,7 +134,7 @@ export default async function AdminPage() {
         </div>
 
         {/* Card 2: Attending */}
-        <div className="premium-glass bg-white/5 border border-[#D4AF37]/20 rounded-2xl p-5 flex flex-col justify-between shadow-lg">
+        <div className="premium-glass bg-white/5 border border-[#D4AF37]/20 rounded-2xl p-4 sm:p-5 flex flex-col justify-between shadow-lg">
           <div className="flex items-center justify-between">
             <span className="text-[9px] uppercase tracking-widest text-[#D4AF37] font-bold">Hadir (RSVP)</span>
             <span className="p-2 rounded-lg bg-[#D4AF37]/10 border border-[#D4AF37]/20 text-[#D4AF37]">
@@ -148,7 +148,7 @@ export default async function AdminPage() {
         </div>
 
         {/* Card 3: Declined */}
-        <div className="premium-glass bg-white/5 border border-rose-500/20 rounded-2xl p-5 flex flex-col justify-between shadow-lg">
+        <div className="premium-glass bg-white/5 border border-rose-500/20 rounded-2xl p-4 sm:p-5 flex flex-col justify-between shadow-lg">
           <div className="flex items-center justify-between">
             <span className="text-[9px] uppercase tracking-widest text-rose-400 font-bold">Tidak Hadir</span>
             <span className="p-2 rounded-lg bg-rose-500/10 border border-rose-500/20 text-rose-400">
@@ -162,7 +162,7 @@ export default async function AdminPage() {
         </div>
 
         {/* Card 4: Pending */}
-        <div className="premium-glass bg-white/5 border border-slate-500/20 rounded-2xl p-5 flex flex-col justify-between shadow-lg">
+        <div className="premium-glass bg-white/5 border border-slate-500/20 rounded-2xl p-4 sm:p-5 flex flex-col justify-between shadow-lg">
           <div className="flex items-center justify-between">
             <span className="text-[9px] uppercase tracking-widest text-slate-400 font-bold">Belum Respon</span>
             <span className="p-2 rounded-lg bg-slate-500/10 border border-slate-500/20 text-slate-400">
@@ -182,7 +182,7 @@ export default async function AdminPage() {
         <div className="absolute right-0 top-0 transform translate-x-12 -translate-y-12 text-[#D4AF37]/5 pointer-events-none">
           <Sparkles className="w-64 h-64" />
         </div>
-        <div className="relative z-10 flex flex-col mb-4 sm:mb-0">
+        <div className="relative z-10 flex flex-col items-center sm:items-start text-center sm:text-left mb-4 sm:mb-0">
           <div className="flex items-center space-x-2 text-[#D4AF37] mb-1">
             <Sparkles className="w-4 h-4" />
             <span className="text-[10px] uppercase tracking-[0.2em] font-bold">Proyeksi Jumlah Kehadiran</span>

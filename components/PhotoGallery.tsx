@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState, useRef } from 'react'
+import { createPortal } from 'react-dom'
 import { createClient } from '@/utils/supabase/client'
 import { motion, AnimatePresence, Variants } from 'framer-motion'
 import { Camera, ChevronLeft, ChevronRight, X, ZoomIn, Play, Pause } from 'lucide-react'
@@ -18,10 +19,12 @@ export default function PhotoGallery() {
   const [direction, setDirection] = useState(1) // 1 for right, -1 for left
   const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null)
   const [isPlaying, setIsPlaying] = useState(true)
+  const [mounted, setMounted] = useState(false)
   const supabase = createClient()
   const autoPlayTimer = useRef<NodeJS.Timeout | null>(null)
 
   useEffect(() => {
+    setMounted(true)
     const fetchPhotos = async () => {
       const { data, error } = await supabase
         .from('gallery_photos')
@@ -213,8 +216,8 @@ export default function PhotoGallery() {
       )}
 
       {/* Lightbox / Large Preview Modal */}
-      <AnimatePresence>
-        {selectedPhoto && (
+      {mounted && selectedPhoto && createPortal(
+        <AnimatePresence>
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0A192F]/95 backdrop-blur-xl">
             {/* Backdrop click to close */}
             <motion.div
@@ -260,8 +263,9 @@ export default function PhotoGallery() {
               )}
             </motion.div>
           </div>
-        )}
-      </AnimatePresence>
+        </AnimatePresence>,
+        document.body
+      )}
     </div>
   )
 }

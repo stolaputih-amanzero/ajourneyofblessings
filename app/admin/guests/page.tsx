@@ -423,20 +423,32 @@ export default function GuestsPage() {
   const getWhatsAppLink = (g: Guest) => {
     const baseUrl = window.location.origin
     const inviteLink = `${baseUrl}/invite/${g.unique_token}`
-    const text = `Shalom ${g.title || ''} ${g.full_name},
+    const titleVal = g.title ? `${g.title} ` : ''
+    const text = `Shalom,
+Kepada Yth. Bapak/Ibu/Saudara(i):
+*${titleVal}${g.full_name}*
 
-Dengan penuh sukacita, kami mengundang Anda ke Ibadah Emeritus:
-✨ Pdt. Ny. Meinita M.E. Wungo-Damping ✨
-"Keep Shining in His Grace"
+Dengan penuh ucapan syukur atas kasih setia Tuhan, kami mengundang Bapak/Ibu/Saudara(i) untuk menghadiri Ibadah Syukur Emeritus (Purna Bakti) atas pelayanan dari:
 
-📅 Minggu, 16 Agustus 2026
-⏰ 09:00 WIB
-📍 GPIB "Bukit Moria", Tebet
+*Pdt. Ny. Meinita M.E. Wungo-Damping*
+(38 Tahun Masa Pelayanan yang Penuh Kesetiaan)
 
-Buka undangan digital Anda:
+Ibadah Syukur dengan tema *"Keep Shining in His Grace"* ini akan diselenggarakan pada:
+
+*❇️ Hari/Tanggal :* Minggu, 16 Agustus 2026
+*❇️ Waktu        :* 09:00 WIB
+*❇️ Tempat       :* GPIB "Bukit Moria", Tebet
+
+Kehadiran serta doa restu Bapak/Ibu/Saudara(i) sangat berarti bagi kami dalam merayakan berkat pelayanan ini.
+
+Untuk detail acara, peta lokasi, dan konfirmasi RSVP, mohon berkenan mengakses tautan undangan digital Anda di bawah ini:
+
 ${inviteLink}
 
-Tuhan Yesus memberkati.`
+Teriring salam dan doa hangat kami,
+*Panitia & Keluarga*
+
+Tuhan Yesus Memberkati.`
 
     return `https://wa.me/${g.phone?.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(text)}`
   }

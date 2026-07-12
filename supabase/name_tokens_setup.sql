@@ -66,8 +66,9 @@ BEGIN
 END;
 $$;
 
--- 3. PERBAIKAN: Perbarui data tamu lama yang saat ini menggunakan token acak 8 karakter
+-- 3. PERBAIKAN: Perbarui data tamu lama yang saat ini menggunakan token acak (UUID atau 8-char hex)
 -- (Agar tamu lama Anda juga otomatis mendapat link berbasis nama yang rapi!)
 UPDATE guests 
 SET unique_token = generate_unique_guest_token(full_name)
-WHERE unique_token ~ '^[a-f0-9]{8}$';
+WHERE unique_token ~ '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'
+   OR unique_token ~ '^[a-f0-9]{8}$';

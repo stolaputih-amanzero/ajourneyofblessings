@@ -34,3 +34,8 @@ WITH CHECK (bucket_id = 'gallery');
 CREATE POLICY "Allow public delete on gallery"
 ON storage.objects FOR DELETE
 USING (bucket_id = 'gallery');
+
+-- 3. PERBAIKAN GUESTBOOK: Izinkan akses SELECT ke tabel guests
+-- Agar nama pengirim doa/guestbook dapat dibaca dan ditampilkan di undangan tamu (tidak jadi 'Anonymous')
+DROP POLICY IF EXISTS "Allow public read of guests" ON guests;
+CREATE POLICY "Allow public read of guests" ON guests FOR SELECT TO anon, authenticated USING (true);

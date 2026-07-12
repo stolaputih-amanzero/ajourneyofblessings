@@ -66,6 +66,10 @@ CREATE POLICY "Allow public read of timeline" ON timeline_milestones FOR SELECT 
 -- 3. Public read for Prayers, but NO direct insert (Use RPC)
 CREATE POLICY "Allow public read of prayers" ON prayers_guestbook FOR SELECT TO anon USING (true);
 
+-- 4. Public read for guests (diperlukan agar nama pengirim doa/guestbook dapat terbaca di undangan)
+DROP POLICY IF EXISTS "Allow public read of guests" ON guests;
+CREATE POLICY "Allow public read of guests" ON guests FOR SELECT TO anon USING (true);
+
 
 -- =========================================================
 -- SECURE RPC FUNCTIONS (The "Safe Doors")

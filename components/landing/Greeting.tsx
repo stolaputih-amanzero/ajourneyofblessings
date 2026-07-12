@@ -41,12 +41,18 @@ export default function Greeting({ guest }: GreetingProps) {
             className="w-full px-6 py-12 flex flex-col items-center"
         >
             {/* Header Section: Welcome --- Guest */}
-            <motion.div variants={itemVariants} className="w-full flex justify-between items-center mb-12">
-                <span className="text-[10px] tracking-[0.2em] text-white font-bold uppercase">Welcome</span>
-                <div className="w-8 h-px bg-[#D4AF37]"></div>
-                <span className="text-[10px] tracking-[0.2em] text-white font-bold uppercase underline decoration-[#D4AF37] decoration-2 underline-offset-4">
-                    Guest
-                </span>
+            <motion.div variants={itemVariants} className="w-full flex items-center justify-between mb-12 text-[10px] tracking-[0.2em] font-bold uppercase text-white">
+                <div className="w-1/3 text-left">
+                    Welcome
+                </div>
+                <div className="flex-1 flex justify-center">
+                    <div className="w-8 h-px bg-[#D4AF37]"></div>
+                </div>
+                <div className="w-1/3 text-right">
+                    <span className="underline decoration-[#D4AF37] decoration-2 underline-offset-4">
+                        Guest
+                    </span>
+                </div>
             </motion.div>
 
             {/* Name Section */}

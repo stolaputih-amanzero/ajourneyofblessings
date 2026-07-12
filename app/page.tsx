@@ -3,10 +3,18 @@ export default function HomePage() {
     <>
       <div className="absolute top-0 left-0 w-full h-1 bg-[#D4AF37]"></div>
       
-      <div className="px-8 pt-12 flex justify-between items-center">
-        <span className="text-[10px] tracking-[0.2em] text-[#0A192F] font-bold uppercase">Invitation</span>
-        <div className="w-6 h-px bg-[#D4AF37]"></div>
-        <span className="text-[10px] tracking-[0.2em] text-[#0A192F] font-bold uppercase underline decoration-[#D4AF37] decoration-2 underline-offset-4">Emeritus</span>
+      <div className="px-8 pt-12 flex items-center justify-between text-[10px] tracking-[0.2em] font-bold uppercase text-[#0A192F]">
+        <div className="w-1/3 text-left">
+          Invitation
+        </div>
+        <div className="flex-1 flex justify-center">
+          <div className="w-6 h-px bg-[#D4AF37]"></div>
+        </div>
+        <div className="w-1/3 text-right">
+          <span className="underline decoration-[#D4AF37] decoration-2 underline-offset-4">
+            Emeritus
+          </span>
+        </div>
       </div>
 
       <div className="px-8 mt-12">

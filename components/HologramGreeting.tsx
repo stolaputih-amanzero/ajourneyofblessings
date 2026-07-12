@@ -11,30 +11,45 @@ interface HologramGreetingProps {
 
 export default function HologramGreeting({ token }: HologramGreetingProps) {
   const supabase = createClient()
-  const [videoData, setVideoData] = useState<{ youtube_id: string; title: string } | null>(null)
+  const [videoUrl, setVideoUrl] = useState<string | null>(null)
   const [isPlaying, setIsPlaying] = useState(false)
   const [loading, setLoading] = useState(true)
 
-  // Fetch video tribute configuration to use as greeting video
   useEffect(() => {
     const fetchVideo = async () => {
+      // 1. Try to get the uploaded hologram sapaan hangat video
       const { data, error } = await supabase
         .from('event_config')
         .select('value')
-        .eq('key', 'video_tribute')
+        .eq('key', 'hologram_config')
         .single()
 
-      if (!error && data) {
-        setVideoData(data.value as any)
+      if (!error && data && (data.value as any)?.video_url) {
+        setVideoUrl((data.value as any).video_url)
+      } else {
+        // 2. Fallback to youtube video tribute if hologram is not uploaded
+        const { data: fallbackData } = await supabase
+          .from('event_config')
+          .select('value')
+          .eq('key', 'video_tribute')
+          .single()
+
+        if (fallbackData && (fallbackData.value as any)?.youtube_id) {
+          const ytId = (fallbackData.value as any).youtube_id
+          setVideoUrl(`https://www.youtube.com/embed/${ytId}`)
+        }
       }
       setLoading(false)
     }
     fetchVideo()
   }, [supabase])
 
-  if (loading || !videoData?.youtube_id) return null
+  if (loading || !videoUrl) return null
 
-  const youtubeUrl = `https://www.youtube.com/embed/${videoData.youtube_id}?autoplay=1&rel=0&modestbranding=1&mute=0`
+  const isYouTube = videoUrl.includes('youtube.com') || videoUrl.includes('youtu.be')
+  const formattedVideoUrl = isYouTube && !videoUrl.includes('?autoplay=1')
+    ? `${videoUrl}?autoplay=1&rel=0&modestbranding=1&mute=0`
+    : videoUrl
 
   return (
     <div className="w-full px-6 py-8 flex flex-col items-center select-none">
@@ -129,14 +144,24 @@ export default function HologramGreeting({ token }: HologramGreetingProps) {
                 <X className="w-4 h-4" />
               </button>
 
-              {/* Autoplay Iframe */}
-              <iframe
-                src={youtubeUrl}
-                title={videoData.title || "Greeting Video"}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="w-full h-full border-0 relative z-10 bg-black"
-              />
+              {/* Autoplay Iframe or Video Tag */}
+              {isYouTube ? (
+                <iframe
+                  src={formattedVideoUrl}
+                  title="Sapaan Hangat"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="w-full h-full border-0 relative z-10 bg-black"
+                />
+              ) : (
+                <video
+                  src={formattedVideoUrl}
+                  autoPlay
+                  controls
+                  playsInline
+                  className="w-full h-full border-0 relative z-10 bg-black object-cover"
+                />
+              )}
             </motion.div>
           </div>
         )}

@@ -18,27 +18,20 @@ import Timeline from '@/components/Timeline'
 import GoldDust from '@/components/GoldDust'
 import HologramGreeting from '@/components/HologramGreeting'
 
-const getBaseUrl = () => {
-  let url = process.env.NEXT_PUBLIC_APP_URL || 'https://meinita.amanloka.com'
-  if (!url.startsWith('http://') && !url.startsWith('https://')) {
-    url = `https://${url}`
-  }
-  return url
-}
-const baseUrl = getBaseUrl()
+const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://meinita.amanloka.com'
 
-// ✅ WHATSAPP PREVIEW METADATA (PERSONALIZED PER TAMU)
+// ✅ WHATSAPP PREVIEW METADATA
 export async function generateMetadata({ params }: { params: Promise<{ token: string }> }): Promise<Metadata> {
   const resolvedParams = await params
   const supabase = await createClient()
-
-  const { data: guests } = await supabase.rpc('get_guest_by_token', {
-    p_token: resolvedParams.token
+  
+  const { data: guests } = await supabase.rpc('get_guest_by_token', { 
+    p_token: resolvedParams.token 
   })
   const guest = guests?.[0]
-
-  const guestName = guest
-    ? (guest.title ? `${guest.title} ${guest.full_name}` : guest.full_name)
+  
+  const guestName = guest 
+    ? (guest.title ? `${guest.title} ${guest.full_name}` : guest.full_name) 
     : 'Tamu Undangan'
 
   return {
@@ -59,12 +52,6 @@ export async function generateMetadata({ params }: { params: Promise<{ token: st
       ],
       locale: 'id_ID',
       type: 'website',
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: 'Undangan Emeritus - Pdt. Ny. Meinita M.E. Wungo-Damping',
-      description: `Shalom ${guestName}, Anda diundang ke Ibadah Emeritus...`,
-      images: [`${baseUrl}/og-image.png`],
     },
   }
 }
@@ -97,14 +84,10 @@ export default async function InvitePage({
 
   return (
     <>
-      {/* ✅ MOBILE-CENTRIC WRAPPER */}
       <main className="relative mx-auto w-full flex min-h-screen max-w-md flex-col bg-[#0A192F] bg-spotlight text-white overflow-x-hidden">
         <GoldDust />
 
-        {/* ✅ ENVELOPE ANIMATION */}
         <Envelope guest={guest}>
-
-          {/* ✅ FLOATING BUTTONS - DI DALAM ENVELOPE (Clean Design) */}
           <BackgroundMusic />
           <ShareButton
             title="Undangan Emeritus - Pdt. Ny. Meinita M.E. Wungo-Damping"
@@ -112,20 +95,16 @@ export default async function InvitePage({
           />
           <ScrollProgress />
 
-          {/* ✅ GREETING COMPONENT */}
           <Greeting guest={guest} />
-
+          
           {/* ✅ HOLOGRAM VIDEO GREETING */}
           <HologramGreeting token={resolvedParams.token} />
-
-          {/* ✅ TIMELINE 38 TAHUN */}
+          
           <Timeline />
 
-          {/* ✅ DETAIL ACARA */}
           <FadeIn delay={0.4} className="bg-[#0A192F] text-white px-4 py-8 border-t border-[#D4AF37]/20">
             <div className="flex flex-col space-y-6">
 
-              {/* Tanggal & Waktu */}
               <div className="flex justify-between items-end border-b border-white/10 pb-4">
                 <div className="flex flex-col">
                   <span className="text-[#D4AF37] text-[10px] uppercase tracking-widest font-semibold">Hari / Tanggal</span>
@@ -137,7 +116,6 @@ export default async function InvitePage({
                 </div>
               </div>
 
-              {/* Lokasi */}
               <div className="flex flex-col">
                 <span className="text-[#D4AF37] text-[10px] uppercase tracking-widest font-semibold mb-2">Tempat</span>
                 <p className="text-white font-serif text-base mb-1">GPIB "Bukit Moria"</p>
@@ -145,16 +123,13 @@ export default async function InvitePage({
                 <MapModal />
               </div>
 
-              {/* Countdown */}
               <CountdownTimer targetDate="2026-08-16T09:00:00+07:00" />
 
-              {/* Photo & Video */}
               <div className="w-full max-w-full overflow-hidden">
                 <PhotoGallery />
                 <VideoTribute />
               </div>
 
-              {/* ✅ RSVP - Typo FIXED */}
               <RSVPForm
                 token={guest.unique_token}
                 guestName={guest.title ? `${guest.title} ${guest.full_name}` : guest.full_name}
@@ -164,7 +139,6 @@ export default async function InvitePage({
             </div>
           </FadeIn>
 
-          {/* ✅ GUESTBOOK */}
           <FadeIn delay={0.2} className="bg-[#FDFBF7] text-[#0A192F]">
             <Guestbook
               token={guest.unique_token}

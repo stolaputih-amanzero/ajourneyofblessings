@@ -39,6 +39,9 @@ export default function SettingsPage() {
   const [youtubeId, setYoutubeId] = useState('')
   const [videoTitle, setVideoTitle] = useState('')
 
+  const [hologramVideoUrl, setHologramVideoUrl] = useState('')
+  const [uploadingHologram, setUploadingHologram] = useState(false)
+
   const [eventDate, setEventDate] = useState('Minggu, 16 Agustus 2026')
   const [eventTime, setEventTime] = useState('09:00 WIB')
   const [eventLocation, setEventLocation] = useState('GPIB "Bukit Moria"')
@@ -74,6 +77,9 @@ export default function SettingsPage() {
             }
             if (cfg.key === 'seo_config') {
               setOgImageUrl(cfg.value?.og_image_url || '')
+            }
+            if (cfg.key === 'hologram_config') {
+              setHologramVideoUrl(cfg.value?.video_url || '')
             }
           })
         }
@@ -126,6 +132,13 @@ export default function SettingsPage() {
       })
       if (err4) throw err4
 
+      // 5. Save Hologram Greeting Config
+      const { error: err5 } = await supabase.rpc('admin_update_event_config', {
+        p_key: 'hologram_config',
+        p_value: { video_url: hologramVideoUrl }
+      })
+      if (err5) throw err5
+
       success('Konfigurasi berhasil disimpan')
     } catch (e: any) {
       error('Gagal menyimpan konfigurasi: ' + e.message)
@@ -163,6 +176,37 @@ export default function SettingsPage() {
       error('Gagal mengunggah gambar: ' + err.message + '. Pastikan bucket "gallery" telah dibuat dan memiliki izin publik.')
     } finally {
       setSaving(false)
+    }
+  }
+
+  // Handle Hologram Video file upload to Supabase Storage
+  const handleHologramVideoUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (!file) return
+
+    setUploadingHologram(true)
+    try {
+      const fileExt = file.name.split('.').pop()
+      const fileName = `hologram_greeting_${Math.random().toString(36).substring(2, 9)}_${Date.now()}.${fileExt}`
+      const filePath = `videos/${fileName}`
+
+      const { data, error: uploadErr } = await supabase.storage
+        .from('gallery')
+        .upload(filePath, file)
+
+      if (uploadErr) throw uploadErr
+
+      // Get public URL
+      const { data: { publicUrl } } = supabase.storage
+        .from('gallery')
+        .getPublicUrl(filePath)
+
+      setHologramVideoUrl(publicUrl)
+      success('Video sapaan hangat berhasil diunggah')
+    } catch (err: any) {
+      error('Gagal mengunggah video: ' + err.message + '. Pastikan bucket "gallery" telah dibuat dan memiliki izin publik.')
+    } finally {
+      setUploadingHologram(false)
     }
   }
 
@@ -282,6 +326,51 @@ export default function SettingsPage() {
                 className="w-full bg-[#020C1B] border border-white/10 p-3 rounded-lg focus:outline-none focus:border-[#D4AF37]"
                 required
               />
+            </div>
+          </div>
+        </div>
+
+        {/* Section 2.5: Hologram Greeting Video */}
+        <div className="premium-glass bg-white/5 border border-white/10 rounded-2xl p-6 shadow-lg space-y-4">
+          <h2 className="text-sm font-serif font-bold text-white/95 flex items-center border-b border-white/5 pb-3">
+            <Video className="w-4 h-4 mr-2 text-[#D4AF37]" />
+            Hologram Transmission (Sapaan Hangat Video)
+          </h2>
+
+          <div className="space-y-4 text-xs">
+            {hologramVideoUrl && (
+              <div className="aspect-video w-full max-w-sm rounded-xl overflow-hidden bg-black border border-white/10">
+                <video src={hologramVideoUrl} controls className="w-full h-full object-cover" />
+              </div>
+            )}
+
+            <div className="space-y-1">
+              <label className="text-[10px] uppercase tracking-wider text-white/50 font-bold">File Video Sapaan Hangat (MP4/WebM)</label>
+              <div className="flex gap-2">
+                <input 
+                  type="text" 
+                  value={hologramVideoUrl} 
+                  onChange={(e) => setHologramVideoUrl(e.target.value)}
+                  placeholder="Belum ada video sapaan hangat diunggah..."
+                  className="flex-1 bg-[#020C1B] border border-white/10 p-3 rounded-lg focus:outline-none focus:border-[#D4AF37] text-white/60 truncate"
+                />
+                <label className="bg-white/5 hover:bg-white/10 border border-white/10 px-4 py-3 rounded-lg font-bold flex items-center justify-center cursor-pointer shrink-0 transition-colors text-xs text-[#D4AF37]">
+                  {uploadingHologram ? (
+                    <Loader2 className="w-4 h-4 animate-spin text-[#D4AF37]" />
+                  ) : (
+                    <span>Unggah Video</span>
+                  )}
+                  <input 
+                    type="file" 
+                    accept="video/*" 
+                    onChange={handleHologramVideoUpload}
+                    className="hidden" 
+                  />
+                </label>
+              </div>
+              <p className="text-[9px] text-white/40 leading-relaxed">
+                Tip: Kompres video menggunakan encoder H.264 (MP4) agar video lancar diputar pada semua perangkat mobile (ukuran disarankan di bawah 10MB).
+              </p>
             </div>
           </div>
         </div>

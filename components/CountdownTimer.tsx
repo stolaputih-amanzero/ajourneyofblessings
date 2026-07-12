@@ -1,8 +1,6 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { intervalToDuration, isBefore } from 'date-fns'
-
 export default function CountdownTimer({ targetDate }: { targetDate: string }) {
   const [timeLeft, setTimeLeft] = useState<{
     days?: number;
@@ -16,13 +14,20 @@ export default function CountdownTimer({ targetDate }: { targetDate: string }) {
 
     const updateTimer = () => {
       const now = new Date()
-      if (isBefore(end, now)) {
+      const diffMs = end.getTime() - now.getTime()
+
+      if (diffMs <= 0) {
         setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 })
         return
       }
 
-      const duration = intervalToDuration({ start: now, end })
-      setTimeLeft(duration)
+      const totalSeconds = Math.floor(diffMs / 1000)
+      const days = Math.floor(totalSeconds / (24 * 3600))
+      const hours = Math.floor((totalSeconds % (24 * 3600)) / 3600)
+      const minutes = Math.floor((totalSeconds % 3600) / 60)
+      const seconds = totalSeconds % 60
+
+      setTimeLeft({ days, hours, minutes, seconds })
     }
 
     updateTimer() // Initial call

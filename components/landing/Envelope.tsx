@@ -51,19 +51,54 @@ export default function Envelope({ guest, children }: EnvelopeProps) {
                         className="relative mb-8 flex flex-col items-center"
                     >
                         <div className="w-[280px] h-44 bg-gradient-to-br from-[#0A192F] to-[#05101E] rounded-lg shadow-2xl flex items-center justify-center relative overflow-hidden border border-[#D4AF37]/50 metallic-shadow">
+                            {/* Sweeping Gold Shine Reflection */}
+                            <motion.div
+                                animate={{
+                                    left: ['-100%', '200%']
+                                }}
+                                transition={{
+                                    duration: 4,
+                                    repeat: Infinity,
+                                    repeatDelay: 4,
+                                    ease: "easeInOut"
+                                }}
+                                className="absolute top-0 bottom-0 w-16 bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-12 pointer-events-none z-10"
+                            />
+
                             {/* Envelope Side Flaps Illusion */}
                             <div className="absolute top-0 w-full h-full border-t border-[#D4AF37]/20 opacity-50"></div>
                             
                             {/* Envelope Top Flap Accent */}
                             <div className="absolute top-[-60%] left-1/2 -translate-x-1/2 w-[280px] h-[280px] rotate-45 border-b border-r border-[#D4AF37]/40 rounded-br-2xl bg-gradient-to-br from-[#05101E]/40 to-[#D4AF37]/5 shadow-[0_6px_15px_rgba(0,0,0,0.6)] z-10 pointer-events-none"></div>
+
+                            {/* Luxury Double Frame */}
+                            <div className="absolute inset-2 border border-[#D4AF37]/25 rounded-md pointer-events-none z-10" />
+                            <div className="absolute inset-3 border border-[#D4AF37]/40 rounded-[4px] pointer-events-none z-10" />
+
+                            {/* Art Deco Luxury Corner Ornaments */}
+                            <div className="absolute top-4 left-4 w-4 h-4 border-t border-l border-[#D4AF37]/65 pointer-events-none z-10">
+                                <div className="absolute top-0.5 left-0.5 w-2.5 h-2.5 border-t border-l border-[#D4AF37]/50"></div>
+                            </div>
+                            <div className="absolute top-4 right-4 w-4 h-4 border-t border-r border-[#D4AF37]/65 pointer-events-none z-10">
+                                <div className="absolute top-0.5 right-0.5 w-2.5 h-2.5 border-t border-r border-[#D4AF37]/50"></div>
+                            </div>
+                            <div className="absolute bottom-4 left-4 w-4 h-4 border-b border-l border-[#D4AF37]/65 pointer-events-none z-10">
+                                <div className="absolute bottom-0.5 left-0.5 w-2.5 h-2.5 border-b border-l border-[#D4AF37]/50"></div>
+                            </div>
+                            <div className="absolute bottom-4 right-4 w-4 h-4 border-b border-r border-[#D4AF37]/65 pointer-events-none z-10">
+                                <div className="absolute bottom-0.5 right-0.5 w-2.5 h-2.5 border-b border-r border-[#D4AF37]/50"></div>
+                            </div>
+
+                            {/* Soft Radial Gold Glow behind text */}
+                            <div className="absolute w-36 h-36 rounded-full bg-gradient-to-r from-[#D4AF37]/10 to-transparent blur-2xl pointer-events-none z-0" />
                             
                             {/* Guest Name - The Focal Point */}
                             <motion.div 
-                                className="absolute top-[42%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center z-20 px-6"
-                                animate={{ opacity: [0.8, 1, 0.8], scale: [0.98, 1, 0.98] }}
+                                className="absolute top-[42%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center z-20 px-8"
+                                animate={{ opacity: [0.85, 1, 0.85], scale: [0.99, 1, 0.99] }}
                                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                             >
-                                <p className="text-[8px] text-[#D4AF37]/70 uppercase tracking-[0.4em] font-bold mb-1.5">Kepada Yth.</p>
+                                <p className="text-[8px] text-[#D4AF37]/75 uppercase tracking-[0.4em] font-bold mb-1.5 drop-shadow">Kepada Yth.</p>
                                 <p className={`text-gradient-gold font-serif italic ${nameFontSizeClass} leading-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]`}>
                                     {fullName}
                                 </p>
@@ -71,6 +106,12 @@ export default function Envelope({ guest, children }: EnvelopeProps) {
                         </div>
                         {/* Interactive Wax Seal with Ripple */}
                         <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 z-30 flex items-center justify-center">
+                            {/* Rotating Gold Accent Ring around Seal */}
+                            <motion.div
+                                animate={{ rotate: 360 }}
+                                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                                className="absolute -inset-2 rounded-full border border-dashed border-[#D4AF37]/60 pointer-events-none"
+                            />
                             {/* Subtle Breathing Glow to Indicate Interactivity */}
                             <motion.div
                                 animate={{ scale: [1, 1.15, 1], opacity: [0.1, 0.4, 0.1] }}

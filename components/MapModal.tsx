@@ -5,7 +5,13 @@ import { createPortal } from 'react-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { MapPin, X, Navigation } from 'lucide-react'
 
-export default function MapModal() {
+interface MapModalProps {
+  location?: string
+  address?: string
+  mapLink?: string
+}
+
+export default function MapModal({ location, address, mapLink }: MapModalProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
 
@@ -13,9 +19,10 @@ export default function MapModal() {
     setMounted(true)
   }, [])
 
-  const mapQuery = "GPIB+Bukit+Moria,+Tebet,+Jakarta+Selatan"
+  const defaultQuery = "GPIB Bukit Moria, Tebet, Jakarta Selatan"
+  const mapQuery = encodeURIComponent(location && address ? `${location}, ${address}` : defaultQuery)
   const iframeSrc = `https://maps.google.com/maps?q=${mapQuery}&t=&z=16&ie=UTF8&iwloc=&output=embed`
-  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${mapQuery}`
+  const mapsUrl = mapLink || `https://www.google.com/maps/search/?api=1&query=${mapQuery}`
 
   const modalContent = (
     <AnimatePresence>
@@ -62,10 +69,10 @@ export default function MapModal() {
             <div className="p-6 bg-[#05101E] flex flex-col space-y-4">
               <div>
                 <p className="text-white text-lg font-serif italic mb-1">
-                  GPIB "Bukit Moria"
+                  {location || 'GPIB "Bukit Moria"'}
                 </p>
                 <p className="text-white/60 text-xs leading-relaxed font-sans">
-                  Jl. Soepomo No. 4, Tebet, Jakarta Selatan, Indonesia.
+                  {address || 'Jl. Soepomo No. 4, Tebet, Jakarta Selatan, Indonesia.'}
                 </p>
               </div>
               

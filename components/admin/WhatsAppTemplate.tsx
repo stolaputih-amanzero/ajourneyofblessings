@@ -71,11 +71,12 @@ export default function WhatsAppTemplate() {
   const [copied, setCopied] = useState(false)
   const [generatingTxt, setGeneratingTxt] = useState(false)
 
-  // Fetch guests for preview
+  // Fetch guests and configurations for preview
   useEffect(() => {
-    const fetchGuests = async () => {
+    const fetchData = async () => {
       setLoading(true)
       try {
+        // 1. Fetch guests
         const { data, error: err } = await supabase.rpc('admin_get_guests', {
           p_limit: 100, // Fetch top 100 for dropdown/search
         })
@@ -93,13 +94,25 @@ export default function WhatsAppTemplate() {
             setSelectedGuest(formatted[0])
           }
         }
+
+        // 2. Fetch configurations
+        const { data: configs } = await supabase.from('event_config').select('key, value')
+        if (configs) {
+          configs.forEach((cfg: any) => {
+            if (cfg.key === 'event_info') {
+              setEventDate(cfg.value?.date || 'Minggu, 16 Agustus 2026')
+              setEventTime(cfg.value?.time || '09:00 WIB')
+              setEventLocation(cfg.value?.location || 'GPIB "Bukit Moria", Tebet')
+            }
+          })
+        }
       } catch (e) {
-        error('Gagal memuat daftar tamu untuk pratinjau')
+        error('Gagal memuat data pratinjau')
       } finally {
         setLoading(false)
       }
     }
-    fetchGuests()
+    fetchData()
   }, [supabase, error])
 
   // Helper to compile message for a guest

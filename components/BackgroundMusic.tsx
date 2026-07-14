@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Volume2, VolumeX, Disc3 } from 'lucide-react'
 
-export default function BackgroundMusic() {
+export default function BackgroundMusic({ musicUrl }: { musicUrl?: string }) {
   const audioRef = useRef<HTMLAudioElement>(null)
   const [isPlaying, setIsPlaying] = useState(false)
   const [hasInteracted, setHasInteracted] = useState(false)
@@ -44,7 +44,7 @@ export default function BackgroundMusic() {
       {/* Hidden Audio Element */}
       <audio
         ref={audioRef}
-        src="/audio/theme.mp3"
+        src={musicUrl || "/audio/theme.mp3"}
         loop
         preload="auto"
       />

@@ -4,7 +4,23 @@ import { useState } from 'react'
 import { Download } from 'lucide-react'
 import { jsPDF } from 'jspdf'
 
-export default function DownloadPDF({ guestName, guestTitle }: { guestName: string, guestTitle?: string }) {
+interface DownloadPDFProps {
+  guestName: string
+  guestTitle?: string
+  eventDate?: string
+  eventTime?: string
+  eventLocation?: string
+  eventAddress?: string
+}
+
+export default function DownloadPDF({ 
+  guestName, 
+  guestTitle,
+  eventDate = 'Minggu, 16 Agustus 2026',
+  eventTime = '09:00 WIB',
+  eventLocation = 'GPIB "Bukit Moria"',
+  eventAddress = 'Jl. Soepomo No. 4, Tebet, Jakarta Selatan'
+}: DownloadPDFProps) {
   const [isGenerating, setIsGenerating] = useState(false)
 
   const generatePDF = () => {
@@ -70,8 +86,8 @@ export default function DownloadPDF({ guestName, guestTitle }: { guestName: stri
       
       doc.setFont('times', 'normal')
       doc.setTextColor(10, 25, 47)
-      doc.text('Minggu, 16 Agustus 2026', 105, 195, { align: 'center' })
-      doc.text('09:00 WIB', 105, 205, { align: 'center' })
+      doc.text(eventDate, 105, 195, { align: 'center' })
+      doc.text(eventTime, 105, 205, { align: 'center' })
 
       doc.setFont('times', 'bold')
       doc.setTextColor(212, 175, 55)
@@ -79,8 +95,8 @@ export default function DownloadPDF({ guestName, guestTitle }: { guestName: stri
 
       doc.setFont('times', 'normal')
       doc.setTextColor(10, 25, 47)
-      doc.text('GPIB "Bukit Moria"', 105, 235, { align: 'center' })
-      doc.text('Jl. Soepomo No. 4, Tebet, Jakarta Selatan', 105, 245, { align: 'center' })
+      doc.text(eventLocation, 105, 235, { align: 'center' })
+      doc.text(eventAddress, 105, 245, { align: 'center' })
       
       // Footer
       doc.setFont('times', 'italic')

@@ -55,6 +55,32 @@ export default function GuestsPage() {
   
   // Selection
   const [selectedIds, setSelectedIds] = useState<string[]>([])
+
+  // Config States for WhatsApp invite text
+  const [eventDate, setEventDate] = useState('Minggu, 16 Agustus 2026')
+  const [eventTime, setEventTime] = useState('09:00 WIB')
+  const [eventLocation, setEventLocation] = useState('GPIB "Bukit Moria", Tebet')
+
+  // Load configs on mount
+  useEffect(() => {
+    const fetchConfigs = async () => {
+      try {
+        const { data } = await supabase.from('event_config').select('key, value')
+        if (data) {
+          data.forEach((cfg: any) => {
+            if (cfg.key === 'event_info') {
+              setEventDate(cfg.value?.date || 'Minggu, 16 Agustus 2026')
+              setEventTime(cfg.value?.time || '09:00 WIB')
+              setEventLocation(cfg.value?.location || 'GPIB "Bukit Moria", Tebet')
+            }
+          })
+        }
+      } catch (e) {
+        console.error(e)
+      }
+    }
+    fetchConfigs()
+  }, [supabase])
   
   // Modal states
   const [isAddModalOpen, setIsAddModalOpen] = useState(false)
@@ -435,9 +461,9 @@ Dengan penuh ucapan syukur atas kasih setia Tuhan, kami mengundang Bapak/Ibu/Sau
 
 Ibadah Syukur dengan tema *"Keep Shining in His Grace"* ini akan diselenggarakan pada:
 
-*❇️ Hari/Tanggal :* Minggu, 16 Agustus 2026
-*❇️ Waktu        :* 09:00 WIB
-*❇️ Tempat       :* GPIB "Bukit Moria", Tebet
+*❇️ Hari/Tanggal :* ${eventDate}
+*❇️ Waktu        :* ${eventTime}
+*❇️ Tempat       :* ${eventLocation}
 
 Kehadiran serta doa restu Bapak/Ibu/Saudara(i) sangat berarti bagi kami dalam merayakan berkat pelayanan ini.
 

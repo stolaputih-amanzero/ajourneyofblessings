@@ -743,104 +743,129 @@ Tuhan Yesus Memberkati.`)
               </table>
             </div>
 
-            <div className="md:hidden divide-y divide-white/5">
-              {guests.map((g) => (
-                <div key={g.id} className="p-4 sm:p-5 space-y-3 hover:bg-white/2">
-                  <div className="flex items-start justify-between">
-                    <div className="flex items-center space-x-3">
-                      <input
-                        type="checkbox"
-                        checked={selectedIds.includes(g.id)}
-                        onChange={() => toggleSelect(g.id)}
-                        className="w-4 h-4 rounded accent-[#D4AF37] cursor-pointer shrink-0"
-                      />
-                      <span className="font-semibold text-sm">
-                        {g.title ? <span className="text-white/40 font-normal mr-1">{g.title}</span> : ''}
-                        {g.full_name}
-                      </span>
+            <div className="md:hidden p-4 space-y-4">
+              {guests.map((g) => {
+                const isAttending = g.rsvp_status === true;
+                const isDeclining = g.rsvp_status === false;
+                
+                return (
+                  <div key={g.id} className="premium-glass bg-white/3 border border-white/8 rounded-2xl p-4 space-y-4 hover:border-[#D4AF37]/30 transition-all duration-300 shadow-md">
+                    {/* Header: Checkbox + Name & Status Badge */}
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="flex items-start space-x-3 min-w-0 flex-1">
+                        <input
+                          type="checkbox"
+                          checked={selectedIds.includes(g.id)}
+                          onChange={() => toggleSelect(g.id)}
+                          className="w-4 h-4 rounded border-white/20 accent-[#D4AF37] cursor-pointer mt-0.5 shrink-0"
+                        />
+                        <div className="flex flex-col min-w-0">
+                          <span className="font-serif font-bold text-sm text-white/95 leading-tight break-words">
+                            {g.title ? <span className="text-[#D4AF37] font-normal mr-1">{g.title}</span> : ''}
+                            {g.full_name}
+                          </span>
+                        </div>
+                      </div>
+                      
+                      <div className="shrink-0">
+                        {isAttending ? (
+                          <span className="inline-block text-[9px] font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-1 rounded-md uppercase tracking-wider whitespace-nowrap">
+                            Hadir ({g.attendance_count})
+                          </span>
+                        ) : isDeclining ? (
+                          <span className="inline-block text-[9px] font-bold text-rose-400 bg-rose-500/10 border border-rose-500/20 px-2 py-1 rounded-md uppercase tracking-wider whitespace-nowrap">
+                            Berhalangan
+                          </span>
+                        ) : (
+                          <span className="inline-block text-[9px] font-bold text-slate-400 bg-slate-500/10 border border-slate-500/20 px-2 py-1 rounded-md uppercase tracking-wider whitespace-nowrap">
+                            Pending
+                          </span>
+                        )}
+                      </div>
                     </div>
-                    <div>
-                      {g.rsvp_status === true ? (
-                        <span className="text-[9px] font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded uppercase tracking-wider">Hadir ({g.attendance_count})</span>
-                      ) : g.rsvp_status === false ? (
-                        <span className="text-[9px] font-bold text-rose-400 bg-rose-500/10 border border-rose-500/20 px-2 py-0.5 rounded uppercase tracking-wider">Berhalangan</span>
-                      ) : (
-                        <span className="text-[9px] font-bold text-slate-400 bg-slate-500/10 border border-slate-500/20 px-2 py-0.5 rounded uppercase tracking-wider">Pending</span>
+
+                    {/* Metadata Grid: Phone & Table Number */}
+                    <div className="grid grid-cols-2 gap-y-2 gap-x-3 text-[11px] text-white/60 border-t border-white/5 pt-3 pl-7">
+                      <div className="flex items-center min-w-0">
+                        <Phone className="w-3.5 h-3.5 text-[#D4AF37]/80 mr-2 shrink-0" />
+                        <span className="truncate">{g.phone || <span className="text-white/25 italic">Tanpa No HP</span>}</span>
+                      </div>
+                      <div className="flex items-center min-w-0">
+                        <Grid className="w-3.5 h-3.5 text-[#D4AF37]/80 mr-2 shrink-0" />
+                        <span className="truncate font-semibold text-[#D4AF37]">
+                          {g.table_number ? `Meja ${g.table_number}` : <span className="text-white/25 italic font-normal">Belum Pilih</span>}
+                        </span>
+                      </div>
+                      {g.email && (
+                        <div className="col-span-2 flex items-center min-w-0 pt-1">
+                          <Mail className="w-3.5 h-3.5 text-white/35 mr-2 shrink-0" />
+                          <span className="truncate text-white/50">{g.email}</span>
+                        </div>
                       )}
                     </div>
-                  </div>
 
-                  <div className="space-y-1.5 text-[11px] text-white/60 pl-7">
-                    {g.phone && (
-                      <span className="flex items-center">
-                        <Phone className="w-3 h-3 text-[#D4AF37] mr-1.5 shrink-0" />
-                        {g.phone}
-                      </span>
-                    )}
-                    {g.email && (
-                      <span className="flex items-center truncate">
-                        <Mail className="w-3 h-3 text-white/40 mr-1.5 shrink-0" />
-                        {g.email}
-                      </span>
-                    )}
-                    {g.table_number && (
-                      <span className="flex items-center font-bold text-[#D4AF37]">
-                        <Grid className="w-3 h-3 text-[#D4AF37] mr-1.5 shrink-0" />
-                        Meja: {g.table_number}
-                      </span>
-                    )}
-                  </div>
+                    {/* Dynamic Action Buttons Grid */}
+                    <div className="flex flex-col gap-2 border-t border-white/5 pt-3 pl-7">
+                      {/* Primary Rows */}
+                      <div className="flex gap-2">
+                        <button
+                          onClick={() => handleCopyLink(g.unique_token)}
+                          className="flex-1 flex items-center justify-center space-x-1.5 bg-white/5 border border-white/10 hover:bg-white/10 px-3 py-2 rounded-xl text-[10px] font-bold uppercase tracking-wider cursor-pointer transition-colors text-white/80"
+                        >
+                          {copiedToken === g.unique_token ? (
+                            <>
+                              <Check className="w-3.5 h-3.5 text-[#D4AF37]" />
+                              <span>Disalin</span>
+                            </>
+                          ) : (
+                            <>
+                              <Copy className="w-3.5 h-3.5 text-[#D4AF37]" />
+                              <span>Salin Link</span>
+                            </>
+                          )}
+                        </button>
+                        
+                        {g.phone && (
+                          <a
+                            href={getWhatsAppLink(g)}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex-1 flex items-center justify-center space-x-1.5 bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 hover:bg-emerald-500/20 px-3 py-2 rounded-xl text-[10px] font-bold uppercase tracking-wider cursor-pointer transition-colors"
+                          >
+                            <Send className="w-3.5 h-3.5" />
+                            <span>Kirim WA</span>
+                          </a>
+                        )}
+                      </div>
 
-                  {/* Actions Footer */}
-                  <div className="flex flex-wrap items-center justify-end gap-2 pt-2 pl-7">
-                    <button
-                      onClick={() => handleCopyLink(g.unique_token)}
-                      className="flex items-center justify-center space-x-1.5 bg-white/5 border border-white/10 hover:bg-white/10 px-3 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-wider cursor-pointer"
-                    >
-                      {copiedToken === g.unique_token ? (
-                        <>
-                          <Check className="w-3 h-3 text-[#D4AF37]" />
-                          <span>Disalin</span>
-                        </>
-                      ) : (
-                        <>
-                          <Copy className="w-3 h-3" />
-                          <span>Salin Link</span>
-                        </>
-                      )}
-                    </button>
-                    {g.phone && (
-                      <a
-                        href={getWhatsAppLink(g)}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-center space-x-1.5 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 hover:bg-emerald-500/20 px-3 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-wider cursor-pointer"
-                      >
-                        <Send className="w-3 h-3" />
-                        <span>Kirim WA</span>
-                      </a>
-                    )}
-                    <button
-                      onClick={() => {
-                        setEditingGuest(g)
-                        setIsEditModalOpen(true)
-                      }}
-                      className="p-1.5 rounded border border-white/10 bg-white/5 text-white/80 hover:bg-white/10 cursor-pointer flex items-center justify-center"
-                    >
-                      <Edit className="w-3.5 h-3.5" />
-                    </button>
-                    <button
-                      onClick={() => {
-                        setDeletingGuest(g)
-                        setIsDeleteModalOpen(true)
-                      }}
-                      className="p-1.5 rounded border border-red-500/20 bg-red-500/10 text-red-400 hover:bg-red-500/20 cursor-pointer flex items-center justify-center"
-                    >
-                      <Trash2 className="w-3.5 h-3.5" />
-                    </button>
+                      {/* Editing Rows */}
+                      <div className="flex gap-2">
+                        <button
+                          onClick={() => {
+                            setEditingGuest(g)
+                            setIsEditModalOpen(true)
+                          }}
+                          className="flex-1 flex items-center justify-center space-x-1.5 bg-white/5 border border-white/10 hover:bg-white/10 py-2 rounded-xl text-[10px] font-bold uppercase tracking-wider cursor-pointer text-white/70"
+                        >
+                          <Edit className="w-3.5 h-3.5" />
+                          <span>Ubah</span>
+                        </button>
+                        
+                        <button
+                          onClick={() => {
+                            setDeletingGuest(g)
+                            setIsDeleteModalOpen(true)
+                          }}
+                          className="flex-1 flex items-center justify-center space-x-1.5 bg-red-500/10 border border-red-500/25 py-2 rounded-xl text-[10px] font-bold uppercase tracking-wider cursor-pointer text-red-400 hover:bg-red-500/20"
+                        >
+                          <Trash2 className="w-3.5 h-3.5" />
+                          <span>Hapus</span>
+                        </button>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              ))}
+                )
+              })}
             </div>
           </>
         )}

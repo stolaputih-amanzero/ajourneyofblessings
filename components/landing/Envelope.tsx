@@ -93,16 +93,12 @@ export default function Envelope({ guest, children }: EnvelopeProps) {
                             <div className="absolute w-36 h-36 rounded-full bg-gradient-to-r from-[#D4AF37]/10 to-transparent blur-2xl pointer-events-none z-0" />
                             
                             {/* Guest Name - The Focal Point */}
-                            <motion.div 
-                                className="absolute top-[42%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center z-20 px-8"
-                                animate={{ opacity: [0.85, 1, 0.85], scale: [0.99, 1, 0.99] }}
-                                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                            >
+                            <div className="absolute top-[42%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center z-20 px-8">
                                 <p className="text-[8px] text-[#D4AF37]/75 uppercase tracking-[0.4em] font-bold mb-1.5 drop-shadow">Kepada Yth.</p>
                                 <p className={`text-gradient-gold font-serif italic ${nameFontSizeClass} leading-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]`}>
                                     {fullName}
                                 </p>
-                            </motion.div>
+                            </div>
                         </div>
                         {/* Interactive Wax Seal with Ripple */}
                         <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 z-30 flex items-center justify-center">

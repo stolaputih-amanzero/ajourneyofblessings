@@ -195,6 +195,23 @@ export default function Envelope({ guest, children }: EnvelopeProps) {
                             Honoring a life beautifully blessed
                         </p>
                     </motion.div>
+
+                    {/* Bottom Signature */}
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.7, duration: 1.2 }}
+                        className="absolute bottom-4 left-0 right-0 text-center z-20"
+                    >
+                        <a 
+                            href="https://amanloka.com" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="text-[8px] tracking-[0.2em] text-white/30 hover:text-white/70 transition-all duration-300 font-sans uppercase font-medium"
+                        >
+                            exclusively designed by <span className="underline decoration-[#D4AF37]/45 hover:decoration-[#D4AF37] decoration-1 underline-offset-4 text-white/50">AMAN ecosystem</span>
+                        </a>
+                    </motion.div>
                 </motion.div>
             ) : (
                 <motion.div

@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import FloralPetals from '@/components/FloralPetals'
 
 interface Guest {
     full_name: string
@@ -32,8 +33,36 @@ export default function Envelope({ guest, children }: EnvelopeProps) {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 1.1, filter: 'blur(10px)' }}
                     transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-                    className="flex flex-col items-center justify-center min-h-screen px-6"
+                    className="flex flex-col items-center justify-center min-h-screen px-6 relative overflow-hidden bg-gradient-to-b from-[#2C1E17] to-[#120B07]"
                 >
+                    {/* Floating Petals Layer */}
+                    <FloralPetals />
+
+                    {/* Elegant Watercolor Floral Corner Ornaments */}
+                    <div className="absolute top-0 left-0 w-32 h-32 pointer-events-none opacity-45 z-10 select-none">
+                        <svg viewBox="0 0 120 120" fill="none" className="w-full h-full text-[#D4AF37]">
+                            <path d="M0,0 Q30,10 40,30 T20,70 Q10,40 0,0 Z" fill="currentColor" opacity="0.15"/>
+                            <path d="M0,0 Q10,30 30,40 T70,20 Q40,10 0,0 Z" fill="currentColor" opacity="0.15"/>
+                            <circle cx="20" cy="20" r="2" fill="currentColor"/>
+                            <circle cx="35" cy="15" r="1.5" fill="currentColor"/>
+                            <circle cx="15" cy="35" r="1.5" fill="currentColor"/>
+                            <path d="M5,5 Q15,45 60,60" stroke="currentColor" strokeWidth="0.5" strokeDasharray="2,2"/>
+                            <path d="M5,5 Q45,15 60,60" stroke="currentColor" strokeWidth="0.5" strokeDasharray="2,2"/>
+                        </svg>
+                    </div>
+
+                    <div className="absolute bottom-0 right-0 w-32 h-32 pointer-events-none opacity-45 rotate-180 z-10 select-none">
+                        <svg viewBox="0 0 120 120" fill="none" className="w-full h-full text-[#D4AF37]">
+                            <path d="M0,0 Q30,10 40,30 T20,70 Q10,40 0,0 Z" fill="currentColor" opacity="0.15"/>
+                            <path d="M0,0 Q10,30 30,40 T70,20 Q40,10 0,0 Z" fill="currentColor" opacity="0.15"/>
+                            <circle cx="20" cy="20" r="2" fill="currentColor"/>
+                            <circle cx="35" cy="15" r="1.5" fill="currentColor"/>
+                            <circle cx="15" cy="35" r="1.5" fill="currentColor"/>
+                            <path d="M5,5 Q15,45 60,60" stroke="currentColor" strokeWidth="0.5" strokeDasharray="2,2"/>
+                            <path d="M5,5 Q45,15 60,60" stroke="currentColor" strokeWidth="0.5" strokeDasharray="2,2"/>
+                        </svg>
+                    </div>
+
                     {/* Envelope Icon with 3D Float Effect */}
                     <motion.div
                         style={{ perspective: 1000 }}

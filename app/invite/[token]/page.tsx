@@ -17,6 +17,7 @@ import Greeting from '@/components/landing/Greeting'
 import Timeline from '@/components/Timeline'
 import GoldDust from '@/components/GoldDust'
 import HologramGreeting from '@/components/HologramGreeting'
+import FloralPetals from '@/components/FloralPetals'
 
 const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'
 
@@ -197,6 +198,7 @@ export default async function InvitePage({
     <>
       <main className="relative mx-auto w-full flex min-h-screen max-w-md flex-col bg-[#2C1E17] bg-spotlight text-white overflow-x-hidden">
         <GoldDust />
+        <FloralPetals />
 
         <Envelope guest={guest}>
           <BackgroundMusic musicUrl={musicUrl} />

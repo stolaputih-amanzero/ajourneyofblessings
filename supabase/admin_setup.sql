@@ -91,7 +91,7 @@ SECURITY DEFINER
 AS $$
 BEGIN
     -- Verify admin
-    IF (SELECT auth.uid()) != (SELECT u.id FROM auth.users u WHERE u.email = 'admin@meinita.amanloka.com') THEN
+    IF (SELECT auth.uid()) != (SELECT u.id FROM auth.users u WHERE u.email = 'admin@journeyofblessing.com') THEN
         RAISE EXCEPTION 'Unauthorized';
     END IF;
 
@@ -144,7 +144,7 @@ SECURITY DEFINER
 AS $$
 BEGIN
     -- Verify admin
-    IF (SELECT auth.uid()) != (SELECT u.id FROM auth.users u WHERE u.email = 'admin@meinita.amanloka.com') THEN
+    IF (SELECT auth.uid()) != (SELECT u.id FROM auth.users u WHERE u.email = 'admin@journeyofblessing.com') THEN
         RAISE EXCEPTION 'Unauthorized';
     END IF;
 
@@ -176,7 +176,7 @@ DECLARE
     v_token TEXT;
 BEGIN
     -- Verify admin
-    IF (SELECT auth.uid()) != (SELECT u.id FROM auth.users u WHERE u.email = 'admin@meinita.amanloka.com') THEN
+    IF (SELECT auth.uid()) != (SELECT u.id FROM auth.users u WHERE u.email = 'admin@journeyofblessing.com') THEN
         RAISE EXCEPTION 'Unauthorized';
     END IF;
 
@@ -207,7 +207,7 @@ SECURITY DEFINER
 AS $$
 BEGIN
     -- Verify admin
-    IF (SELECT auth.uid()) != (SELECT u.id FROM auth.users u WHERE u.email = 'admin@meinita.amanloka.com') THEN
+    IF (SELECT auth.uid()) != (SELECT u.id FROM auth.users u WHERE u.email = 'admin@journeyofblessing.com') THEN
         RAISE EXCEPTION 'Unauthorized';
     END IF;
 
@@ -236,7 +236,7 @@ SECURITY DEFINER
 AS $$
 BEGIN
     -- Verify admin
-    IF (SELECT auth.uid()) != (SELECT u.id FROM auth.users u WHERE u.email = 'admin@meinita.amanloka.com') THEN
+    IF (SELECT auth.uid()) != (SELECT u.id FROM auth.users u WHERE u.email = 'admin@journeyofblessing.com') THEN
         RAISE EXCEPTION 'Unauthorized';
     END IF;
 
@@ -260,7 +260,7 @@ DECLARE
     insert_count INT := 0;
 BEGIN
     -- Verify admin
-    IF (SELECT auth.uid()) != (SELECT u.id FROM auth.users u WHERE u.email = 'admin@meinita.amanloka.com') THEN
+    IF (SELECT auth.uid()) != (SELECT u.id FROM auth.users u WHERE u.email = 'admin@journeyofblessing.com') THEN
         RAISE EXCEPTION 'Unauthorized';
     END IF;
 
@@ -314,7 +314,7 @@ SECURITY DEFINER
 AS $$
 BEGIN
     -- Verify admin
-    IF (SELECT auth.uid()) != (SELECT u.id FROM auth.users u WHERE u.email = 'admin@meinita.amanloka.com') THEN
+    IF (SELECT auth.uid()) != (SELECT u.id FROM auth.users u WHERE u.email = 'admin@journeyofblessing.com') THEN
         RAISE EXCEPTION 'Unauthorized';
     END IF;
 
@@ -343,7 +343,7 @@ SECURITY DEFINER
 AS $$
 BEGIN
     -- Verify admin
-    IF (SELECT auth.uid()) != (SELECT u.id FROM auth.users u WHERE u.email = 'admin@meinita.amanloka.com') THEN
+    IF (SELECT auth.uid()) != (SELECT u.id FROM auth.users u WHERE u.email = 'admin@journeyofblessing.com') THEN
         RAISE EXCEPTION 'Unauthorized';
     END IF;
 
@@ -363,7 +363,7 @@ SECURITY DEFINER
 AS $$
 BEGIN
     -- Verify admin
-    IF (SELECT auth.uid()) != (SELECT u.id FROM auth.users u WHERE u.email = 'admin@meinita.amanloka.com') THEN
+    IF (SELECT auth.uid()) != (SELECT u.id FROM auth.users u WHERE u.email = 'admin@journeyofblessing.com') THEN
         RAISE EXCEPTION 'Unauthorized';
     END IF;
 
@@ -386,7 +386,7 @@ SECURITY DEFINER
 AS $$
 BEGIN
     -- Verify admin
-    IF (SELECT auth.uid()) != (SELECT u.id FROM auth.users u WHERE u.email = 'admin@meinita.amanloka.com') THEN
+    IF (SELECT auth.uid()) != (SELECT u.id FROM auth.users u WHERE u.email = 'admin@journeyofblessing.com') THEN
         RAISE EXCEPTION 'Unauthorized';
     END IF;
 
@@ -410,7 +410,7 @@ SECURITY DEFINER
 AS $$
 BEGIN
     -- Verify admin
-    IF (SELECT auth.uid()) != (SELECT u.id FROM auth.users u WHERE u.email = 'admin@meinita.amanloka.com') THEN
+    IF (SELECT auth.uid()) != (SELECT u.id FROM auth.users u WHERE u.email = 'admin@journeyofblessing.com') THEN
         RAISE EXCEPTION 'Unauthorized';
     END IF;
 
@@ -437,7 +437,7 @@ DECLARE
     new_id UUID;
 BEGIN
     -- Verify admin
-    IF (SELECT auth.uid()) != (SELECT u.id FROM auth.users u WHERE u.email = 'admin@meinita.amanloka.com') THEN
+    IF (SELECT auth.uid()) != (SELECT u.id FROM auth.users u WHERE u.email = 'admin@journeyofblessing.com') THEN
         RAISE EXCEPTION 'Unauthorized';
     END IF;
 
@@ -464,7 +464,7 @@ SECURITY DEFINER
 AS $$
 BEGIN
     -- Verify admin
-    IF (SELECT auth.uid()) != (SELECT u.id FROM auth.users u WHERE u.email = 'admin@meinita.amanloka.com') THEN
+    IF (SELECT auth.uid()) != (SELECT u.id FROM auth.users u WHERE u.email = 'admin@journeyofblessing.com') THEN
         RAISE EXCEPTION 'Unauthorized';
     END IF;
 
@@ -491,7 +491,7 @@ SECURITY DEFINER
 AS $$
 BEGIN
     -- Verify admin
-    IF (SELECT auth.uid()) != (SELECT u.id FROM auth.users u WHERE u.email = 'admin@meinita.amanloka.com') THEN
+    IF (SELECT auth.uid()) != (SELECT u.id FROM auth.users u WHERE u.email = 'admin@journeyofblessing.com') THEN
         RAISE EXCEPTION 'Unauthorized';
     END IF;
 
@@ -517,7 +517,7 @@ SECURITY DEFINER
 AS $$
 BEGIN
     -- Verify admin
-    IF (SELECT auth.uid()) != (SELECT u.id FROM auth.users u WHERE u.email = 'admin@meinita.amanloka.com') THEN
+    IF (SELECT auth.uid()) != (SELECT u.id FROM auth.users u WHERE u.email = 'admin@journeyofblessing.com') THEN
         RAISE EXCEPTION 'Unauthorized';
     END IF;
 
@@ -542,7 +542,7 @@ DECLARE
     new_id UUID;
 BEGIN
     -- Verify admin
-    IF (SELECT auth.uid()) != (SELECT u.id FROM auth.users u WHERE u.email = 'admin@meinita.amanloka.com') THEN
+    IF (SELECT auth.uid()) != (SELECT u.id FROM auth.users u WHERE u.email = 'admin@journeyofblessing.com') THEN
         RAISE EXCEPTION 'Unauthorized';
     END IF;
 
@@ -567,7 +567,7 @@ SECURITY DEFINER
 AS $$
 BEGIN
     -- Verify admin
-    IF (SELECT auth.uid()) != (SELECT u.id FROM auth.users u WHERE u.email = 'admin@meinita.amanloka.com') THEN
+    IF (SELECT auth.uid()) != (SELECT u.id FROM auth.users u WHERE u.email = 'admin@journeyofblessing.com') THEN
         RAISE EXCEPTION 'Unauthorized';
     END IF;
 
@@ -592,7 +592,7 @@ SECURITY DEFINER
 AS $$
 BEGIN
     -- Verify admin
-    IF (SELECT auth.uid()) != (SELECT u.id FROM auth.users u WHERE u.email = 'admin@meinita.amanloka.com') THEN
+    IF (SELECT auth.uid()) != (SELECT u.id FROM auth.users u WHERE u.email = 'admin@journeyofblessing.com') THEN
         RAISE EXCEPTION 'Unauthorized';
     END IF;
 

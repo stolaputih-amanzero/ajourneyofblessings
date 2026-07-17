@@ -34,12 +34,12 @@ export async function middleware(request: NextRequest) {
     const { data: { user } } = await supabase.auth.getUser()
 
     if (url.pathname === '/admin/login') {
-      if (user && user.email === 'admin@meinita.amanloka.com') {
+      if (user && user.email === 'admin@journeyofblessing.com') {
         url.pathname = '/admin'
         return NextResponse.redirect(url)
       }
     } else {
-      if (!user || user.email !== 'admin@meinita.amanloka.com') {
+      if (!user || user.email !== 'admin@journeyofblessing.com') {
         url.pathname = '/admin/login'
         return NextResponse.redirect(url)
       }

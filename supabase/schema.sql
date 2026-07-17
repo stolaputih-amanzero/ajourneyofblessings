@@ -42,6 +42,15 @@ CREATE TABLE prayers_guestbook (
     created_at TIMESTAMPTZ DEFAULT NOW()
 );
 
+-- 5. gallery_photos table
+CREATE TABLE gallery_photos (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    image_url TEXT NOT NULL,
+    caption TEXT,
+    order_index INT DEFAULT 0,
+    created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
 -- Indexes for performance
 CREATE INDEX idx_guests_unique_token ON guests(unique_token);
 CREATE INDEX idx_prayers_guestbook_guest_id ON prayers_guestbook(guest_id);
@@ -54,6 +63,7 @@ ALTER TABLE guests ENABLE ROW LEVEL SECURITY;
 ALTER TABLE event_config ENABLE ROW LEVEL SECURITY;
 ALTER TABLE timeline_milestones ENABLE ROW LEVEL SECURITY;
 ALTER TABLE prayers_guestbook ENABLE ROW LEVEL SECURITY;
+ALTER TABLE gallery_photos ENABLE ROW LEVEL SECURITY;
 
 -- 1. LOCKDOWN 'guests' table completely from anon/public access
 -- No direct SELECT, UPDATE, or INSERT allowed from the frontend.
@@ -69,6 +79,9 @@ CREATE POLICY "Allow public read of prayers" ON prayers_guestbook FOR SELECT TO 
 -- 4. Public read for guests (diperlukan agar nama pengirim doa/guestbook dapat terbaca di undangan)
 DROP POLICY IF EXISTS "Allow public read of guests" ON guests;
 CREATE POLICY "Allow public read of guests" ON guests FOR SELECT TO anon USING (true);
+
+-- 5. Public read for gallery photos (diperlukan agar galeri foto dapat terbaca di undangan)
+CREATE POLICY "Allow public read of gallery_photos" ON gallery_photos FOR SELECT TO anon USING (true);
 
 
 -- =========================================================

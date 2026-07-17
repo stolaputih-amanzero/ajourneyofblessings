@@ -42,12 +42,12 @@ export default function LoginPage() {
         {/* Monogram / Header */}
         <div className="flex flex-col items-center mb-8">
           <div className="w-16 h-16 rounded-full border border-[#D4AF37]/40 p-0.5 mb-4 shadow-[0_0_15px_rgba(212,175,55,0.1)]">
-            <div className="w-full h-full rounded-full bg-gradient-to-br from-[#0A192F] to-[#020C1B] flex items-center justify-center text-[#D4AF37] italic font-serif text-xl border border-white/5">
-              M
+            <div className="w-full h-full rounded-full bg-gradient-to-br from-[#2C1E17] to-[#19110B] flex items-center justify-center text-[#D4AF37] italic font-serif text-xl border border-white/5">
+              Y
             </div>
           </div>
           <h1 className="text-xl font-serif text-white tracking-wide text-center">
-            Keep Shining in His Grace
+            A Journey of Blessing
           </h1>
           <p className="text-[9px] uppercase tracking-[0.25em] text-[#D4AF37] font-bold mt-1">
             Admin Access
@@ -68,7 +68,7 @@ export default function LoginPage() {
                 type="email"
                 name="email"
                 required
-                defaultValue="admin@meinita.amanloka.com"
+                defaultValue="admin@journeyofblessing.com"
                 placeholder="admin@example.com"
                 className="w-full bg-[#020C1B]/50 border border-white/10 text-white placeholder-white/20 pl-11 pr-4 py-3.5 text-sm focus:outline-none focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37]/20 transition-all rounded-lg font-sans"
               />

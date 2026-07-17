@@ -117,12 +117,12 @@ export default function PhotoGallery() {
       <div className="flex items-center justify-center space-x-2 mb-6">
         <Camera size={14} className="text-[#D4AF37]" />
         <span className="text-[#D4AF37] text-[10px] uppercase tracking-[0.2em] font-bold">
-          Dokumentasi Pelayanan
+          A Journey of Blessing
         </span>
       </div>
 
       {/* Main Slideshow Viewport */}
-      <div className="relative w-full aspect-[4/5] rounded-3xl overflow-hidden border border-[#D4AF37]/30 bg-[#020C1B] shadow-2xl group">
+      <div className="relative w-full aspect-[4/5] rounded-3xl overflow-hidden border border-[#D4AF37]/30 bg-[#19110B] shadow-2xl group">
         <AnimatePresence initial={false} custom={direction}>
           <motion.div
             key={currentIndex}
@@ -137,12 +137,12 @@ export default function PhotoGallery() {
             {/* Slide Image */}
             <img
               src={activePhoto.image_url}
-              alt={activePhoto.caption || 'Foto Galeri'}
+              alt={activePhoto.caption || 'Photo Gallery'}
               className="w-full h-full object-contain select-none"
               loading="eager"
             />
             {/* Glassmorphic Caption Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F] via-transparent to-transparent opacity-90 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#2C1E17] via-transparent to-transparent opacity-90 pointer-events-none" />
             
             {/* Caption Content */}
             {activePhoto.caption && (
@@ -218,7 +218,7 @@ export default function PhotoGallery() {
       {/* Lightbox / Large Preview Modal */}
       {mounted && selectedPhoto && createPortal(
         <AnimatePresence>
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0A192F]/95 backdrop-blur-xl">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#2C1E17]/95 backdrop-blur-xl">
             {/* Backdrop click to close */}
             <motion.div
               initial={{ opacity: 0 }}
@@ -234,12 +234,12 @@ export default function PhotoGallery() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               transition={{ type: 'spring', damping: 25, stiffness: 220 }}
-              className="relative w-full max-w-lg bg-[#020C1B]/80 border border-[#D4AF37]/35 rounded-3xl overflow-hidden shadow-2xl z-10"
+              className="relative w-full max-w-lg bg-[#19110B]/80 border border-[#D4AF37]/35 rounded-3xl overflow-hidden shadow-2xl z-10"
             >
               {/* Close Button */}
               <button
                 onClick={() => setSelectedPhoto(null)}
-                className="absolute top-4 right-4 bg-[#0A192F]/80 border border-white/10 text-[#D4AF37] p-2 rounded-full hover:bg-white/5 transition-colors z-20 cursor-pointer"
+                className="absolute top-4 right-4 bg-[#2C1E17]/80 border border-white/10 text-[#D4AF37] p-2 rounded-full hover:bg-white/5 transition-colors z-20 cursor-pointer"
               >
                 <X size={18} />
               </button>
@@ -248,14 +248,14 @@ export default function PhotoGallery() {
               <div className="w-full aspect-[4/5] bg-black relative">
                 <img
                   src={selectedPhoto.image_url}
-                  alt={selectedPhoto.caption || 'Foto Galeri'}
+                  alt={selectedPhoto.caption || 'Photo Gallery'}
                   className="w-full h-full object-contain"
                 />
               </div>
 
               {/* Caption */}
               {selectedPhoto.caption && (
-                <div className="p-6 bg-[#0A192F]/90 border-t border-[#D4AF37]/20 text-center">
+                <div className="p-6 bg-[#2C1E17]/90 border-t border-[#D4AF37]/20 text-center">
                   <p className="text-white font-serif italic text-sm leading-relaxed">
                     "{selectedPhoto.caption}"
                   </p>

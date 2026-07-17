@@ -24,7 +24,7 @@ export default function HologramGreeting({ token }: HologramGreetingProps) {
 
   useEffect(() => {
     const fetchVideo = async () => {
-      // 1. Try to get the uploaded hologram sapaan hangat video
+      // 1. Try to get the uploaded hologram video
       const { data, error } = await supabase
         .from('event_config')
         .select('value')
@@ -105,27 +105,27 @@ export default function HologramGreeting({ token }: HologramGreetingProps) {
           <div className="relative w-20 h-20 rounded-full border-2 border-dashed border-[#D4AF37]/40 flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
             {/* Pulsing ring inside */}
             <div className="absolute inset-1 rounded-full border border-[#D4AF37]/20 animate-ping opacity-60" />
-            <div className="w-16 h-16 rounded-full bg-[#0A192F] border border-[#D4AF37]/30 flex items-center justify-center shadow-inner">
+            <div className="w-16 h-16 rounded-full bg-[#2C1E17] border border-[#D4AF37]/30 flex items-center justify-center shadow-inner">
               <Video className="w-7 h-7 text-[#D4AF37] opacity-80" strokeWidth={1.5} />
             </div>
           </div>
 
           {/* Text Title */}
           <div className="space-y-1">
-            <h3 className="text-gradient-gold text-xs font-serif font-bold tracking-wide italic">Sapaan Hangat</h3>
-            <p className="text-white/60 text-[9px] font-sans leading-tight">Sentuh untuk memutar pesan pribadi Bunda Meinita</p>
+            <h3 className="text-gradient-gold text-xs font-serif font-bold tracking-wide italic">Warm Greetings</h3>
+            <p className="text-white/60 text-[9px] font-sans leading-tight">Tap to play a warm message from Ibu Yvonne</p>
           </div>
 
           {/* Play CTA Icon */}
-          <div className="w-9 h-9 rounded-full bg-[#D4AF37] flex items-center justify-center text-[#0A192F] shadow-lg group-hover:scale-110 transition-transform">
-            <Play className="w-4 h-4 fill-[#0A192F] ml-0.5" />
+          <div className="w-9 h-9 rounded-full bg-[#D4AF37] flex items-center justify-center text-[#2C1E17] shadow-lg group-hover:scale-110 transition-transform">
+            <Play className="w-4 h-4 fill-[#2C1E17] ml-0.5" />
           </div>
         </motion.div>
 
         {/* Projection Source Base */}
         <div className="relative mt-4 w-32 h-6 flex items-center justify-center">
           {/* Base outer ring */}
-          <div className="absolute w-full h-2.5 rounded-full bg-[#0A192F] border border-[#D4AF37]/40 z-10 shadow-lg" />
+          <div className="absolute w-full h-2.5 rounded-full bg-[#2C1E17] border border-[#D4AF37]/40 z-10 shadow-lg" />
           {/* Glowing central lens */}
           <div className="absolute w-12 h-1.5 rounded-full bg-[#D4AF37] animate-pulse blur-[2px] z-20" />
           {/* Scan light rays */}
@@ -144,7 +144,7 @@ export default function HologramGreeting({ token }: HologramGreetingProps) {
               animate={{ opacity: 0.9 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsPlaying(false)}
-              className="absolute inset-0 bg-[#0A192F]/95 backdrop-blur-md"
+              className="absolute inset-0 bg-[#2C1E17]/95 backdrop-blur-md"
             />
             
             {/* Futuristic Holographic Video Player Frame */}
@@ -160,7 +160,7 @@ export default function HologramGreeting({ token }: HologramGreetingProps) {
               {/* Close Button */}
               <button 
                 onClick={() => setIsPlaying(false)}
-                className="absolute top-4 right-4 z-30 p-2 bg-[#0A192F]/80 hover:bg-[#0A192F] text-white hover:text-[#D4AF37] rounded-full border border-white/10 transition-colors cursor-pointer"
+                className="absolute top-4 right-4 z-30 p-2 bg-[#2C1E17]/80 hover:bg-[#2C1E17] text-white hover:text-[#D4AF37] rounded-full border border-white/10 transition-colors cursor-pointer"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -169,7 +169,7 @@ export default function HologramGreeting({ token }: HologramGreetingProps) {
               {isYouTube ? (
                 <iframe
                   src={formattedVideoUrl}
-                  title="Sapaan Hangat"
+                  title="Warm Greetings"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                   className="w-full h-full border-0 relative z-10 bg-black"
@@ -189,10 +189,10 @@ export default function HologramGreeting({ token }: HologramGreetingProps) {
               {isMuted && (
                 <button
                   onClick={() => setIsMuted(false)}
-                  className="absolute bottom-4 left-1/2 -translate-x-1/2 z-30 px-4 py-2 bg-[#D4AF37] text-[#0A192F] hover:bg-white transition-all rounded-full text-[10px] font-bold uppercase tracking-wider flex items-center space-x-1.5 shadow-lg animate-bounce cursor-pointer"
+                  className="absolute bottom-4 left-1/2 -translate-x-1/2 z-30 px-4 py-2 bg-[#D4AF37] text-[#2C1E17] hover:bg-white transition-all rounded-full text-[10px] font-bold uppercase tracking-wider flex items-center space-x-1.5 shadow-lg animate-bounce cursor-pointer"
                 >
                   <Volume2 className="w-3.5 h-3.5 animate-pulse" />
-                  <span>Ketuk untuk Bersuara</span>
+                  <span>Tap to Unmute</span>
                 </button>
               )}
             </motion.div>

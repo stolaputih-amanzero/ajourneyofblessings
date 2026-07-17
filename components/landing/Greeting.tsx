@@ -68,21 +68,21 @@ export default function Greeting({ guest }: GreetingProps) {
             <motion.div variants={itemVariants} className="relative w-full flex-1 mt-4 mb-8 flex justify-center">
                 <div className="premium-glass rounded-t-full flex flex-col items-center justify-center text-center px-6 py-10 w-full max-w-sm">
                     <p className="text-white/80 text-sm italic font-serif leading-relaxed mb-6">
-                        We are deeply honored to invite you to the Emeritus Ceremony of
+                        We are deeply honored to invite you to the 70th Birthday Thanksgiving Service of
                     </p>
 
-                    {/* Monogram M */}
+                    {/* Monogram Y */}
                     <div className="w-20 h-20 rounded-full border border-[#D4AF37]/50 p-1 mb-4 metallic-shadow">
-                        <div className="w-full h-full rounded-full bg-gradient-to-br from-[#0A192F] to-[#05101E] flex items-center justify-center text-[#FFDF73] italic font-serif text-2xl border border-white/10 metallic-shadow">
-                            M
+                        <div className="w-full h-full rounded-full bg-gradient-to-br from-[#2C1E17] to-[#19110B] flex items-center justify-center text-[#FFDF73] italic font-serif text-2xl border border-white/10 metallic-shadow">
+                            Y
                         </div>
                     </div>
 
                     <h2 className="text-white/90 font-serif text-xl px-2 leading-snug drop-shadow-sm">
-                        Pdt. Ny. Meinita M.E. Wungo-Damping
+                        Ibu Yvonne Wakkary Rumambi
                     </h2>
                     <p className="mt-4 text-[#E6C875] text-[9px] tracking-[0.2em] uppercase font-bold drop-shadow-sm">
-                        38 Years of Faithful Service
+                        Honoring a life beautifully blessed
                     </p>
                 </div>
             </motion.div>

@@ -24,7 +24,7 @@ function TimelineItem({ milestone, isLast }: { milestone: Milestone; isLast: boo
                     initial={{ scale: 0 }}
                     animate={isInView ? { scale: 1 } : {}}
                     transition={{ duration: 1.2, type: "spring", bounce: 0.3 }}
-                    className="w-4 h-4 rounded-full bg-gradient-to-br from-[#E6C875] via-[#D4AF37] to-[#B8860B] border-2 border-[#0A192F] metallic-shadow z-10 shrink-0 mt-1"
+                    className="w-4 h-4 rounded-full bg-gradient-to-br from-[#E6C875] via-[#D4AF37] to-[#B8860B] border-2 border-[#2C1E17] metallic-shadow z-10 shrink-0 mt-1"
                 />
                 {!isLast && (
                     <div className="w-px flex-1 bg-gradient-to-b from-[#D4AF37]/40 to-transparent min-h-[20px]" />
@@ -39,7 +39,7 @@ function TimelineItem({ milestone, isLast }: { milestone: Milestone; isLast: boo
                 className="flex-1 pb-10"
             >
                 {/* Year Badge */}
-                <span className="inline-block bg-[#0A192F] text-[#FFDF73] text-[9px] uppercase tracking-[0.2em] font-bold px-3 py-1 rounded-full border border-[#D4AF37]/50 mb-2 metallic-shadow">
+                <span className="inline-block bg-[#2C1E17] text-[#FFDF73] text-[9px] uppercase tracking-[0.2em] font-bold px-3 py-1 rounded-full border border-[#D4AF37]/50 mb-2 metallic-shadow">
                     {milestone.year}
                 </span>
 
@@ -59,7 +59,7 @@ function TimelineItem({ milestone, isLast }: { milestone: Milestone; isLast: boo
                         initial={{ opacity: 0, y: 10 }}
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
                         transition={{ duration: 0.5, delay: 0.3 }}
-                        className="mt-4 rounded-xl overflow-hidden border border-[#D4AF37]/20 shadow-xl bg-[#020C1B] relative aspect-[16/9] w-full flex items-center justify-center"
+                        className="mt-4 rounded-xl overflow-hidden border border-[#D4AF37]/20 shadow-xl bg-[#19110B] relative aspect-[16/9] w-full flex items-center justify-center"
                     >
                         {/* Ambient Blurred Background (fills the borders softly) */}
                         <img
@@ -113,7 +113,7 @@ export default function Timeline() {
     if (milestones.length === 0) return null
 
     return (
-        <div className="bg-gradient-to-b from-[#0A192F] to-[#020C1B] py-16 px-6">
+        <div className="bg-gradient-to-b from-[#2C1E17] to-[#19110B] py-16 px-6">
             {/* Header */}
             <div className="text-center mb-12">
                 <motion.span
@@ -122,7 +122,7 @@ export default function Timeline() {
                     viewport={{ once: true }}
                     className="text-[#E6C875] text-[9px] uppercase tracking-[0.3em] font-bold drop-shadow-sm"
                 >
-                    Perjalanan Iman
+                    A Journey of Blessing
                 </motion.span>
                 <motion.h2
                     initial={{ opacity: 0, y: 20 }}
@@ -131,7 +131,7 @@ export default function Timeline() {
                     transition={{ delay: 0.2, duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
                     className="text-gradient-gold font-serif italic text-3xl mt-2 mb-3"
                 >
-                    38 Years of Grace
+                    70 Years of Grace
                 </motion.h2>
                 <motion.div
                     initial={{ scaleX: 0 }}
@@ -163,10 +163,10 @@ export default function Timeline() {
             >
                 <div className="border-t border-[#D4AF37]/20 pt-8">
                     <p className="text-white/60 text-xs italic font-serif leading-relaxed">
-                        "Karena itu, saudara-saudaraku yang kekasih, berdirilah teguh, jangan goyah, dan giatlah selalu dalam pekerjaan Tuhan! Sebab kamu tahu, bahwa dalam persekutuan dengan Tuhan jerih payahmu tidak sia-sia."
+                        "He has made everything beautiful in its time."
                     </p>
                     <p className="text-[#D4AF37] text-[9px] uppercase tracking-widest mt-4 font-bold">
-                        1 Korintus 15:58
+                        Ecclesiastes 3:11
                     </p>
                 </div>
             </motion.div>

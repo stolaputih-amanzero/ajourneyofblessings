@@ -57,34 +57,33 @@ export default function GuestsPage() {
   const [selectedIds, setSelectedIds] = useState<string[]>([])
 
   // Config States for WhatsApp invite text
-  const [eventDate, setEventDate] = useState('Minggu, 16 Agustus 2026')
-  const [eventTime, setEventTime] = useState('09:00 WIB')
-  const [eventLocation, setEventLocation] = useState('GPIB "Bukit Moria", Tebet')
+  const [eventDate, setEventDate] = useState('Monday, August 3rd, 2026')
+  const [eventTime, setEventTime] = useState('18:00 WIB')
+  const [eventLocation, setEventLocation] = useState('Restaurant Beautika, 3rd Floor')
   const [whatsappTemplate, setWhatsappTemplate] = useState(`Shalom,
-Kepada Yth. Bapak/Ibu/Saudara(i):
+Dear Mr./Mrs./Ms.:
 *{title}{full_name}*
 
-Dengan penuh ucapan syukur atas kasih setia Tuhan, kami mengundang Bapak/Ibu/Saudara(i) untuk menghadiri Ibadah Syukur Emeritus (Purna Bakti) atas pelayanan dari:
+With full gratitude for God's grace and faithfulness, we invite you to attend the Thanksgiving Service for the 70th Birthday of:
 
-*Pdt. Ny. Meinita M.E. Wungo-Damping*
-(38 Tahun Masa Pelayanan yang Penuh Kesetiaan)
+*Ibu Yvonne Wakkary Rumambi*
 
-Ibadah Syukur dengan tema *"Keep Shining in His Grace"* ini akan diselenggarakan pada:
+The Thanksgiving Service under the theme *"A Journey of Blessing"* will be held on:
 
-*✦ Hari/Tanggal :* {event_date}
-*✦ Waktu        :* {event_time}
-*✦ Tempat       :* {event_location}
+*✦ Date/Day :* {event_date}
+*✦ Time     :* {event_time}
+*✦ Venue    :* {event_location}
 
-Kehadiran serta doa restu Bapak/Ibu/Saudara(i) sangat berarti bagi kami dalam merayakan berkat pelayanan ini.
+Your presence and prayers would mean so much to us in celebrating this beautiful journey of blessing.
 
-Untuk detail acara, peta lokasi, dan konfirmasi RSVP, mohon berkenan mengakses tautan undangan digital Anda di bawah ini:
+For event details, location map, and RSVP confirmation, please access your personalized digital invitation link below:
 
 {invitation_link}
 
-Teriring salam dan doa hangat kami,
-*Panitia & Keluarga*
+Warm regards and prayers,
+*Wakkary – Rumambi Family*
 
-Tuhan Yesus Memberkati.`)
+God Bless You.`)
 
   // Load configs on mount
   useEffect(() => {
@@ -94,9 +93,9 @@ Tuhan Yesus Memberkati.`)
         if (data) {
           data.forEach((cfg: any) => {
             if (cfg.key === 'event_info') {
-              setEventDate(cfg.value?.date || 'Minggu, 16 Agustus 2026')
-              setEventTime(cfg.value?.time || '09:00 WIB')
-              setEventLocation(cfg.value?.location || 'GPIB "Bukit Moria", Tebet')
+              setEventDate(cfg.value?.date || 'Monday, August 3rd, 2026')
+              setEventTime(cfg.value?.time || '18:00 WIB')
+              setEventLocation(cfg.value?.location || 'Restaurant Beautika, 3rd Floor')
             }
             if (cfg.key === 'whatsapp_config') {
               setWhatsappTemplate(cfg.value?.template || '')
@@ -380,7 +379,7 @@ Tuhan Yesus Memberkati.`)
     const encodedUri = encodeURI(csvContent)
     const link = document.createElement('a')
     link.setAttribute('href', encodedUri)
-    link.setAttribute('download', `Daftar_Tamu_Meinita_Emeritus_${new Date().toISOString().split('T')[0]}.csv`)
+    link.setAttribute('download', `Guest_List_Yvonne_Thanksgiving_${new Date().toISOString().split('T')[0]}.csv`)
     document.body.appendChild(link)
     link.click()
     document.body.removeChild(link)

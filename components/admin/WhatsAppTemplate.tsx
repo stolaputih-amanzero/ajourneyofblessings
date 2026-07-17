@@ -27,30 +27,29 @@ type Guest = {
 }
 
 const DEFAULT_TEMPLATE = `Shalom,
-Kepada Yth. Bapak/Ibu/Saudara(i):
+Dear Mr./Mrs./Ms.:
 *{title}{full_name}*
 
-Dengan penuh ucapan syukur atas kasih setia Tuhan, kami mengundang Bapak/Ibu/Saudara(i) untuk menghadiri Ibadah Syukur Emeritus (Purna Bakti) atas pelayanan dari:
+With full gratitude for God's grace and faithfulness, we invite you to attend the Thanksgiving Service for the 70th Birthday of:
 
-*Pdt. Ny. Meinita M.E. Wungo-Damping*
-(38 Tahun Masa Pelayanan yang Penuh Kesetiaan)
+*Ibu Yvonne Wakkary Rumambi*
 
-Ibadah Syukur dengan tema *"Keep Shining in His Grace"* ini akan diselenggarakan pada:
+The Thanksgiving Service under the theme *"A Journey of Blessing"* will be held on:
 
-*✦ Hari/Tanggal :* {event_date}
-*✦ Waktu        :* {event_time}
-*✦ Tempat       :* {event_location}
+*✦ Date/Day :* {event_date}
+*✦ Time     :* {event_time}
+*✦ Venue    :* {event_location}
 
-Kehadiran serta doa restu Bapak/Ibu/Saudara(i) sangat berarti bagi kami dalam merayakan berkat pelayanan ini.
+Your presence and prayers would mean so much to us in celebrating this beautiful journey of blessing.
 
-Untuk detail acara, peta lokasi, dan konfirmasi RSVP, mohon berkenan mengakses tautan undangan digital Anda di bawah ini:
+For event details, location map, and RSVP confirmation, please access your personalized digital invitation link below:
 
 {invitation_link}
 
-Teriring salam dan doa hangat kami,
-*Panitia & Keluarga*
+Warm regards and prayers,
+*Wakkary – Rumambi Family*
 
-Tuhan Yesus Memberkati.`
+God Bless You.`
 
 export default function WhatsAppTemplate() {
   const supabase = createClient()
@@ -58,11 +57,11 @@ export default function WhatsAppTemplate() {
 
   // Template states
   const [template, setTemplate] = useState(DEFAULT_TEMPLATE)
-  const [eventDate, setEventDate] = useState('Minggu, 16 Agustus 2026')
-  const [eventTime, setEventTime] = useState('09:00 WIB')
-  const [eventLocation, setEventLocation] = useState('GPIB "Bukit Moria", Tebet')
-  const [eventAddress, setEventAddress] = useState('')
-  const [mapLink, setMapLink] = useState('')
+  const [eventDate, setEventDate] = useState('Monday, August 3rd, 2026')
+  const [eventTime, setEventTime] = useState('18:00 WIB')
+  const [eventLocation, setEventLocation] = useState('Restaurant Beautika, 3rd Floor')
+  const [eventAddress, setEventAddress] = useState('Jalan Panglima Polim - Jakarta Selatan')
+  const [mapLink, setMapLink] = useState('https://maps.app.goo.gl/wRypd7zL2XfQd6t47')
 
   // Guest list states
   const [guests, setGuests] = useState<Guest[]>([])

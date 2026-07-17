@@ -42,11 +42,11 @@ export default function SettingsPage() {
   const [hologramVideoUrl, setHologramVideoUrl] = useState('')
   const [uploadingHologram, setUploadingHologram] = useState(false)
 
-  const [eventDate, setEventDate] = useState('Minggu, 16 Agustus 2026')
-  const [eventTime, setEventTime] = useState('09:00 WIB')
-  const [eventLocation, setEventLocation] = useState('GPIB "Bukit Moria"')
-  const [eventAddress, setEventAddress] = useState('Jl. Soepomo No. 4, Tebet, Jakarta Selatan')
-  const [mapLink, setMapLink] = useState('https://maps.app.goo.gl/...')
+  const [eventDate, setEventDate] = useState('Monday, August 3rd, 2026')
+  const [eventTime, setEventTime] = useState('18:00 WIB')
+  const [eventLocation, setEventLocation] = useState('Restaurant Beautika, 3rd Floor')
+  const [eventAddress, setEventAddress] = useState('Jalan Panglima Polim - Jakarta Selatan')
+  const [mapLink, setMapLink] = useState('https://maps.app.goo.gl/wRypd7zL2XfQd6t47')
 
   const [musicUrl, setMusicUrl] = useState('/audio/theme.mp3')
   const [ogImageUrl, setOgImageUrl] = useState('/og-image.png')
@@ -245,7 +245,7 @@ export default function SettingsPage() {
                 type="text" 
                 value={eventDate} 
                 onChange={(e) => setEventDate(e.target.value)} 
-                placeholder="contoh: Minggu, 16 Agustus 2026"
+                placeholder="contoh: Monday, August 3rd, 2026"
                 className="w-full bg-[#020C1B] border border-white/10 p-3 rounded-lg focus:outline-none focus:border-[#D4AF37]"
                 required
               />
@@ -256,7 +256,7 @@ export default function SettingsPage() {
                 type="text" 
                 value={eventTime} 
                 onChange={(e) => setEventTime(e.target.value)} 
-                placeholder="contoh: 09:00 WIB"
+                placeholder="contoh: 18:00 WIB"
                 className="w-full bg-[#020C1B] border border-white/10 p-3 rounded-lg focus:outline-none focus:border-[#D4AF37]"
                 required
               />
@@ -267,7 +267,7 @@ export default function SettingsPage() {
                 type="text" 
                 value={eventLocation} 
                 onChange={(e) => setEventLocation(e.target.value)} 
-                placeholder="contoh: GPIB Bukit Moria"
+                placeholder="contoh: Restaurant Beautika, 3rd Floor"
                 className="w-full bg-[#020C1B] border border-white/10 p-3 rounded-lg focus:outline-none focus:border-[#D4AF37]"
                 required
               />
@@ -322,7 +322,7 @@ export default function SettingsPage() {
                 type="text" 
                 value={videoTitle} 
                 onChange={(e) => setVideoTitle(e.target.value)} 
-                placeholder="contoh: 38 Years of Faithful Service"
+                placeholder="contoh: A Journey of Blessing"
                 className="w-full bg-[#020C1B] border border-white/10 p-3 rounded-lg focus:outline-none focus:border-[#D4AF37]"
                 required
               />

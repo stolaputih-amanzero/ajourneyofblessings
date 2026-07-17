@@ -67,9 +67,9 @@ export default function AdminSidebar() {
       <div className="flex md:hidden items-center justify-between bg-[#020C1B] border-b border-[#D4AF37]/20 px-6 py-4 fixed top-0 left-0 w-full z-40">
         <div className="flex items-center space-x-3">
           <div className="w-8 h-8 rounded-full border border-[#D4AF37]/40 flex items-center justify-center text-[#D4AF37] italic font-serif text-sm">
-            M
+            Y
           </div>
-          <span className="font-serif italic text-white text-sm">Keep Shining</span>
+          <span className="font-serif italic text-white text-sm">Journey of Blessing</span>
         </div>
         <button 
           onClick={toggleMobile} 
@@ -103,7 +103,7 @@ export default function AdminSidebar() {
         <div className="flex items-center justify-between px-6 py-6 border-b border-white/5">
           <div className="flex items-center space-x-3 overflow-hidden">
             <div className="w-9 h-9 rounded-full border border-[#D4AF37]/40 flex items-center justify-center text-[#D4AF37] italic font-serif text-base shrink-0">
-              M
+              Y
             </div>
             {(!isCollapsed || isMobileOpen) && (
               <motion.div
@@ -111,7 +111,7 @@ export default function AdminSidebar() {
                 animate={{ opacity: 1, x: 0 }}
                 className="flex flex-col whitespace-nowrap"
               >
-                <span className="font-serif text-white text-sm">Keep Shining</span>
+                <span className="font-serif text-white text-sm">Journey of Blessing</span>
                 <span className="text-[8px] uppercase tracking-wider text-[#D4AF37] font-bold">Admin Portal</span>
               </motion.div>
             )}

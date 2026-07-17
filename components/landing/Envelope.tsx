@@ -50,7 +50,7 @@ export default function Envelope({ guest, children }: EnvelopeProps) {
                         }}
                         className="relative mb-8 flex flex-col items-center"
                     >
-                        <div className="w-[280px] h-44 bg-gradient-to-br from-[#0A192F] to-[#05101E] rounded-lg shadow-2xl flex items-center justify-center relative overflow-hidden border border-[#D4AF37]/50 metallic-shadow">
+                        <div className="w-[280px] h-44 bg-gradient-to-br from-[#2C1E17] to-[#19110B] rounded-lg shadow-2xl flex items-center justify-center relative overflow-hidden border border-[#D4AF37]/50 metallic-shadow">
                             {/* Sweeping Gold Shine Reflection */}
                             <motion.div
                                 animate={{
@@ -69,7 +69,7 @@ export default function Envelope({ guest, children }: EnvelopeProps) {
                             <div className="absolute top-0 w-full h-full border-t border-[#D4AF37]/20 opacity-50"></div>
                             
                             {/* Envelope Top Flap Accent */}
-                            <div className="absolute top-[-60%] left-1/2 -translate-x-1/2 w-[280px] h-[280px] rotate-45 border-b border-r border-[#D4AF37]/40 rounded-br-2xl bg-gradient-to-br from-[#05101E]/40 to-[#D4AF37]/5 shadow-[0_6px_15px_rgba(0,0,0,0.6)] z-10 pointer-events-none"></div>
+                            <div className="absolute top-[-60%] left-1/2 -translate-x-1/2 w-[280px] h-[280px] rotate-45 border-b border-r border-[#D4AF37]/40 rounded-br-2xl bg-gradient-to-br from-[#19110B]/40 to-[#D4AF37]/5 shadow-[0_6px_15px_rgba(0,0,0,0.6)] z-10 pointer-events-none"></div>
 
                             {/* Luxury Double Frame */}
                             <div className="absolute inset-2 border border-[#D4AF37]/25 rounded-md pointer-events-none z-10" />
@@ -94,7 +94,7 @@ export default function Envelope({ guest, children }: EnvelopeProps) {
                             
                             {/* Guest Name - The Focal Point */}
                             <div className="absolute top-[42%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center z-20 px-8">
-                                <p className="text-[8px] text-[#D4AF37]/75 uppercase tracking-[0.4em] font-bold mb-1.5 drop-shadow">Kepada Yth.</p>
+                                <p className="text-[8px] text-[#D4AF37]/75 uppercase tracking-[0.4em] font-bold mb-1.5 drop-shadow">Dear</p>
                                 <p className={`text-gradient-gold font-serif italic ${nameFontSizeClass} leading-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]`}>
                                     {fullName}
                                 </p>
@@ -120,7 +120,7 @@ export default function Envelope({ guest, children }: EnvelopeProps) {
                                 whileTap={{ scale: 0.9 }}
                                 className="relative w-14 h-14 bg-gradient-to-br from-[#E6C875] via-[#D4AF37] to-[#B8860B] rounded-full metallic-shadow flex items-center justify-center border border-white/30 shadow-[0_0_20px_rgba(212,175,55,0.4)] cursor-pointer z-10"
                             >
-                                <span className="text-[#05101E] font-serif text-2xl font-bold drop-shadow-sm">M</span>
+                                <span className="text-[#19110B] font-serif text-2xl font-bold drop-shadow-sm">Y</span>
                             </motion.button>
                         </div>
                     </motion.div>
@@ -133,10 +133,10 @@ export default function Envelope({ guest, children }: EnvelopeProps) {
                         className="flex flex-col items-center mt-16 pb-8"
                     >
                         <h2 className="text-gradient-gold font-serif italic text-4xl leading-normal drop-shadow-lg mb-1">
-                            Keep Shining
+                            A Journey of Blessing
                         </h2>
-                        <p className="text-[#D4AF37]/80 text-[8px] tracking-[0.5em] uppercase font-bold text-center mt-1">
-                            in His Grace
+                        <p className="text-[#D4AF37]/80 text-[8px] tracking-[0.3em] uppercase font-bold text-center mt-1">
+                            Honoring a life beautifully blessed
                         </p>
                     </motion.div>
                 </motion.div>

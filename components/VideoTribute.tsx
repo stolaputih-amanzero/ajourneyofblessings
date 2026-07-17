@@ -61,7 +61,7 @@ export default function VideoTribute() {
           <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
             <AlertCircle size={48} className="text-[#D4AF37]/50 mb-4" />
             <p className="text-white/60 text-sm mb-2">
-              Video tidak dapat diputar
+              Video cannot be played
             </p>
             <a
               href={`https://www.youtube.com/watch?v=${videoData.youtube_id}`}
@@ -69,14 +69,14 @@ export default function VideoTribute() {
               rel="noopener noreferrer"
               className="text-[#D4AF37] text-xs underline underline-offset-4 hover:text-white transition-colors"
             >
-              Buka di YouTube
+              Open in YouTube
             </a>
           </div>
         )}
       </motion.div>
 
       <p className="text-center text-white/60 text-xs font-serif italic mt-4 break-words">
-        {videoData.title || "38 Years of Grace"}
+        {videoData.title || "70 Years of Grace"}
       </p>
     </div>
   )

@@ -18,22 +18,32 @@ import Timeline from '@/components/Timeline'
 import GoldDust from '@/components/GoldDust'
 import HologramGreeting from '@/components/HologramGreeting'
 
-const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://meinita.amanloka.com'
+const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'
 
-// Helper to parse Indonesian event date & time into ISO string for the countdown timer
+// Helper to parse event date & time into ISO string for the countdown timer
 function parseEventDateTimeToISO(dateStr: string, timeStr: string): string {
   try {
     const months: { [key: string]: string } = {
-      januari: '01', februari: '02', maret: '03', april: '04', mei: '05', juni: '06',
-      juli: '07', agustus: '08', september: '09', oktober: '10', november: '11', desember: '12'
+      januari: '01', january: '01',
+      februari: '02', february: '02',
+      maret: '03', march: '03',
+      april: '04',
+      mei: '05', may: '05',
+      juni: '06', june: '06',
+      juli: '07', july: '07',
+      agustus: '08', august: '08',
+      september: '09',
+      oktober: '10', october: '10',
+      november: '11',
+      desember: '12', december: '12'
     }
 
     const cleanDate = dateStr.toLowerCase()
-    let year = new Date().getFullYear().toString()
+    let year = '2026'
     const yearMatch = cleanDate.match(/\b(20\d{2})\b/)
     if (yearMatch) year = yearMatch[1]
 
-    let month = '01'
+    let month = '08'
     for (const [name, num] of Object.entries(months)) {
       if (cleanDate.includes(name)) {
         month = num
@@ -41,14 +51,14 @@ function parseEventDateTimeToISO(dateStr: string, timeStr: string): string {
       }
     }
 
-    let day = '01'
+    let day = '03'
     const numbers = cleanDate.match(/\b\d+\b/g)
     if (numbers) {
       const dayNum = numbers.find(n => n !== year)
       if (dayNum) day = dayNum.padStart(2, '0')
     }
 
-    let hours = '09'
+    let hours = '18'
     let minutes = '00'
     const timeMatch = timeStr.match(/(\d{2})[:.](\d{2})/)
     if (timeMatch) {
@@ -63,11 +73,11 @@ function parseEventDateTimeToISO(dateStr: string, timeStr: string): string {
 
     const isoStr = `${year}-${month}-${day}T${hours}:${minutes}:00${tzOffset}`
     if (isNaN(Date.parse(isoStr))) {
-      return '2026-08-16T09:00:00+07:00'
+      return '2026-08-03T18:00:00+07:00'
     }
     return isoStr
   } catch (e) {
-    return '2026-08-16T09:00:00+07:00'
+    return '2026-08-03T18:00:00+07:00'
   }
 }
 
@@ -83,15 +93,15 @@ export async function generateMetadata({ params }: { params: Promise<{ token: st
   
   const guestName = guest 
     ? (guest.title ? `${guest.title} ${guest.full_name}` : guest.full_name) 
-    : 'Tamu Undangan'
+    : 'Special Guest'
 
   // Fetch configurations
   const { data: configs } = await supabase
     .from('event_config')
     .select('key, value')
 
-  let eventDate = 'Minggu, 16 Agustus 2026'
-  let eventLocation = 'GPIB Bukit Moria'
+  let eventDate = 'Monday, August 3rd, 2026'
+  let eventLocation = 'Restaurant Beautika, 3rd Floor'
   let ogImageUrl = `${baseUrl}/og-image.png`
 
   if (configs) {
@@ -107,22 +117,22 @@ export async function generateMetadata({ params }: { params: Promise<{ token: st
   }
 
   return {
-    title: 'Undangan Emeritus - Pdt. Ny. Meinita M.E. Wungo-Damping',
-    description: `Shalom ${guestName}, Anda diundang ke Ibadah Emeritus Pdt. Ny. Meinita M.E. Wungo-Damping (38 Tahun Pelayanan) pada ${eventDate} di ${eventLocation}.`,
+    title: 'Thanksgiving Invitation - Ibu Yvonne Wakkary Rumambi',
+    description: `Dear ${guestName}, you are cordially invited to the 70th Birthday Thanksgiving Service of Ibu Yvonne Wakkary Rumambi on ${eventDate} at ${eventLocation}.`,
     openGraph: {
-      title: 'Undangan Emeritus - Pdt. Ny. Meinita M.E. Wungo-Damping',
-      description: `Shalom ${guestName}, Anda diundang ke Ibadah Emeritus Pdt. Ny. Meinita M.E. Wungo-Damping (38 Tahun Pelayanan).`,
+      title: 'Thanksgiving Invitation - Ibu Yvonne Wakkary Rumambi',
+      description: `Dear ${guestName}, you are cordially invited to the 70th Birthday Thanksgiving Service of Ibu Yvonne Wakkary Rumambi.`,
       url: `${baseUrl}/invite/${resolvedParams.token}`,
-      siteName: 'Keep Shining in His Grace',
+      siteName: 'A Journey of Blessing',
       images: [
         {
           url: ogImageUrl,
           width: 1200,
           height: 630,
-          alt: 'Undangan Emeritus Pdt. Ny. Meinita M.E. Wungo-Damping',
+          alt: 'Thanksgiving Invitation Ibu Yvonne Wakkary Rumambi',
         },
       ],
-      locale: 'id_ID',
+      locale: 'en_US',
       type: 'website',
     },
   }
@@ -159,11 +169,11 @@ export default async function InvitePage({
     .from('event_config')
     .select('key, value')
 
-  let eventDate = 'Minggu, 16 Agustus 2026'
-  let eventTime = '09:00 WIB'
-  let eventLocation = 'GPIB "Bukit Moria"'
-  let eventAddress = 'Jl. Soepomo No. 4, Tebet, Jakarta Selatan'
-  let mapLink = 'https://maps.app.goo.gl/...'
+  let eventDate = 'Monday, August 3rd, 2026'
+  let eventTime = '18:00 WIB'
+  let eventLocation = 'Restaurant Beautika, 3rd Floor'
+  let eventAddress = 'Jalan Panglima Polim - Jakarta Selatan'
+  let mapLink = 'https://maps.app.goo.gl/wRypd7zL2XfQd6t47'
   let musicUrl = '/audio/theme.mp3'
 
   if (configs) {
@@ -185,14 +195,14 @@ export default async function InvitePage({
 
   return (
     <>
-      <main className="relative mx-auto w-full flex min-h-screen max-w-md flex-col bg-[#0A192F] bg-spotlight text-white overflow-x-hidden">
+      <main className="relative mx-auto w-full flex min-h-screen max-w-md flex-col bg-[#2C1E17] bg-spotlight text-white overflow-x-hidden">
         <GoldDust />
 
         <Envelope guest={guest}>
           <BackgroundMusic musicUrl={musicUrl} />
           <ShareButton
-            title="Undangan Emeritus - Pdt. Ny. Meinita M.E. Wungo-Damping"
-            text={`Shalom, Anda diundang ke Ibadah Emeritus Pdt. Ny. Meinita M.E. Wungo-Damping (38 Tahun Pelayanan) pada ${eventDate} di ${eventLocation}. Tuhan Yesus memberkati.`}
+            title="Thanksgiving Invitation - Ibu Yvonne Wakkary Rumambi"
+            text={`Shalom, you are cordially invited to the 70th Birthday Thanksgiving Service of Ibu Yvonne Wakkary Rumambi on ${eventDate} at ${eventLocation}. God bless you.`}
           />
           <ScrollProgress />
 
@@ -203,22 +213,22 @@ export default async function InvitePage({
           
           <Timeline />
 
-          <FadeIn delay={0.4} className="bg-[#0A192F] text-white px-4 py-8 border-t border-[#D4AF37]/20">
+          <FadeIn delay={0.4} className="bg-[#2C1E17] text-white px-4 py-8 border-t border-[#D4AF37]/20">
             <div className="flex flex-col space-y-6">
 
               <div className="flex justify-between items-end border-b border-white/10 pb-4">
                 <div className="flex flex-col">
-                  <span className="text-[#D4AF37] text-[10px] uppercase tracking-widest font-semibold">Hari / Tanggal</span>
+                  <span className="text-[#D4AF37] text-[10px] uppercase tracking-widest font-semibold">Date &amp; Day</span>
                   <span className="text-base font-serif italic mt-1 text-white">{eventDate}</span>
                 </div>
                 <div className="flex flex-col text-right">
-                  <span className="text-[#D4AF37] text-[10px] uppercase tracking-widest font-semibold">Waktu</span>
+                  <span className="text-[#D4AF37] text-[10px] uppercase tracking-widest font-semibold">Time</span>
                   <span className="text-base font-serif italic mt-1 text-white">{eventTime}</span>
                 </div>
               </div>
 
               <div className="flex flex-col">
-                <span className="text-[#D4AF37] text-[10px] uppercase tracking-widest font-semibold mb-2">Tempat</span>
+                <span className="text-[#D4AF37] text-[10px] uppercase tracking-widest font-semibold mb-2">Venue</span>
                 <p className="text-white font-serif text-base mb-1">{eventLocation}</p>
                 <p className="text-white/70 text-xs font-sans mb-3">{eventAddress}</p>
                 <MapModal location={eventLocation} address={eventAddress} mapLink={mapLink} />
@@ -240,7 +250,7 @@ export default async function InvitePage({
             </div>
           </FadeIn>
 
-          <FadeIn delay={0.2} className="bg-[#FDFBF7] text-[#0A192F]">
+          <FadeIn delay={0.2} className="bg-[#FAF0EB] text-[#2C1E17]">
             <Guestbook
               token={guest.unique_token}
               guestName={guest.full_name}

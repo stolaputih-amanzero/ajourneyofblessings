@@ -80,23 +80,23 @@ export default function Guestbook({
 
     if (insertError) {
       console.error('Guestbook Error:', insertError)
-      setError('Terjadi kesalahan. Silakan coba lagi.')
+      setError('An error occurred. Please try again.')
     } else {
       setSuccess(true)
       setMessage('')
 
-      // Reset success message setelah 3 detik
+      // Reset success message after 3 seconds
       setTimeout(() => setSuccess(false), 3000)
     }
   }
 
   return (
-    <div className="px-8 py-12 bg-[#FDFBF7]">
+    <div className="px-8 py-12 bg-[#FAF0EB]">
       <div className="flex flex-col items-center mb-10 text-center">
-        <span className="text-[10px] tracking-[0.2em] text-[#0A192F] font-bold uppercase mb-2">
+        <span className="text-[10px] tracking-[0.2em] text-[#2C1E17] font-bold uppercase mb-2">
           Guestbook
         </span>
-        <h2 className="text-[#0A192F] font-serif italic text-3xl mb-2">
+        <h2 className="text-[#2C1E17] font-serif italic text-3xl mb-2">
           Prayers &amp; Wishes
         </h2>
         <div className="w-12 h-px bg-[#D4AF37]"></div>
@@ -107,11 +107,11 @@ export default function Guestbook({
           <textarea
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            placeholder="Tulis doa atau ucapan untuk Pdt. Meinita..."
-            className="w-full bg-white border border-[#0A192F]/10 p-5 text-sm text-[#0A192F] font-sans focus:outline-none focus:border-[#D4AF37] focus:ring-2 focus:ring-amber-200/50 transition-all resize-none h-36 placeholder:text-[#0A192F]/30 rounded-lg shadow-sm"
+            placeholder="Write a prayer or wish for Ibu Yvonne..."
+            className="w-full bg-white border border-[#2C1E17]/10 p-5 text-sm text-[#2C1E17] font-sans focus:outline-none focus:border-[#D4AF37] focus:ring-2 focus:ring-amber-200/50 transition-all resize-none h-36 placeholder:text-[#2C1E17]/30 rounded-lg shadow-sm"
             required
           />
-          <div className="absolute bottom-3 right-3 text-[10px] text-[#0A192F]/30">
+          <div className="absolute bottom-3 right-3 text-[10px] text-[#2C1E17]/30">
             {message.length} chars
           </div>
         </div>
@@ -134,7 +134,7 @@ export default function Guestbook({
               exit={{ opacity: 0, y: -10 }}
               className="text-[#D4AF37] text-xs font-bold uppercase tracking-wider text-center bg-amber-50 py-2 px-4 rounded-lg"
             >
-              ✓ Doa berhasil dikirim!
+              ✓ Message sent successfully!
             </motion.p>
           )}
         </AnimatePresence>
@@ -142,9 +142,9 @@ export default function Guestbook({
         <button
           type="submit"
           disabled={isSubmitting || !message.trim()}
-          className="w-full bg-gradient-to-r from-[#D4AF37] to-[#F3E5AB] text-[#0A192F] py-4 text-[10px] font-bold uppercase tracking-[0.2em] rounded-full hover:shadow-lg hover:shadow-amber-500/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed active:scale-95"
+          className="w-full bg-gradient-to-r from-[#D4AF37] to-[#F3E5AB] text-[#2C1E17] py-4 text-[10px] font-bold uppercase tracking-[0.2em] rounded-full hover:shadow-lg hover:shadow-amber-500/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed active:scale-95"
         >
-          {isSubmitting ? 'Mengirim...' : 'Kirim Doa & Ucapan'}
+          {isSubmitting ? 'Sending...' : 'Send Wishes'}
         </button>
       </form>
 
@@ -159,20 +159,20 @@ export default function Guestbook({
               transition={{ delay: index * 0.05 }}
               className="flex flex-col border-l-2 border-[#D4AF37]/30 pl-5 py-2 bg-white/50 p-5 rounded-r-lg shadow-sm"
             >
-              <p className="text-[#0A192F]/80 text-sm italic font-serif leading-relaxed mb-3">
+              <p className="text-[#2C1E17]/80 text-sm italic font-serif leading-relaxed mb-3">
                 "{prayer.message}"
               </p>
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
                   <span className="w-6 h-px bg-[#D4AF37]"></span>
-                  <span className="text-[#0A192F] text-[9px] font-bold uppercase tracking-widest">
+                  <span className="text-[#2C1E17] text-[9px] font-bold uppercase tracking-widest">
                     {Array.isArray(prayer.guests)
                       ? prayer.guests[0]?.full_name || 'Anonymous'
                       : prayer.guests?.full_name || 'Anonymous'}
                   </span>
                 </div>
-                <span className="text-[#0A192F]/40 text-[9px]">
-                  {new Date(prayer.created_at).toLocaleDateString('id-ID', {
+                <span className="text-[#2C1E17]/40 text-[9px]">
+                  {new Date(prayer.created_at).toLocaleDateString('en-US', {
                     day: 'numeric',
                     month: 'short',
                     year: 'numeric'
@@ -185,11 +185,11 @@ export default function Guestbook({
 
         {prayers.length === 0 && (
           <div className="text-center py-10">
-            <p className="text-[#0A192F]/40 text-sm italic mb-2">
-              Belum ada doa atau ucapan
+            <p className="text-[#2C1E17]/40 text-sm italic mb-2">
+              No prayers or wishes yet
             </p>
-            <p className="text-[#0A192F]/30 text-xs">
-              Jadilah yang pertama meninggalkan pesan
+            <p className="text-[#2C1E17]/30 text-xs">
+              Be the first to leave a message
             </p>
           </div>
         )}

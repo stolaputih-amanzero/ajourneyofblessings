@@ -36,7 +36,7 @@ const supabase = createClient(supabaseUrl, supabaseServiceKey, {
 });
 
 async function main() {
-  const email = 'admin@meinita.amanloka.com';
+  const email = 'admin@journeyofblessing.com';
   const password = 'AdminPassword123!';
 
   console.log(`Checking/Setting admin user: ${email}`);

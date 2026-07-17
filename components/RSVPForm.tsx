@@ -48,24 +48,24 @@ export default function RSVPForm({
 
     if (updateError) {
       console.error('RSVP Error:', updateError)
-      setError('Terjadi kesalahan sistem. Silakan coba lagi.')
+      setError('A system error occurred. Please try again.')
     } else {
       setIsSuccess(true)
       setIsOpen(false)
 
-      // Efek Confetti jika tamu menerima undangan
+      // Confetti effect if guest is attending
       if (status === true) {
         confetti({
           particleCount: 120,
           spread: 80,
           origin: { y: 0.6 },
-          colors: ['#D4AF37', '#ffffff', '#0A192F']
+          colors: ['#D4AF37', '#ffffff', '#2C1E17']
         })
       }
     }
   }
 
-  // Tampilan jika sudah berhasil RSVP
+  // Success view
   if (isSuccess && !isOpen) {
     return (
       <div className="flex flex-col items-center w-full mt-6">
@@ -95,43 +95,43 @@ export default function RSVPForm({
     )
   }
 
-  // Tampilan tombol awal
+  // Initial call-to-action button
   if (!isOpen && !isSuccess) {
     return (
       <button
         onClick={() => setIsOpen(true)}
-        className="w-full bg-gradient-to-r from-[#D4AF37] to-[#F3E5AB] text-[#0A192F] py-4 mt-6 rounded-full text-xs font-bold uppercase tracking-[0.2em] hover:shadow-lg hover:shadow-amber-500/20 transition-all active:scale-95"
+        className="w-full bg-gradient-to-r from-[#D4AF37] to-[#F3E5AB] text-[#2C1E17] py-4 mt-6 rounded-full text-xs font-bold uppercase tracking-[0.2em] hover:shadow-lg hover:shadow-amber-500/20 transition-all active:scale-95"
       >
-        Konfirmasi Kehadiran (RSVP)
+        Confirm Attendance (RSVP)
       </button>
     )
   }
 
-  // Tampilan Form
+  // Form view
   return (
     <div className="mt-6 border border-[#D4AF37]/30 p-6 flex flex-col space-y-6 bg-white/5 backdrop-blur-sm rounded-lg">
       <div className="flex flex-col space-y-4">
         <span className="text-[#D4AF37] text-[10px] uppercase tracking-[0.2em] font-bold text-center">
-          Apakah Anda dapat hadir?
+          Will you be attending?
         </span>
         <div className="flex space-x-3">
           <button
             onClick={() => setStatus(true)}
             className={`flex-1 py-3 text-[10px] uppercase tracking-widest font-bold rounded-full border transition-all ${status === true
-                ? 'bg-[#D4AF37] text-[#0A192F] border-[#D4AF37] shadow-lg shadow-amber-500/20'
+                ? 'bg-[#D4AF37] text-[#2C1E17] border-[#D4AF37] shadow-lg shadow-amber-500/20'
                 : 'bg-transparent text-white border-white/20 hover:border-[#D4AF37]/50'
               }`}
           >
-            Hadir
+            Yes, Attending
           </button>
           <button
             onClick={() => setStatus(false)}
             className={`flex-1 py-3 text-[10px] uppercase tracking-widest font-bold rounded-full border transition-all ${status === false
-                ? 'bg-[#D4AF37] text-[#0A192F] border-[#D4AF37] shadow-lg shadow-amber-500/20'
+                ? 'bg-[#D4AF37] text-[#2C1E17] border-[#D4AF37] shadow-lg shadow-amber-500/20'
                 : 'bg-transparent text-white border-white/20 hover:border-[#D4AF37]/50'
               }`}
           >
-            Maaf, Tidak Bisa
+            Regretfully Declining
           </button>
         </div>
       </div>
@@ -139,7 +139,7 @@ export default function RSVPForm({
       {status === true && (
         <div className="flex flex-col space-y-4 items-center border-t border-white/10 pt-6">
           <span className="text-[#D4AF37] text-[10px] uppercase tracking-[0.2em] font-bold text-center">
-            Jumlah Tamu
+            Number of Guests
           </span>
           <div className="flex items-center space-x-6">
             <button
@@ -159,16 +159,16 @@ export default function RSVPForm({
         </div>
       )}
 
-      {/* Sentuhan Personal: Catatan Khusus */}
+      {/* Special wishes block */}
       <div className="flex flex-col space-y-2 border-t border-white/10 pt-6">
         <span className="text-[#D4AF37] text-[10px] uppercase tracking-[0.2em] font-bold text-center">
-          Catatan Khusus / Doa (Opsional)
+          Special Notes / Wishes (Optional)
         </span>
         <textarea
           value={notes}
           onChange={(e) => setNotes(e.target.value)}
-          placeholder="Tulis doa atau catatan singkat untuk Pdt. Meinita..."
-          className="w-full bg-[#0A192F]/50 border border-white/10 rounded-lg p-3 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#D4AF37] transition-colors resize-none h-20"
+          placeholder="Write a message or prayer for Ibu Yvonne..."
+          className="w-full bg-[#2C1E17]/50 border border-white/10 rounded-lg p-3 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#D4AF37] transition-colors resize-none h-20"
         />
       </div>
 
@@ -178,16 +178,16 @@ export default function RSVPForm({
         <button
           onClick={handleUpdate}
           disabled={status === null || isSubmitting}
-          className="w-full bg-gradient-to-r from-[#D4AF37] to-[#F3E5AB] text-[#0A192F] py-4 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] hover:shadow-lg hover:shadow-amber-500/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed active:scale-95"
+          className="w-full bg-gradient-to-r from-[#D4AF37] to-[#F3E5AB] text-[#2C1E17] py-4 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] hover:shadow-lg hover:shadow-amber-500/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed active:scale-95"
         >
-          {isSubmitting ? 'Mengirim...' : 'Kirim Konfirmasi'}
+          {isSubmitting ? 'Submitting...' : 'Submit Confirmation'}
         </button>
         {isSuccess && (
           <button
             onClick={() => setIsOpen(false)}
             className="text-white/60 text-[9px] uppercase tracking-widest py-2 hover:text-white transition-colors"
           >
-            Batal
+            Cancel
           </button>
         )}
       </div>

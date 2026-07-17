@@ -45,10 +45,10 @@ export default function CountdownTimer({ targetDate }: { targetDate: string }) {
   }
 
   const units = [
-    { label: 'Hari', value: timeLeft.days || 0 },
-    { label: 'Jam', value: timeLeft.hours || 0 },
-    { label: 'Menit', value: timeLeft.minutes || 0 },
-    { label: 'Detik', value: timeLeft.seconds || 0 },
+    { label: 'Days', value: timeLeft.days || 0 },
+    { label: 'Hours', value: timeLeft.hours || 0 },
+    { label: 'Minutes', value: timeLeft.minutes || 0 },
+    { label: 'Seconds', value: timeLeft.seconds || 0 },
   ]
 
   return (

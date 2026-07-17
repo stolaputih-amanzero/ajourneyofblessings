@@ -10,7 +10,7 @@ export async function loginAdmin(formData: FormData) {
     return { error: 'Email dan password wajib diisi' }
   }
 
-  if (email !== 'admin@meinita.amanloka.com') {
+  if (email !== 'admin@journeyofblessing.com') {
     return { error: 'Akses ditolak' }
   }
 

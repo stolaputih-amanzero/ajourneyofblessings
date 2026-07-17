@@ -171,7 +171,7 @@ export default function Envelope({ guest, children }: EnvelopeProps) {
                         transition={{ delay: 0.5, duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
                         className="flex flex-col items-center mt-16 pb-8 z-10"
                     >
-                        <h2 className="text-[#2C1E17] font-serif italic text-4xl leading-normal mb-1 drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)]">
+                        <h2 className="text-[#2C1E17] font-serif italic text-3xl md:text-4xl leading-normal mb-1 drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)] text-center px-4">
                             A Journey of Blessing
                         </h2>
                         <p className="text-[#5F7A61] text-[9px] tracking-[0.25em] uppercase font-bold text-center mt-2">

@@ -1,66 +1,55 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { motion } from 'framer-motion'
 
 interface Particle {
   id: number
-  x: number
-  y: number
-  size: number
-  duration: number
-  delay: number
+  x: number // percentage width
+  y: number // percentage height
+  size: number // px
+  duration: number // seconds
+  delay: number // seconds
+  swayX: number // px
 }
 
 export default function GoldDust() {
   const [particles, setParticles] = useState<Particle[]>([])
 
   useEffect(() => {
-    // Generate particles only on the client side to prevent hydration mismatches
-    const generateParticles = () => {
-      const newParticles: Particle[] = []
-      for (let i = 0; i < 30; i++) {
-        newParticles.push({
-          id: i,
-          x: Math.random() * 100, // percentage width
-          y: Math.random() * 100, // percentage height
-          size: Math.random() * 3 + 1, // 1px to 4px
-          duration: Math.random() * 20 + 10, // 10s to 30s
-          delay: Math.random() * 5, // 0s to 5s delay
-        })
-      }
-      setParticles(newParticles)
+    // Generate particles on the client side only
+    const newParticles: Particle[] = []
+    for (let i = 0; i < 20; i++) { // Slightly reduced count from 30 to 20 for even better mobile performance
+      newParticles.push({
+        id: i,
+        x: Math.random() * 100,
+        y: Math.random() * 100,
+        size: Math.random() * 3 + 1,
+        duration: Math.random() * 15 + 10,
+        delay: Math.random() * -20, // Negative delay so particles are pre-rendered scattered across the screen
+        swayX: Math.random() * 30 - 15,
+      })
     }
-
-    generateParticles()
+    setParticles(newParticles)
   }, [])
 
   if (particles.length === 0) return null
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-      {particles.map((particle) => (
-        <motion.div
-          key={particle.id}
-          className="absolute rounded-full bg-gradient-to-r from-[#FFDF73] to-[#D4AF37] opacity-60"
+      {particles.map((p) => (
+        <div
+          key={p.id}
+          className="absolute rounded-full bg-gradient-to-r from-[#FFDF73] to-[#D4AF37]"
           style={{
-            left: `${particle.x}%`,
-            top: `${particle.y}%`,
-            width: `${particle.size}px`,
-            height: `${particle.size}px`,
+            left: `${p.x}%`,
+            top: `${p.y}%`,
+            width: `${p.size}px`,
+            height: `${p.size}px`,
             filter: 'blur(1px)',
-          }}
-          animate={{
-            y: [0, -100, -200],
-            x: [0, Math.random() * 30 - 15, Math.random() * 30 - 15],
-            opacity: [0, 0.8, 0],
-            scale: [0, 1.5, 0],
-          }}
-          transition={{
-            duration: particle.duration,
-            delay: particle.delay,
-            repeat: Infinity,
-            ease: "linear",
+            animation: `floatUp ${p.duration}s linear infinite`,
+            animationDelay: `${p.delay}s`,
+            opacity: 0,
+            ['--sway-x' as any]: `${p.swayX}px`,
           }}
         />
       ))}

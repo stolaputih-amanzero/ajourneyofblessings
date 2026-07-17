@@ -31,7 +31,7 @@ export default function Envelope({ guest, children }: EnvelopeProps) {
                     key="envelope"
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 1.1, filter: 'blur(10px)' }}
+                    exit={{ opacity: 0, scale: 1.05 }}
                     transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
                     className="flex flex-col items-center justify-center min-h-screen px-6 relative overflow-hidden bg-gradient-to-b from-[#2C1E17] to-[#120B07]"
                 >

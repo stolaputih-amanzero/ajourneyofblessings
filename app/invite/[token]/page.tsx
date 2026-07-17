@@ -283,7 +283,7 @@ export default async function InvitePage({
               guestName={guest.full_name}
               initialPrayers={initialPrayers}
             />
-            <div className="pb-12 flex justify-center pt-8 px-4">
+            <div className="pb-6 flex justify-center pt-8 px-4">
               <DownloadPDF 
                 guestName={guest.full_name} 
                 guestTitle={guest.title} 
@@ -292,6 +292,17 @@ export default async function InvitePage({
                 eventLocation={eventLocation}
                 eventAddress={eventAddress}
               />
+            </div>
+            
+            <div className="pb-12 flex justify-center text-center px-4">
+              <a 
+                href="https://amanloka.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-[10px] tracking-[0.2em] text-[#2C1E17]/50 hover:text-[#2C1E17] transition-all duration-300 font-sans uppercase font-bold"
+              >
+                exclusively designed by <span className="underline decoration-[#D4AF37] decoration-2 underline-offset-4 font-extrabold text-[#2C1E17]">AMAN ecosystem</span>
+              </a>
             </div>
           </FadeIn>
 

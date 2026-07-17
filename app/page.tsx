@@ -38,6 +38,17 @@ export default function HomePage() {
           </p>
         </div>
       </div>
+
+      <div className="pb-8 flex justify-center text-center px-4 mt-6 z-10">
+        <a 
+          href="https://amanloka.com" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="text-[9px] tracking-[0.2em] text-[#2C1E17]/50 hover:text-[#2C1E17] transition-all duration-300 font-sans uppercase font-bold"
+        >
+          exclusively designed by <span className="underline decoration-[#D4AF37] decoration-2 underline-offset-4 font-extrabold text-[#2C1E17]">AMAN ecosystem</span>
+        </a>
+      </div>
       
       <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-32 h-1 bg-black/10 rounded-full"></div>
     </>

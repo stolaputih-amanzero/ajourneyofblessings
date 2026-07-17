@@ -10,12 +10,9 @@ if (fs.existsSync(envPath)) {
   envContent.split('\n').forEach(line => {
     const match = line.match(/^\s*([\w.-]+)\s*=\s*(.*)?\s*$/);
     if (match) {
-      const key = match[1];
-      let value = match[2] || '';
-      if (value.length > 0 && value.charAt(0) === '"' && value.charAt(value.length - 1) === '"') {
-        value = value.replace(/^"|"$/g, '');
-      }
-      envConfig[key] = value.trim();
+      const key = match[0].split('=')[0].trim();
+      const value = match[0].substring(match[0].indexOf('=') + 1).trim().replace(/^"|"$/g, '');
+      envConfig[key] = value;
     }
   });
 }
@@ -43,27 +40,28 @@ async function main() {
   const galleryBucket = buckets.find(b => b.name === 'gallery');
 
   if (galleryBucket) {
-    console.log(`Bucket "gallery" already exists. Public status: ${galleryBucket.public}`);
-    if (!galleryBucket.public) {
-      console.log('Updating "gallery" bucket to be public...');
-      const { data, error } = await supabase.storage.updateBucket('gallery', { public: true });
-      if (error) {
-        console.error("Error updating bucket:", error);
-      } else {
-        console.log("Bucket updated to public successfully!");
-      }
+    console.log(`Updating "gallery" bucket configuration...`);
+    const { data, error } = await supabase.storage.updateBucket('gallery', {
+      public: true,
+      allowedMimeTypes: ['image/*', 'video/*', 'audio/*'],
+      fileSizeLimit: 52428800 // 50MB (Supabase Free Tier Limit)
+    });
+    if (error) {
+      console.error("Error updating bucket:", error);
+    } else {
+      console.log("Bucket updated successfully with audio, video and size limits!");
     }
   } else {
     console.log('Creating public bucket "gallery"...');
     const { data, error } = await supabase.storage.createBucket('gallery', {
       public: true,
-      allowedMimeTypes: ['image/*'],
-      fileSizeLimit: 5242880 // 5MB
+      allowedMimeTypes: ['image/*', 'video/*', 'audio/*'],
+      fileSizeLimit: 52428800 // 50MB
     });
     if (error) {
       console.error("Error creating bucket:", error);
     } else {
-      console.log("Bucket \"gallery\" created successfully as public!");
+      console.log("Bucket \"gallery\" created successfully as public with audio/video support!");
     }
   }
 }

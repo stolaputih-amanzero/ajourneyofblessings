@@ -44,12 +44,12 @@ function TimelineItem({ milestone, isLast }: { milestone: Milestone; isLast: boo
                 </span>
 
                 {/* Title */}
-                <h3 className="text-[#2C1E17] font-serif text-lg leading-tight mb-2">
+                <h3 className="text-white font-serif text-lg leading-tight mb-2">
                     {milestone.title}
                 </h3>
 
                 {/* Description - NO line-clamp, show full text */}
-                <p className="text-[#2C1E17]/75 text-xs leading-relaxed font-sans">
+                <p className="text-white/70 text-xs leading-relaxed font-sans">
                     {milestone.description}
                 </p>
 
@@ -59,7 +59,7 @@ function TimelineItem({ milestone, isLast }: { milestone: Milestone; isLast: boo
                         initial={{ opacity: 0, y: 10 }}
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
                         transition={{ duration: 0.5, delay: 0.3 }}
-                        className="mt-4 rounded-xl overflow-hidden border border-[#D4AF37]/20 shadow-xl bg-[#FAF0EB] relative aspect-[16/9] w-full flex items-center justify-center"
+                        className="mt-4 rounded-xl overflow-hidden border border-[#D4AF37]/20 shadow-xl bg-[#19110B] relative aspect-[16/9] w-full flex items-center justify-center"
                     >
                         {/* Ambient Blurred Background (fills the borders softly) */}
                         <img
@@ -120,7 +120,7 @@ export default function Timeline() {
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
-                    className="text-[#5F7A61] text-[9px] uppercase tracking-[0.3em] font-bold drop-shadow-sm"
+                    className="text-[#E6C875] text-[9px] uppercase tracking-[0.3em] font-bold drop-shadow-sm"
                 >
                     A Journey of Blessing
                 </motion.span>
@@ -162,7 +162,7 @@ export default function Timeline() {
                 className="text-center mt-8 px-4"
             >
                 <div className="border-t border-[#D4AF37]/20 pt-8">
-                    <p className="text-[#2C1E17]/65 text-xs italic font-serif leading-relaxed">
+                    <p className="text-white/60 text-xs italic font-serif leading-relaxed">
                         "He has made everything beautiful in its time."
                     </p>
                     <p className="text-[#D4AF37] text-[9px] uppercase tracking-widest mt-4 font-bold">

@@ -33,14 +33,13 @@ export default function Envelope({ guest, children }: EnvelopeProps) {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 1.1, filter: 'blur(10px)' }}
                     transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-                    className="flex flex-col items-center justify-center min-h-screen px-6 relative overflow-hidden"
-                    style={{ backgroundColor: '#FAF0EB' }}
+                    className="flex flex-col items-center justify-center min-h-screen px-6 relative overflow-hidden bg-gradient-to-b from-[#2C1E17] to-[#120B07]"
                 >
                     {/* Floating Petals Layer */}
                     <FloralPetals />
 
                     {/* Floral Background Watermark */}
-                    <div className="absolute inset-0 pointer-events-none opacity-[0.25] mix-blend-multiply z-0 select-none">
+                    <div className="absolute inset-0 pointer-events-none opacity-[0.08] z-0 select-none">
                         <img 
                             src="/images/floral_header.png" 
                             alt="Floral background" 
@@ -49,8 +48,8 @@ export default function Envelope({ guest, children }: EnvelopeProps) {
                     </div>
 
                     {/* Elegant Watercolor Floral Corner Ornaments */}
-                    <div className="absolute top-0 left-0 w-32 h-32 pointer-events-none opacity-60 z-10 select-none">
-                        <svg viewBox="0 0 120 120" fill="none" className="w-full h-full text-[#5F7A61]">
+                    <div className="absolute top-0 left-0 w-32 h-32 pointer-events-none opacity-45 z-10 select-none">
+                        <svg viewBox="0 0 120 120" fill="none" className="w-full h-full text-[#D4AF37]">
                             <path d="M0,0 Q30,10 40,30 T20,70 Q10,40 0,0 Z" fill="currentColor" opacity="0.15"/>
                             <path d="M0,0 Q10,30 30,40 T70,20 Q40,10 0,0 Z" fill="currentColor" opacity="0.15"/>
                             <circle cx="20" cy="20" r="2" fill="currentColor"/>
@@ -61,8 +60,8 @@ export default function Envelope({ guest, children }: EnvelopeProps) {
                         </svg>
                     </div>
 
-                    <div className="absolute bottom-0 right-0 w-32 h-32 pointer-events-none opacity-60 rotate-180 z-10 select-none">
-                        <svg viewBox="0 0 120 120" fill="none" className="w-full h-full text-[#5F7A61]">
+                    <div className="absolute bottom-0 right-0 w-32 h-32 pointer-events-none opacity-45 rotate-180 z-10 select-none">
+                        <svg viewBox="0 0 120 120" fill="none" className="w-full h-full text-[#D4AF37]">
                             <path d="M0,0 Q30,10 40,30 T20,70 Q10,40 0,0 Z" fill="currentColor" opacity="0.15"/>
                             <path d="M0,0 Q10,30 30,40 T70,20 Q40,10 0,0 Z" fill="currentColor" opacity="0.15"/>
                             <circle cx="20" cy="20" r="2" fill="currentColor"/>
@@ -171,10 +170,10 @@ export default function Envelope({ guest, children }: EnvelopeProps) {
                         transition={{ delay: 0.5, duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
                         className="flex flex-col items-center mt-16 pb-8 z-10"
                     >
-                        <h2 className="text-[#2C1E17] font-serif italic text-3xl md:text-4xl leading-normal mb-1 drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)] text-center px-4">
+                        <h2 className="text-gradient-gold font-serif italic text-3xl md:text-4xl leading-normal mb-1 drop-shadow-lg text-center px-4">
                             A Journey of Blessing
                         </h2>
-                        <p className="text-[#5F7A61] text-[9px] tracking-[0.25em] uppercase font-bold text-center mt-2">
+                        <p className="text-[#D4AF37]/80 text-[8px] tracking-[0.3em] uppercase font-bold text-center mt-1">
                             Honoring a life beautifully blessed
                         </p>
                     </motion.div>

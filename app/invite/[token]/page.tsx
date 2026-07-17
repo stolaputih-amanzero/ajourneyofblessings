@@ -195,15 +195,12 @@ export default async function InvitePage({
 
   return (
     <>
-      <main 
-        className="relative mx-auto w-full flex min-h-screen max-w-md flex-col text-[#2C1E17] overflow-x-hidden"
-        style={{ backgroundColor: '#FAF0EB' }}
-      >
+      <main className="relative mx-auto w-full flex min-h-screen max-w-md flex-col bg-[#2C1E17] bg-spotlight text-white overflow-x-hidden">
         <GoldDust />
         <FloralPetals />
         
         {/* Subtle Background Watermark */}
-        <div className="absolute inset-0 pointer-events-none opacity-[0.18] mix-blend-multiply z-0 select-none">
+        <div className="absolute inset-0 pointer-events-none opacity-[0.06] z-0 select-none">
           <img 
             src="/images/floral_header.png" 
             alt="Floral background watermark" 

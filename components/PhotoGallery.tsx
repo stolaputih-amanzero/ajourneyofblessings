@@ -26,18 +26,25 @@ export default function PhotoGallery() {
   useEffect(() => {
     setMounted(true)
     const fetchPhotos = async () => {
-      const { data, error } = await supabase
-        .from('gallery_photos')
-        .select('*')
-        .order('order_index', { ascending: true })
+      try {
+        const { data, error } = await supabase
+          .from('gallery_photos')
+          .select('*')
+          .order('order_index', { ascending: true })
 
-      if (!error && data) {
-        setPhotos(data as Photo[])
+        if (error) {
+          console.error("PhotoGallery query error:", error.message, error.details);
+        } else if (data) {
+          setPhotos(data as Photo[])
+        }
+      } catch (err) {
+        console.error("PhotoGallery unexpected query exception:", err);
+      } finally {
+        setLoading(false)
       }
-      setLoading(false)
     }
     fetchPhotos()
-  }, [supabase])
+  }, []) // Empty dependency array to run only once on mount
 
   // Auto-play timer
   useEffect(() => {

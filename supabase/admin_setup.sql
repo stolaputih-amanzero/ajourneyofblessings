@@ -639,3 +639,9 @@ CREATE POLICY "Allow public read of timeline" ON timeline_milestones FOR SELECT 
 
 DROP POLICY IF EXISTS "Allow public read of prayers" ON prayers_guestbook;
 CREATE POLICY "Allow public read of prayers" ON prayers_guestbook FOR SELECT USING (true);
+
+DROP POLICY IF EXISTS "Allow public read of guests" ON guests;
+CREATE POLICY "Allow public read of guests" ON guests FOR SELECT USING (true);
+
+DROP POLICY IF EXISTS "Allow public read of gallery_photos" ON gallery_photos;
+CREATE POLICY "Allow public read of gallery_photos" ON gallery_photos FOR SELECT USING (true);

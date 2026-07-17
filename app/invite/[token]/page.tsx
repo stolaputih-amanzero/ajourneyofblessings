@@ -115,8 +115,8 @@ export async function generateMetadata({ params }: { params: Promise<{ token: st
       images: [
         {
           url: ogImageUrl,
-          width: 1200,
-          height: 630,
+          width: 1024,
+          height: 1024,
           alt: 'Thanksgiving Invitation Yvonne Wakkary Rumambi',
         },
       ],

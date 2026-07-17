@@ -1,14 +1,41 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Inter, Playfair_Display } from 'next/font/google'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-playfair' })
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+}
+
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'https://journeyofblessing.com'),
   title: 'A Journey of Blessing | 70th Birthday Thanksgiving Service',
   description: '70th Birthday Thanksgiving Service Invitation for Yvonne Wakkary Rumambi',
-  viewport: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0', // Prevents zooming on mobile inputs
+  icons: {
+    icon: '/icon.png',
+    apple: '/apple-icon.png',
+  },
+  openGraph: {
+    title: 'A Journey of Blessing | 70th Birthday Thanksgiving Service',
+    description: '70th Birthday Thanksgiving Service Invitation for Yvonne Wakkary Rumambi',
+    url: 'https://journeyofblessing.com',
+    siteName: 'A Journey of Blessing',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1024,
+        height: 1024,
+        alt: 'A Journey of Blessing',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
 }
 
 export default function RootLayout({

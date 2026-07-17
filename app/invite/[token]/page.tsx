@@ -232,8 +232,12 @@ export default async function InvitePage({
           <FadeIn delay={0.4} className="px-6 py-8 z-10 relative">
             <div className="bg-[#FAF0EB] text-[#2C1E17] border-2 border-[#D4AF37]/40 rounded-2xl p-6 flex flex-col space-y-6 shadow-xl relative overflow-hidden">
               {/* Watercolor Floral watermark inside the card */}
-              <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.12] mix-blend-multiply">
-                <img src="/images/floral_header.png" className="w-full h-full object-cover" />
+              <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.12] mix-blend-multiply w-full h-full">
+                <img 
+                  src="/images/floral_header.png" 
+                  alt="Floral background"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                />
               </div>
 
               <div className="flex justify-between items-end border-b border-[#2C1E17]/10 pb-4 z-10 relative">

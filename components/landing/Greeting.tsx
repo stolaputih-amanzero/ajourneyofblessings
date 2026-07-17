@@ -68,11 +68,11 @@ export default function Greeting({ guest }: GreetingProps) {
             <motion.div variants={itemVariants} className="relative w-full flex-1 mt-4 mb-8 flex justify-center">
                 <div className="premium-glass rounded-2xl flex flex-col items-center justify-center text-center px-6 py-10 w-full max-w-sm relative overflow-hidden border border-[#D4AF37]/35 shadow-2xl">
                     {/* Floral Background Watermark */}
-                    <div className="absolute inset-0 z-0 pointer-events-none select-none opacity-15 mix-blend-multiply">
+                    <div className="absolute inset-0 z-0 pointer-events-none select-none opacity-15 mix-blend-multiply w-full h-full">
                         <img 
                             src="/images/floral_header.png" 
                             alt="Floral decoration background" 
-                            className="w-full h-full object-cover"
+                            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                         />
                     </div>
 

@@ -198,7 +198,7 @@ export default function TimelinePage() {
         <div>
           <h1 className="text-3xl font-serif font-bold text-gradient-gold">Timeline Milestones</h1>
           <p className="text-white/50 text-xs mt-1">
-            Kelola peristiwa penting perjalanan kehidupan Ibu Yvonne Wakkary Rumambi.
+            Kelola peristiwa penting perjalanan kehidupan Yvonne Wakkary Rumambi.
           </p>
         </div>
         <button

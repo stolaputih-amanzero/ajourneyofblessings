@@ -32,7 +32,7 @@ Dear Mr./Mrs./Ms.:
 
 With full gratitude for God's grace and faithfulness, we invite you to attend the Thanksgiving Service for the 70th Birthday of:
 
-*Ibu Yvonne Wakkary Rumambi*
+*Yvonne Wakkary Rumambi*
 
 The Thanksgiving Service under the theme *"A Journey of Blessing"* will be held on:
 

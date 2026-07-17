@@ -109,7 +109,7 @@ export default function DigitalRSVPCard({ token, guestName, count }: DigitalRSVP
               Thanksgiving Service
             </p>
             <p className="text-[#D4AF37] text-xs font-serif italic mb-4 text-center">
-              Ibu Yvonne Wakkary Rumambi
+              Yvonne Wakkary Rumambi
             </p>
             
             {/* Unique VIP Pass Hex Code */}

@@ -7,7 +7,7 @@ const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-playfa
 
 export const metadata: Metadata = {
   title: 'A Journey of Blessing | 70th Birthday Thanksgiving Service',
-  description: '70th Birthday Thanksgiving Service Invitation for Ibu Yvonne Wakkary Rumambi',
+  description: '70th Birthday Thanksgiving Service Invitation for Yvonne Wakkary Rumambi',
   viewport: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0', // Prevents zooming on mobile inputs
 }
 

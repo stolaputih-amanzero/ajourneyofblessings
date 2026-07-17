@@ -79,7 +79,7 @@ export default function Greeting({ guest }: GreetingProps) {
                     </div>
 
                     <h2 className="text-white/90 font-serif text-xl px-2 leading-snug drop-shadow-sm">
-                        Ibu Yvonne Wakkary Rumambi
+                        Yvonne Wakkary Rumambi
                     </h2>
                     <p className="mt-4 text-[#E6C875] text-[9px] tracking-[0.2em] uppercase font-bold drop-shadow-sm">
                         Honoring a life beautifully blessed

@@ -70,7 +70,7 @@ export default function DownloadPDF({
 
       doc.setFont('times', 'bold')
       doc.setFontSize(24)
-      doc.text('Ibu Yvonne Wakkary Rumambi', 105, 130, { align: 'center' })
+      doc.text('Yvonne Wakkary Rumambi', 105, 130, { align: 'center' })
 
       doc.setFont('times', 'bold')
       doc.setFontSize(12)

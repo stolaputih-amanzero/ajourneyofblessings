@@ -28,7 +28,7 @@ export default function HomePage() {
       <div className="px-8 relative flex-1 mt-8">
         <div className="bg-[#2C1E17]/5 rounded-t-full border-x border-t border-[#D4AF37]/30 flex flex-col items-center justify-center text-center px-8 py-12 h-full">
           <p className="text-sm font-sans text-[#2C1E17] leading-relaxed font-semibold">
-            Ibu Yvonne Wakkary Rumambi
+            Yvonne Wakkary Rumambi
           </p>
           <p className="text-[#2C1E17]/60 text-[10px] tracking-widest uppercase font-bold mt-2">
             70 Years of Grace &amp; Blessings

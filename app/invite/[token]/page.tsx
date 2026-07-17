@@ -117,11 +117,11 @@ export async function generateMetadata({ params }: { params: Promise<{ token: st
   }
 
   return {
-    title: 'Thanksgiving Invitation - Ibu Yvonne Wakkary Rumambi',
-    description: `Dear ${guestName}, you are cordially invited to the 70th Birthday Thanksgiving Service of Ibu Yvonne Wakkary Rumambi on ${eventDate} at ${eventLocation}.`,
+    title: 'Thanksgiving Invitation - Yvonne Wakkary Rumambi',
+    description: `Dear ${guestName}, you are cordially invited to the 70th Birthday Thanksgiving Service of Yvonne Wakkary Rumambi on ${eventDate} at ${eventLocation}.`,
     openGraph: {
-      title: 'Thanksgiving Invitation - Ibu Yvonne Wakkary Rumambi',
-      description: `Dear ${guestName}, you are cordially invited to the 70th Birthday Thanksgiving Service of Ibu Yvonne Wakkary Rumambi.`,
+      title: 'Thanksgiving Invitation - Yvonne Wakkary Rumambi',
+      description: `Dear ${guestName}, you are cordially invited to the 70th Birthday Thanksgiving Service of Yvonne Wakkary Rumambi.`,
       url: `${baseUrl}/invite/${resolvedParams.token}`,
       siteName: 'A Journey of Blessing',
       images: [
@@ -129,7 +129,7 @@ export async function generateMetadata({ params }: { params: Promise<{ token: st
           url: ogImageUrl,
           width: 1200,
           height: 630,
-          alt: 'Thanksgiving Invitation Ibu Yvonne Wakkary Rumambi',
+          alt: 'Thanksgiving Invitation Yvonne Wakkary Rumambi',
         },
       ],
       locale: 'en_US',
@@ -201,8 +201,8 @@ export default async function InvitePage({
         <Envelope guest={guest}>
           <BackgroundMusic musicUrl={musicUrl} />
           <ShareButton
-            title="Thanksgiving Invitation - Ibu Yvonne Wakkary Rumambi"
-            text={`Shalom, you are cordially invited to the 70th Birthday Thanksgiving Service of Ibu Yvonne Wakkary Rumambi on ${eventDate} at ${eventLocation}. God bless you.`}
+            title="Thanksgiving Invitation - Yvonne Wakkary Rumambi"
+            text={`Shalom, you are cordially invited to the 70th Birthday Thanksgiving Service of Yvonne Wakkary Rumambi on ${eventDate} at ${eventLocation}. God bless you.`}
           />
           <ScrollProgress />
 

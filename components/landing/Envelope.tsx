@@ -88,7 +88,7 @@ export default function Envelope({ guest, children }: EnvelopeProps) {
                         }}
                         className="relative mb-8 flex flex-col items-center z-10"
                     >
-                        <div className="w-[280px] h-44 bg-gradient-to-br from-[#2C1E17] to-[#19110B] rounded-lg shadow-2xl flex items-center justify-center relative overflow-hidden border border-[#D4AF37]/50 metallic-shadow">
+                        <div className="w-[290px] h-[390px] bg-gradient-to-br from-[#2C1E17] to-[#19110B] rounded-2xl shadow-2xl flex flex-col items-center justify-between py-10 px-6 relative overflow-hidden border border-[#D4AF37]/50 metallic-shadow">
                             {/* Sweeping Gold Shine Reflection */}
                             <motion.div
                                 animate={{
@@ -103,62 +103,80 @@ export default function Envelope({ guest, children }: EnvelopeProps) {
                                 className="absolute top-0 bottom-0 w-16 bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-12 pointer-events-none z-10"
                             />
 
-                            {/* Envelope Side Flaps Illusion */}
-                            <div className="absolute top-0 w-full h-full border-t border-[#D4AF37]/20 opacity-50"></div>
-                            
-                            {/* Envelope Top Flap Accent */}
-                            <div className="absolute top-[-60%] left-1/2 -translate-x-1/2 w-[280px] h-[280px] rotate-45 border-b border-r border-[#D4AF37]/40 rounded-br-2xl bg-gradient-to-br from-[#19110B]/40 to-[#D4AF37]/5 shadow-[0_6px_15px_rgba(0,0,0,0.6)] z-10 pointer-events-none"></div>
-
                             {/* Luxury Double Frame */}
-                            <div className="absolute inset-2 border border-[#D4AF37]/25 rounded-md pointer-events-none z-10" />
-                            <div className="absolute inset-3 border border-[#D4AF37]/40 rounded-[4px] pointer-events-none z-10" />
+                            <div className="absolute inset-2.5 border border-[#D4AF37]/20 rounded-xl pointer-events-none z-10" />
+                            <div className="absolute inset-3.5 border-2 border-[#D4AF37]/35 rounded-[10px] pointer-events-none z-10" />
 
-                            {/* Art Deco Luxury Corner Ornaments */}
-                            <div className="absolute top-4 left-4 w-4 h-4 border-t border-l border-[#D4AF37]/65 pointer-events-none z-10">
-                                <div className="absolute top-0.5 left-0.5 w-2.5 h-2.5 border-t border-l border-[#D4AF37]/50"></div>
-                            </div>
-                            <div className="absolute top-4 right-4 w-4 h-4 border-t border-r border-[#D4AF37]/65 pointer-events-none z-10">
-                                <div className="absolute top-0.5 right-0.5 w-2.5 h-2.5 border-t border-r border-[#D4AF37]/50"></div>
-                            </div>
-                            <div className="absolute bottom-4 left-4 w-4 h-4 border-b border-l border-[#D4AF37]/65 pointer-events-none z-10">
-                                <div className="absolute bottom-0.5 left-0.5 w-2.5 h-2.5 border-b border-l border-[#D4AF37]/50"></div>
-                            </div>
-                            <div className="absolute bottom-4 right-4 w-4 h-4 border-b border-r border-[#D4AF37]/65 pointer-events-none z-10">
-                                <div className="absolute bottom-0.5 right-0.5 w-2.5 h-2.5 border-b border-r border-[#D4AF37]/50"></div>
+                            {/* Classic Top Floral Vine Ornament */}
+                            <div className="w-24 h-10 text-[#D4AF37]/55 z-10 relative flex justify-center items-center">
+                                <svg viewBox="0 0 100 30" fill="currentColor" className="w-full h-full">
+                                    <path d="M50,15 C45,8 30,12 18,12 C28,12 40,17 50,15 Z" opacity="0.8"/>
+                                    <path d="M50,15 C55,8 70,12 82,12 C72,12 60,17 50,15 Z" opacity="0.8"/>
+                                    <circle cx="50" cy="15" r="3.5"/>
+                                    <circle cx="35" cy="11" r="1.5"/>
+                                    <circle cx="65" cy="11" r="1.5"/>
+                                    <circle cx="24" cy="13" r="1"/>
+                                    <circle cx="76" cy="13" r="1"/>
+                                </svg>
                             </div>
 
                             {/* Soft Radial Gold Glow behind text */}
                             <div className="absolute w-36 h-36 rounded-full bg-gradient-to-r from-[#D4AF37]/10 to-transparent blur-2xl pointer-events-none z-0" />
                             
                             {/* Guest Name - The Focal Point */}
-                            <div className="absolute top-[42%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center z-20 px-8">
-                                <p className="text-[8px] text-[#D4AF37]/75 uppercase tracking-[0.4em] font-bold mb-1.5 drop-shadow">Dear</p>
-                                <p className={`text-gradient-gold font-serif italic ${nameFontSizeClass} leading-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]`}>
+                            <div className="w-full text-center z-20 px-4 flex-1 flex flex-col justify-center">
+                                <p className="text-[8px] text-[#D4AF37]/75 uppercase tracking-[0.4em] font-bold mb-2.5">Dear</p>
+                                <div className="w-8 h-px bg-[#D4AF37]/30 mx-auto mb-4"></div>
+                                <h3 className={`text-gradient-gold font-serif italic ${nameFontSizeClass} leading-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]`}>
                                     {fullName}
-                                </p>
+                                </h3>
+                                <div className="w-8 h-px bg-[#D4AF37]/30 mx-auto mt-4"></div>
+                            </div>
+
+                            {/* Bottom Laurel Branch Wrapper framing the seal */}
+                            <div className="w-24 h-12 text-[#D4AF37]/30 z-10 relative flex justify-center items-center mb-6">
+                                <svg viewBox="0 0 100 40" fill="none" stroke="currentColor" strokeWidth="1" className="w-full h-full">
+                                    <path d="M15,10 Q50,32 85,10" />
+                                    <path d="M25,14 L20,9" />
+                                    <path d="M38,20 L33,15" />
+                                    <path d="M62,20 L67,15" />
+                                    <path d="M75,14 L80,9" />
+                                    <circle cx="50" cy="22" r="1.5" fill="currentColor" />
+                                </svg>
                             </div>
                         </div>
-                        {/* Interactive Wax Seal with Ripple */}
-                        <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 z-30 flex items-center justify-center">
+
+                        {/* Interactive Classic Wax Seal with Laurel Wreath Pattern */}
+                        <div className="absolute -bottom-7 left-1/2 -translate-x-1/2 z-30 flex items-center justify-center">
                             {/* Rotating Gold Accent Ring around Seal */}
                             <motion.div
                                 animate={{ rotate: 360 }}
-                                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                                className="absolute -inset-2 rounded-full border border-dashed border-[#D4AF37]/60 pointer-events-none"
+                                transition={{ duration: 24, repeat: Infinity, ease: "linear" }}
+                                className="absolute -inset-3.5 rounded-full border border-dashed border-[#D4AF37]/50 pointer-events-none"
                             />
                             {/* Subtle Breathing Glow to Indicate Interactivity */}
                             <motion.div
-                                animate={{ scale: [1, 1.15, 1], opacity: [0.1, 0.4, 0.1] }}
+                                animate={{ scale: [1, 1.12, 1], opacity: [0.1, 0.35, 0.1] }}
                                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                                 className="absolute inset-0 rounded-full bg-[#D4AF37] pointer-events-none blur-[4px]"
                             />
                             <motion.button 
                                 onClick={() => setIsOpen(true)}
-                                whileHover={{ scale: 1.1, rotate: 10 }}
-                                whileTap={{ scale: 0.9 }}
-                                className="relative w-14 h-14 bg-gradient-to-br from-[#E6C875] via-[#D4AF37] to-[#B8860B] rounded-full metallic-shadow flex items-center justify-center border border-white/30 shadow-[0_0_20px_rgba(212,175,55,0.4)] cursor-pointer z-10"
+                                whileHover={{ scale: 1.08, rotate: 6 }}
+                                whileTap={{ scale: 0.95 }}
+                                className="relative w-15 h-15 bg-gradient-to-br from-[#E6C875] via-[#D4AF37] to-[#B8860B] rounded-full metallic-shadow flex items-center justify-center border border-white/30 shadow-[0_0_20px_rgba(212,175,55,0.35)] cursor-pointer z-10"
                             >
-                                <span className="text-[#19110B] font-serif text-2xl font-bold drop-shadow-sm">Y</span>
+                                {/* Classic Floral / Wreath inside the wax seal */}
+                                <svg viewBox="0 0 100 100" className="absolute inset-0 w-full h-full p-2 text-[#4A321A]/30 fill-none stroke-currentColor stroke-[1.5]">
+                                    <circle cx="50" cy="50" r="32" strokeDasharray="3,3" />
+                                    <path d="M28,50 C28,38 38,28 50,28 C62,28 72,38 72,50" />
+                                    <path d="M28,50 C28,62 38,72 50,72 C62,72 72,62 72,50" />
+                                    <path d="M38,38 L42,42" />
+                                    <path d="M62,38 L58,42" />
+                                    <path d="M38,62 L42,58" />
+                                    <path d="M62,62 L58,58" />
+                                </svg>
+                                <span className="text-[#19110B] font-serif text-2xl font-bold drop-shadow-sm z-10 select-none">Y</span>
                             </motion.button>
                         </div>
                     </motion.div>

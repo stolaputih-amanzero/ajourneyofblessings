@@ -39,14 +39,11 @@ export default function Envelope({ guest, children }: EnvelopeProps) {
                     <FloralPetals />
 
                     {/* Floral Background Watermark */}
-                    <div 
-                        className="absolute pointer-events-none opacity-[0.08] z-0 select-none"
-                        style={{ top: 0, bottom: 0, left: 0, right: 0 }}
-                    >
+                    <div className="fixed inset-0 pointer-events-none opacity-[0.08] z-0 select-none">
                         <img 
                             src="/images/floral_header.png" 
                             alt="Floral background" 
-                            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                            className="w-full h-full object-cover"
                         />
                     </div>
 

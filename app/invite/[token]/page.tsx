@@ -200,7 +200,7 @@ export default async function InvitePage({
         <FloralPetals />
         
         {/* Subtle Background Watermark */}
-        <div className="absolute inset-0 pointer-events-none opacity-[0.06] z-0 select-none">
+        <div className="fixed inset-0 pointer-events-none opacity-[0.06] z-0 select-none">
           <img 
             src="/images/floral_header.png" 
             alt="Floral background watermark" 

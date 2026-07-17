@@ -41,6 +41,7 @@ export default function SettingsPage() {
 
   const [hologramVideoUrl, setHologramVideoUrl] = useState('')
   const [uploadingHologram, setUploadingHologram] = useState(false)
+  const [uploadingMusic, setUploadingMusic] = useState(false)
 
   const [eventDate, setEventDate] = useState('Monday, August 3rd, 2026')
   const [eventTime, setEventTime] = useState('18:00 WIB')
@@ -176,6 +177,37 @@ export default function SettingsPage() {
       error('Gagal mengunggah gambar: ' + err.message + '. Pastikan bucket "gallery" telah dibuat dan memiliki izin publik.')
     } finally {
       setSaving(false)
+    }
+  }
+
+  // Handle background music file upload to Supabase Storage
+  const handleMusicUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (!file) return
+
+    setUploadingMusic(true)
+    try {
+      const fileExt = file.name.split('.').pop()
+      const fileName = `theme_song_${Math.random().toString(36).substring(2, 9)}_${Date.now()}.${fileExt}`
+      const filePath = `audio/${fileName}`
+
+      const { data, error: uploadErr } = await supabase.storage
+        .from('gallery')
+        .upload(filePath, file)
+
+      if (uploadErr) throw uploadErr
+
+      // Get public URL
+      const { data: { publicUrl } } = supabase.storage
+        .from('gallery')
+        .getPublicUrl(filePath)
+
+      setMusicUrl(publicUrl)
+      success('Musik latar berhasil diunggah')
+    } catch (err: any) {
+      error('Gagal mengunggah musik: ' + err.message + '. Pastikan bucket "gallery" telah dibuat dan memiliki izin publik.')
+    } finally {
+      setUploadingMusic(false)
     }
   }
 
@@ -385,14 +417,29 @@ export default function SettingsPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
             <div className="space-y-1">
               <label className="text-[10px] uppercase tracking-wider text-white/50 font-bold">Tautan File Audio / Lagu</label>
-              <input 
-                type="text" 
-                value={musicUrl} 
-                onChange={(e) => setMusicUrl(e.target.value)} 
-                placeholder="contoh: /audio/theme.mp3 atau URL absolute"
-                className="w-full bg-[#020C1B] border border-white/10 p-3 rounded-lg focus:outline-none focus:border-[#D4AF37]"
-                required
-              />
+              <div className="flex gap-2">
+                <input 
+                  type="text" 
+                  value={musicUrl} 
+                  onChange={(e) => setMusicUrl(e.target.value)} 
+                  placeholder="contoh: /audio/theme.mp3 atau URL absolute"
+                  className="flex-1 bg-[#020C1B] border border-white/10 p-3 rounded-lg focus:outline-none focus:border-[#D4AF37] text-white/60 truncate"
+                  required
+                />
+                <label className="bg-white/5 hover:bg-white/10 border border-white/10 px-4 py-3 rounded-lg font-bold flex items-center justify-center cursor-pointer shrink-0 transition-colors text-xs text-[#D4AF37]">
+                  {uploadingMusic ? (
+                    <Loader2 className="w-4 h-4 animate-spin text-[#D4AF37]" />
+                  ) : (
+                    <span>Unggah</span>
+                  )}
+                  <input 
+                    type="file" 
+                    accept="audio/*" 
+                    onChange={handleMusicUpload}
+                    className="hidden" 
+                  />
+                </label>
+              </div>
             </div>
             
             <div className="space-y-1">

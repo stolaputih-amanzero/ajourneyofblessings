@@ -217,49 +217,63 @@ export default async function InvitePage({
           <ScrollProgress />
 
           <Greeting guest={guest} />
+
+          {/* Standalone Sweet Countdown Card */}
+          <div className="px-6 pb-6 z-10 relative">
+            <CountdownTimer targetDate={targetDate} />
+          </div>
           
           {/* ✅ HOLOGRAM VIDEO GREETING */}
           <HologramGreeting token={resolvedParams.token} />
           
           <Timeline />
 
-          <FadeIn delay={0.4} className="bg-[#2C1E17] text-white px-4 py-8 border-t border-[#D4AF37]/20">
-            <div className="flex flex-col space-y-6">
+          {/* Standalone Blush-Cream Paper Card for detailed event info */}
+          <FadeIn delay={0.4} className="px-6 py-8 z-10 relative">
+            <div className="bg-[#FAF0EB] text-[#2C1E17] border-2 border-[#D4AF37]/40 rounded-2xl p-6 flex flex-col space-y-6 shadow-xl relative overflow-hidden">
+              {/* Watercolor Floral watermark inside the card */}
+              <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.12] mix-blend-multiply">
+                <img src="/images/floral_header.png" className="w-full h-full object-cover" />
+              </div>
 
-              <div className="flex justify-between items-end border-b border-white/10 pb-4">
+              <div className="flex justify-between items-end border-b border-[#2C1E17]/10 pb-4 z-10 relative">
                 <div className="flex flex-col">
-                  <span className="text-[#D4AF37] text-[10px] uppercase tracking-widest font-semibold">Date &amp; Day</span>
-                  <span className="text-base font-serif italic mt-1 text-white">{eventDate}</span>
+                  <span className="text-[#5F7A61] text-[9px] uppercase tracking-widest font-bold">Date &amp; Day</span>
+                  <span className="text-sm font-serif italic mt-1 text-[#2C1E17]">{eventDate}</span>
                 </div>
                 <div className="flex flex-col text-right">
-                  <span className="text-[#D4AF37] text-[10px] uppercase tracking-widest font-semibold">Time</span>
-                  <span className="text-base font-serif italic mt-1 text-white">{eventTime}</span>
+                  <span className="text-[#5F7A61] text-[9px] uppercase tracking-widest font-bold">Time</span>
+                  <span className="text-sm font-serif italic mt-1 text-[#2C1E17]">{eventTime}</span>
                 </div>
               </div>
 
-              <div className="flex flex-col">
-                <span className="text-[#D4AF37] text-[10px] uppercase tracking-widest font-semibold mb-2">Venue</span>
-                <p className="text-white font-serif text-base mb-1">{eventLocation}</p>
-                <p className="text-white/70 text-xs font-sans mb-3">{eventAddress}</p>
+              <div className="flex flex-col z-10 relative">
+                <span className="text-[#5F7A61] text-[9px] uppercase tracking-widest font-bold mb-2">Venue</span>
+                <p className="text-[#2C1E17] font-serif text-base mb-1">{eventLocation}</p>
+                <p className="text-[#2C1E17]/70 text-xs font-sans mb-3">{eventAddress}</p>
                 <MapModal location={eventLocation} address={eventAddress} mapLink={mapLink} />
               </div>
-
-              <CountdownTimer targetDate={targetDate} />
-
-              <div className="w-full max-w-full overflow-hidden">
-                <PhotoGallery />
-              </div>
-
-              <RSVPForm
-                token={guest.unique_token}
-                guestName={guest.title ? `${guest.title} ${guest.full_name}` : guest.full_name}
-                initialStatus={guest.rsvp_status}
-                initialCount={guest.attendance_count}
-              />
             </div>
           </FadeIn>
 
-          <FadeIn delay={0.2} className="bg-[#FAF0EB] text-[#2C1E17]">
+          {/* Spacing for Photo Gallery */}
+          <div className="px-6 py-4 z-10 relative">
+            <div className="w-full max-w-full overflow-hidden">
+              <PhotoGallery />
+            </div>
+          </div>
+
+          {/* Spacing for RSVP Form */}
+          <div className="px-6 py-4 pb-12 z-10 relative">
+            <RSVPForm
+              token={guest.unique_token}
+              guestName={guest.title ? `${guest.title} ${guest.full_name}` : guest.full_name}
+              initialStatus={guest.rsvp_status}
+              initialCount={guest.attendance_count}
+            />
+          </div>
+
+          <FadeIn delay={0.2} className="bg-[#FAF0EB] text-[#2C1E17] border-t border-[#D4AF37]/20 relative z-10">
             <Guestbook
               token={guest.unique_token}
               guestName={guest.full_name}

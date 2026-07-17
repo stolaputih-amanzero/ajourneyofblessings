@@ -64,9 +64,9 @@ export default function Greeting({ guest }: GreetingProps) {
                 <div className="w-12 h-[2px] bg-gradient-to-r from-transparent via-[#FFDF73] to-transparent mt-6 mx-auto"></div>
             </motion.div>
 
-            {/* Arch/Card Section */}
+            {/* Premium Gold Frame Rectangle Card Section */}
             <motion.div variants={itemVariants} className="relative w-full flex-1 mt-4 mb-8 flex justify-center">
-                <div className="premium-glass rounded-t-full flex flex-col items-center justify-center text-center px-6 py-10 w-full max-w-sm relative overflow-hidden">
+                <div className="premium-glass rounded-2xl flex flex-col items-center justify-center text-center px-6 py-10 w-full max-w-sm relative overflow-hidden border border-[#D4AF37]/35 shadow-2xl">
                     {/* Floral Background Watermark */}
                     <div className="absolute inset-0 z-0 pointer-events-none select-none opacity-15 mix-blend-multiply">
                         <img 

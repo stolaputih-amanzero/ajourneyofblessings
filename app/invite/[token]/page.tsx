@@ -199,6 +199,15 @@ export default async function InvitePage({
       <main className="relative mx-auto w-full flex min-h-screen max-w-md flex-col bg-[#2C1E17] bg-spotlight text-white overflow-x-hidden">
         <GoldDust />
         <FloralPetals />
+        
+        {/* Subtle Background Watermark */}
+        <div className="absolute inset-0 pointer-events-none opacity-[0.06] mix-blend-multiply z-0 select-none">
+          <img 
+            src="/images/floral_header.png" 
+            alt="Floral background watermark" 
+            className="w-full h-full object-cover"
+          />
+        </div>
 
         <Envelope guest={guest}>
           <BackgroundMusic musicUrl={musicUrl} />

@@ -38,6 +38,15 @@ export default function Envelope({ guest, children }: EnvelopeProps) {
                     {/* Floating Petals Layer */}
                     <FloralPetals />
 
+                    {/* Floral Background Watermark */}
+                    <div className="absolute inset-0 pointer-events-none opacity-[0.06] mix-blend-multiply z-0 select-none">
+                        <img 
+                            src="/images/floral_header.png" 
+                            alt="Floral background" 
+                            className="w-full h-full object-cover"
+                        />
+                    </div>
+
                     {/* Elegant Watercolor Floral Corner Ornaments */}
                     <div className="absolute top-0 left-0 w-32 h-32 pointer-events-none opacity-45 z-10 select-none">
                         <svg viewBox="0 0 120 120" fill="none" className="w-full h-full text-[#D4AF37]">

@@ -64,33 +64,33 @@ export default function Greeting({ guest }: GreetingProps) {
                 <div className="w-12 h-[2px] bg-gradient-to-r from-transparent via-[#FFDF73] to-transparent mt-6 mx-auto"></div>
             </motion.div>
 
-            {/* Elegant Floral Watercolor Header */}
-            <motion.div variants={itemVariants} className="w-48 h-auto mb-2 opacity-85 pointer-events-none select-none">
-                <img 
-                    src="/images/floral_header.png" 
-                    alt="Floral Header Decoration" 
-                    className="w-full h-auto object-contain"
-                />
-            </motion.div>
-
             {/* Arch/Card Section */}
             <motion.div variants={itemVariants} className="relative w-full flex-1 mt-4 mb-8 flex justify-center">
-                <div className="premium-glass rounded-t-full flex flex-col items-center justify-center text-center px-6 py-10 w-full max-w-sm">
-                    <p className="text-white/80 text-sm italic font-serif leading-relaxed mb-6">
+                <div className="premium-glass rounded-t-full flex flex-col items-center justify-center text-center px-6 py-10 w-full max-w-sm relative overflow-hidden">
+                    {/* Floral Background Watermark */}
+                    <div className="absolute inset-0 z-0 pointer-events-none select-none opacity-15 mix-blend-multiply">
+                        <img 
+                            src="/images/floral_header.png" 
+                            alt="Floral decoration background" 
+                            className="w-full h-full object-cover"
+                        />
+                    </div>
+
+                    <p className="text-white/80 text-sm italic font-serif leading-relaxed mb-6 z-10">
                         We are deeply honored to invite you to the 70th Birthday Thanksgiving Service of
                     </p>
 
                     {/* Monogram Y */}
-                    <div className="w-20 h-20 rounded-full border border-[#D4AF37]/50 p-1 mb-4 metallic-shadow">
+                    <div className="w-20 h-20 rounded-full border border-[#D4AF37]/50 p-1 mb-4 metallic-shadow z-10 relative">
                         <div className="w-full h-full rounded-full bg-gradient-to-br from-[#2C1E17] to-[#19110B] flex items-center justify-center text-[#FFDF73] italic font-serif text-2xl border border-white/10 metallic-shadow">
                             Y
                         </div>
                     </div>
 
-                    <h2 className="text-white/90 font-serif text-xl px-2 leading-snug drop-shadow-sm">
+                    <h2 className="text-white/90 font-serif text-xl px-2 leading-snug drop-shadow-sm z-10 relative">
                         Yvonne Wakkary Rumambi
                     </h2>
-                    <p className="mt-4 text-[#E6C875] text-[9px] tracking-[0.2em] uppercase font-bold drop-shadow-sm">
+                    <p className="mt-4 text-[#E6C875] text-[9px] tracking-[0.2em] uppercase font-bold drop-shadow-sm z-10 relative">
                         Honoring a life beautifully blessed
                     </p>
                 </div>

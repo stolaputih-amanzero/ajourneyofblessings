@@ -72,20 +72,6 @@ export default function Envelope({ guest, children }: EnvelopeProps) {
                         </svg>
                     </div>
 
-                    {/* Golden 70 Anniversary Banner Graphic */}
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: 0.2, duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-                        className="w-48 h-32 mb-2 relative z-10 pointer-events-none select-none flex justify-center items-center"
-                    >
-                        <img 
-                            src="/images/golden_number_70.png" 
-                            alt="Anniversary 70" 
-                            className="w-full h-full object-contain mix-blend-screen"
-                        />
-                    </motion.div>
-
                     {/* Envelope Icon with 3D Float Effect */}
                     <motion.div
                         style={{ perspective: 1000 }}

@@ -80,10 +80,10 @@ export default function Greeting({ guest }: GreetingProps) {
                         We are deeply honored to invite you to the 70th Birthday Thanksgiving Service of
                     </p>
 
-                    {/* Monogram Y */}
+                    {/* Monogram 70 */}
                     <div className="w-20 h-20 rounded-full border border-[#D4AF37]/50 p-1 mb-4 metallic-shadow z-10 relative">
-                        <div className="w-full h-full rounded-full bg-gradient-to-br from-[#2C1E17] to-[#19110B] flex items-center justify-center text-[#FFDF73] italic font-serif text-2xl border border-white/10 metallic-shadow">
-                            Y
+                        <div className="w-full h-full rounded-full bg-gradient-to-br from-[#2C1E17] to-[#19110B] flex items-center justify-center text-[#FFDF73] italic font-serif text-2xl border border-white/10 metallic-shadow select-none">
+                            70
                         </div>
                     </div>
 

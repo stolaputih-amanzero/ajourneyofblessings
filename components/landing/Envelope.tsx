@@ -176,7 +176,7 @@ export default function Envelope({ guest, children }: EnvelopeProps) {
                                     <path d="M38,62 L42,58" />
                                     <path d="M62,62 L58,58" />
                                 </svg>
-                                <span className="text-[#19110B] font-serif text-2xl font-bold drop-shadow-sm z-10 select-none">Y</span>
+                                <span className="text-[#19110B] font-serif text-2xl font-bold drop-shadow-sm z-10 select-none">70</span>
                             </motion.button>
                         </div>
                     </motion.div>

@@ -33,7 +33,8 @@ export default function Envelope({ guest, children }: EnvelopeProps) {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 1.1, filter: 'blur(10px)' }}
                     transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-                    className="flex flex-col items-center justify-center min-h-screen px-6 relative overflow-hidden bg-[#FAF0EB]"
+                    className="flex flex-col items-center justify-center min-h-screen px-6 relative overflow-hidden"
+                    style={{ backgroundColor: '#FAF0EB' }}
                 >
                     {/* Floating Petals Layer */}
                     <FloralPetals />

@@ -11,7 +11,6 @@ import MapModal from '@/components/MapModal'
 import BackgroundMusic from '@/components/BackgroundMusic'
 import DownloadPDF from '@/components/DownloadPDF'
 import ScrollProgress from '@/components/ScrollProgress'
-import VideoTribute from '@/components/VideoTribute'
 import Envelope from '@/components/landing/Envelope'
 import Greeting from '@/components/landing/Greeting'
 import Timeline from '@/components/Timeline'
@@ -249,7 +248,6 @@ export default async function InvitePage({
 
               <div className="w-full max-w-full overflow-hidden">
                 <PhotoGallery />
-                <VideoTribute />
               </div>
 
               <RSVPForm

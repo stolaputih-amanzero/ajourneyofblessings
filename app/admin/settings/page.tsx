@@ -50,7 +50,7 @@ export default function SettingsPage() {
   const [mapLink, setMapLink] = useState('https://maps.app.goo.gl/wRypd7zL2XfQd6t47')
 
   const [musicUrl, setMusicUrl] = useState('/audio/theme.mp3')
-  const [ogImageUrl, setOgImageUrl] = useState('/og-image.png')
+  const [ogImageUrl, setOgImageUrl] = useState('/og-image.jpeg')
 
   // Load configuration on mount
   useEffect(() => {
@@ -449,7 +449,7 @@ export default function SettingsPage() {
                   type="text" 
                   value={ogImageUrl} 
                   onChange={(e) => setOgImageUrl(e.target.value)} 
-                  placeholder="/og-image.png"
+                  placeholder="/og-image.jpeg"
                   className="flex-1 bg-[#020C1B] border border-white/10 p-3 rounded-lg focus:outline-none focus:border-[#D4AF37]"
                   required
                 />

@@ -90,7 +90,7 @@ export async function generateMetadata({ params }: { params: Promise<{ token: st
 
   let eventDate = 'Monday, August 3rd, 2026'
   let eventLocation = 'Restaurant Beautika, 3rd Floor'
-  let ogImageUrl = `${baseUrl}/og-image.png`
+  let ogImageUrl = `${baseUrl}/og-image.jpeg`
 
   if (configs) {
     configs.forEach((cfg: any) => {
@@ -104,24 +104,32 @@ export async function generateMetadata({ params }: { params: Promise<{ token: st
     })
   }
 
+  const descriptionText = `Dear ${guestName}, you are cordially invited to the 70th Birthday Thanksgiving Service of Yvonne Wakkary Rumambi.`
+
   return {
     title: 'Thanksgiving Invitation - Yvonne Wakkary Rumambi',
     description: `Dear ${guestName}, you are cordially invited to the 70th Birthday Thanksgiving Service of Yvonne Wakkary Rumambi on ${eventDate} at ${eventLocation}.`,
     openGraph: {
       title: 'Thanksgiving Invitation - Yvonne Wakkary Rumambi',
-      description: `Dear ${guestName}, you are cordially invited to the 70th Birthday Thanksgiving Service of Yvonne Wakkary Rumambi.`,
+      description: descriptionText,
       url: `${baseUrl}/invite/${resolvedParams.token}`,
       siteName: 'A Journey of Blessing',
       images: [
         {
           url: ogImageUrl,
-          width: 1024,
-          height: 1024,
+          width: 1080,
+          height: 720,
           alt: 'Thanksgiving Invitation Yvonne Wakkary Rumambi',
         },
       ],
       locale: 'en_US',
       type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: 'Thanksgiving Invitation - Yvonne Wakkary Rumambi',
+      description: descriptionText,
+      images: [ogImageUrl],
     },
   }
 }

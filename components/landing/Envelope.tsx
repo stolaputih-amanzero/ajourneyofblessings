@@ -164,19 +164,13 @@ export default function Envelope({ guest, children }: EnvelopeProps) {
                                 onClick={() => setIsOpen(true)}
                                 whileHover={{ scale: 1.08, rotate: 6 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="relative w-15 h-15 bg-gradient-to-br from-[#E6C875] via-[#D4AF37] to-[#B8860B] rounded-full metallic-shadow flex items-center justify-center border border-white/30 shadow-[0_0_20px_rgba(212,175,55,0.35)] cursor-pointer z-10"
+                                className="relative w-15 h-15 bg-gradient-to-br from-[#E6C875] via-[#D4AF37] to-[#B8860B] rounded-full metallic-shadow flex items-center justify-center border border-white/30 shadow-[0_0_20px_rgba(212,175,55,0.35)] cursor-pointer z-10 overflow-hidden"
                             >
-                                {/* Classic Floral / Wreath inside the wax seal */}
-                                <svg viewBox="0 0 100 100" className="absolute inset-0 w-full h-full p-2 text-[#4A321A]/30 fill-none stroke-currentColor stroke-[1.5]">
-                                    <circle cx="50" cy="50" r="32" strokeDasharray="3,3" />
-                                    <path d="M28,50 C28,38 38,28 50,28 C62,28 72,38 72,50" />
-                                    <path d="M28,50 C28,62 38,72 50,72 C62,72 72,62 72,50" />
-                                    <path d="M38,38 L42,42" />
-                                    <path d="M62,38 L58,42" />
-                                    <path d="M38,62 L42,58" />
-                                    <path d="M62,62 L58,58" />
-                                </svg>
-                                <span className="text-[#19110B] font-serif text-2xl font-bold drop-shadow-sm z-10 select-none">70</span>
+                                <img 
+                                    src="/70.jpeg" 
+                                    alt="70 Wax Seal" 
+                                    className="w-full h-full object-cover"
+                                />
                             </motion.button>
                         </div>
                     </motion.div>

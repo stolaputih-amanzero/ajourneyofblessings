@@ -27,14 +27,20 @@ export const metadata: Metadata = {
     siteName: 'A Journey of Blessing',
     images: [
       {
-        url: '/og-image.png',
-        width: 1024,
-        height: 1024,
+        url: '/og-image.jpeg',
+        width: 1080,
+        height: 720,
         alt: 'A Journey of Blessing',
       },
     ],
     locale: 'en_US',
     type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'A Journey of Blessing | 70th Birthday Thanksgiving Service',
+    description: '70th Birthday Thanksgiving Service Invitation for Yvonne Wakkary Rumambi',
+    images: ['/og-image.jpeg'],
   },
 }
 

@@ -18,7 +18,12 @@ export async function generateMetadata(): Promise<Metadata> {
   const host = headerList.get('host') || 'yvonne.amanzero.space'
   const protocol = headerList.get('x-forwarded-proto') || 'https'
   const dynamicBaseUrl = `${protocol}://${host}`
-  const siteUrl = process.env.NEXT_PUBLIC_APP_URL || dynamicBaseUrl
+  let siteUrl = process.env.NEXT_PUBLIC_APP_URL || dynamicBaseUrl
+
+  // Self-healing check: If env URL contains localhost but current request host does not, use dynamicBaseUrl
+  if (siteUrl.includes('localhost') && !host.includes('localhost')) {
+    siteUrl = dynamicBaseUrl
+  }
 
   return {
     metadataBase: new URL(siteUrl),

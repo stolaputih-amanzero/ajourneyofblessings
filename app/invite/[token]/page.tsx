@@ -79,7 +79,12 @@ export async function generateMetadata({ params }: { params: Promise<{ token: st
   const host = headerList.get('host') || 'yvonne.amanzero.space'
   const protocol = headerList.get('x-forwarded-proto') || 'https'
   const dynamicBaseUrl = `${protocol}://${host}`
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || dynamicBaseUrl
+  let baseUrl = process.env.NEXT_PUBLIC_APP_URL || dynamicBaseUrl
+
+  // Self-healing check: If env URL contains localhost but current request host does not, use dynamicBaseUrl
+  if (baseUrl.includes('localhost') && !host.includes('localhost')) {
+    baseUrl = dynamicBaseUrl
+  }
   
   const { data: guests } = await supabase.rpc('get_guest_by_token', { 
     p_token: resolvedParams.token 

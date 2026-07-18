@@ -93,13 +93,13 @@ export default function Guestbook({
   return (
     <div className="px-8 py-12 bg-transparent">
       <div className="flex flex-col items-center mb-10 text-center">
-        <span className="text-[10px] tracking-[0.2em] text-[#E5989B] font-bold uppercase mb-2">
+        <span className="text-[10px] tracking-[0.2em] text-[var(--color-tertiary)] font-bold uppercase mb-2">
           Guestbook
         </span>
-        <h2 className="text-[#B5838D] font-script text-4xl mb-2">
+        <h2 className="text-[var(--color-text)] font-serif italic text-4xl mb-2">
           Prayers &amp; Wishes
         </h2>
-        <div className="w-12 h-px bg-[#E5989B]/50"></div>
+        <div className="w-12 h-px bg-[var(--color-tertiary)]/50"></div>
       </div>
 
       <form onSubmit={handleSubmit} className="flex flex-col space-y-5 mb-12">
@@ -108,10 +108,10 @@ export default function Guestbook({
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             placeholder="Write a prayer or wish for Ibu Yvonne..."
-            className="w-full bg-white/70 border border-[#E5989B]/30 p-5 text-sm text-[#B5838D] font-sans focus:outline-none focus:border-[#E5989B] focus:ring-2 focus:ring-[#E5989B]/30 transition-all resize-none h-36 placeholder:text-[#B5838D]/40 rounded-2xl shadow-inner"
+            className="w-full bg-white/70 border border-[var(--color-secondary)]/30 p-5 text-sm text-[var(--color-text)] font-sans focus:outline-none focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[var(--color-accent)]/30 transition-all resize-none h-36 placeholder:text-[var(--color-text)]/40 rounded-2xl shadow-inner earthy-shadow"
             required
           />
-          <div className="absolute bottom-3 right-3 text-[10px] text-[#B5838D]/50">
+          <div className="absolute bottom-3 right-3 text-[10px] text-[var(--color-text)]/50">
             {message.length} chars
           </div>
         </div>
@@ -122,7 +122,7 @@ export default function Guestbook({
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              className="text-red-400 text-xs text-center bg-red-50/50 py-2 px-4 rounded-xl"
+              className="text-red-400 text-xs text-center bg-red-50/50 py-2 px-4 rounded-xl font-sans"
             >
               {error}
             </motion.p>
@@ -132,7 +132,7 @@ export default function Guestbook({
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              className="text-[#B5838D] text-xs font-bold uppercase tracking-wider text-center bg-white/50 border border-[#E5989B]/20 py-2 px-4 rounded-xl"
+              className="text-[var(--color-accent)] text-xs font-bold uppercase tracking-wider text-center bg-white/50 border border-[var(--color-accent)]/20 py-2 px-4 rounded-xl font-sans"
             >
               ✓ Message sent successfully!
             </motion.p>
@@ -142,7 +142,7 @@ export default function Guestbook({
         <button
           type="submit"
           disabled={isSubmitting || !message.trim()}
-          className="w-full bg-gradient-to-r from-[#FFB4A2] to-[#E5989B] text-white py-4 text-[10px] font-bold uppercase tracking-[0.2em] rounded-full hover:shadow-lg hover:shadow-[#E5989B]/30 transition-all disabled:opacity-50 disabled:cursor-not-allowed active:scale-95 shadow-md"
+          className="w-full bg-gradient-to-r from-[var(--color-secondary)] to-[var(--color-tertiary)] text-white py-4 text-[10px] font-bold uppercase tracking-[0.2em] rounded-full hover:shadow-lg hover:shadow-[var(--color-secondary)]/30 transition-all disabled:opacity-50 disabled:cursor-not-allowed active:scale-95 shadow-md font-sans"
         >
           {isSubmitting ? 'Sending...' : 'Send Wishes'}
         </button>
@@ -157,21 +157,21 @@ export default function Guestbook({
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 20 }}
               transition={{ delay: index * 0.05 }}
-              className="flex flex-col border-l-2 border-[#E5989B]/50 pl-5 py-2 bg-white/40 p-5 rounded-r-2xl shadow-sm"
+              className="flex flex-col border-l-2 border-[var(--color-accent)]/50 pl-5 py-2 bg-white/40 p-5 rounded-r-2xl shadow-sm earthy-shadow"
             >
-              <p className="text-[#B5838D]/90 text-sm italic font-script leading-relaxed mb-3 text-xl">
+              <p className="text-[var(--color-text)]/90 text-sm italic font-serif leading-relaxed mb-3 text-xl">
                 "{prayer.message}"
               </p>
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
-                  <span className="w-6 h-px bg-[#E5989B]"></span>
-                  <span className="text-[#E5989B] text-[9px] font-bold uppercase tracking-widest">
+                  <span className="w-6 h-px bg-[var(--color-accent)]"></span>
+                  <span className="text-[var(--color-tertiary)] text-[9px] font-bold uppercase tracking-widest font-sans">
                     {Array.isArray(prayer.guests)
                       ? prayer.guests[0]?.full_name || 'Anonymous'
                       : prayer.guests?.full_name || 'Anonymous'}
                   </span>
                 </div>
-                <span className="text-[#B5838D]/40 text-[9px]">
+                <span className="text-[var(--color-text)]/40 text-[9px] font-sans">
                   {new Date(prayer.created_at).toLocaleDateString('en-US', {
                     day: 'numeric',
                     month: 'short',
@@ -185,10 +185,10 @@ export default function Guestbook({
 
         {prayers.length === 0 && (
           <div className="text-center py-10">
-            <p className="text-[#B5838D]/60 text-sm italic mb-2 font-script text-xl">
+            <p className="text-[var(--color-text)]/60 text-sm italic mb-2 font-serif text-xl">
               No prayers or wishes yet
             </p>
-            <p className="text-[#B5838D]/40 text-xs font-sans">
+            <p className="text-[var(--color-text)]/40 text-xs font-sans">
               Be the first to leave a message
             </p>
           </div>

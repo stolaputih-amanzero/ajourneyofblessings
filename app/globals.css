@@ -1,53 +1,55 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-great-vibes), cursive;
-  --font-script: var(--font-great-vibes), cursive;
+  --font-sans: var(--font-source-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-cormorant), ui-serif, Georgia, serif;
+  --font-script: var(--font-cormorant), ui-serif, Georgia, serif;
   
-  --color-primary: #B5838D;    /* Dusty Rose */
-  --color-accent: #E5989B;     /* Blush Pink */
-  --color-background: #FFB4A2; /* Light Pastel Peach/Pink */
-  --color-sage: #FFCDB2;       /* Champagne/Soft Ivory */
-  --color-ivory: #FDFBF7;      /* True Soft Ivory for base */
+  --color-primary: #E8D5C4;    /* Warm beige */
+  --color-secondary: #D4A373;  /* Terracotta */
+  --color-accent: #6B8E5F;     /* Olive green */
+  --color-tertiary: #BC6C25;   /* Burnt orange */
+  --color-text: #3D405B;       /* Charcoal */
+  --color-background: #F5EBE1; /* Soft beige */
+  --color-ivory: #FAF7F2;      /* Lighter warm off-white */
 }
 
 @layer base {
   body {
-    @apply bg-[var(--color-ivory)] text-[var(--color-primary)] font-sans antialiased m-0 overflow-x-hidden;
+    @apply bg-[var(--color-ivory)] text-[var(--color-text)] font-sans antialiased m-0 overflow-x-hidden;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-script tracking-tight;
+    @apply font-serif tracking-tight;
   }
 }
 
 /* Utilities for elegant animations and mobile constraints */
 @layer utilities {
   .mobile-container {
-    @apply max-w-[375px] mx-auto w-full min-h-screen bg-[var(--color-ivory)] shadow-2xl relative flex flex-col border-[8px] border-white overflow-x-hidden;
+    @apply max-w-[375px] mx-auto w-full min-h-screen bg-[var(--color-ivory)] shadow-2xl relative flex flex-col border-[4px] border-[#E8D5C4] overflow-x-hidden;
   }
   
   /* The desktop fallback background */
   .desktop-fallback {
-    @apply bg-[#F4E1D2] min-h-screen w-full flex justify-center items-center;
+    @apply bg-[#E8D5C4] min-h-screen w-full flex justify-center items-center;
   }
 
-  /* PREMIUM DESIGN UTILITIES - Soft Romantic */
-  .text-gradient-gold {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#D4A373] via-[#E5989B] to-[#B5838D] drop-shadow-[0_1px_1px_rgba(181,131,141,0.3)];
+  /* PREMIUM DESIGN UTILITIES - Earthy Natural */
+  .text-gradient-earth {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#BC6C25] via-[#D4A373] to-[#6B8E5F] drop-shadow-[0_1px_1px_rgba(212,163,115,0.2)];
   }
 
   .premium-glass {
-    @apply bg-white/40 backdrop-blur-md border-t border-l border-white/60 border-r border-b border-[#B5838D]/20 shadow-[0_8px_32px_rgba(181,131,141,0.15)] shadow-inner drop-shadow-lg;
+    @apply bg-white/60 backdrop-blur-md border border-white/80 shadow-[0_4px_24px_rgba(61,64,91,0.06)] shadow-inner drop-shadow-sm rounded-xl;
   }
 
   .bg-spotlight {
-    background-image: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.8) 0%, rgba(253, 251, 247, 1) 65%);
+    background-image: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.9) 0%, rgba(250, 247, 242, 1) 70%);
   }
 
-  .metallic-shadow {
-    @apply shadow-[inset_0_1px_1px_rgba(255,255,255,0.8),0_4px_12px_rgba(181,131,141,0.2)];
+  .earthy-shadow {
+    @apply shadow-[0_4px_16px_rgba(212,163,115,0.15),0_1px_2px_rgba(61,64,91,0.05)];
   }
 }
 

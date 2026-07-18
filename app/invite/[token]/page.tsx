@@ -4,8 +4,7 @@ import { headers } from 'next/headers'
 import { createClient } from '@/utils/supabase/server'
 import Envelope from '@/components/landing/Envelope'
 import InvitationDetails from '@/components/landing/InvitationDetails'
-import GoldDust from '@/components/GoldDust'
-import FloralPetals from '@/components/FloralPetals'
+import FloatingLeaves from '@/components/FloatingLeaves'
 
 const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'
 
@@ -208,13 +207,12 @@ export default async function InvitePage({
 
   return (
     <>
-      <main className="relative mx-auto w-full flex min-h-screen max-w-md flex-col bg-[var(--color-ivory)] bg-spotlight text-[var(--color-primary)] overflow-x-hidden">
-        <GoldDust />
-        <FloralPetals />
+      <main className="relative mx-auto w-full flex min-h-screen max-w-md flex-col bg-[var(--color-ivory)] bg-spotlight text-[var(--color-text)] overflow-x-hidden">
+        <FloatingLeaves />
         
-        {/* Soft CSS Floral Gradient Overlay */}
-        <div className="fixed inset-0 pointer-events-none z-0 select-none bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-[#FFB4A2]/20 via-transparent to-transparent"></div>
-        <div className="fixed inset-0 pointer-events-none z-0 select-none bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-[#FFCDB2]/30 via-transparent to-transparent"></div>
+        {/* Soft CSS Earthy Gradient Overlay */}
+        <div className="fixed inset-0 pointer-events-none z-0 select-none bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-[var(--color-secondary)]/10 via-transparent to-transparent"></div>
+        <div className="fixed inset-0 pointer-events-none z-0 select-none bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-[var(--color-accent)]/10 via-transparent to-transparent"></div>
 
         <Envelope guest={guest}>
           <InvitationDetails
@@ -229,7 +227,7 @@ export default async function InvitePage({
             initialPrayers={initialPrayers}
             token={resolvedParams.token}
           />
-          <div className="sticky bottom-2 left-1/2 -translate-x-1/2 w-32 h-1 bg-[var(--color-primary)]/20 rounded-full mx-auto my-4 z-50"></div>
+          <div className="sticky bottom-2 left-1/2 -translate-x-1/2 w-32 h-1 bg-[var(--color-text)]/20 rounded-full mx-auto my-4 z-50"></div>
         </Envelope>
       </main>
     </>

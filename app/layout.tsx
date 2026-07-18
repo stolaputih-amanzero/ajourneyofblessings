@@ -1,10 +1,10 @@
 import type { Viewport, Metadata } from 'next'
-import { Outfit, Great_Vibes } from 'next/font/google'
+import { Source_Sans_3, Cormorant_Garamond } from 'next/font/google'
 import { headers } from 'next/headers'
 import './globals.css'
 
-const outfit = Outfit({ subsets: ['latin'], variable: '--font-outfit' })
-const greatVibes = Great_Vibes({ weight: '400', subsets: ['latin'], variable: '--font-great-vibes' })
+const sourceSans = Source_Sans_3({ subsets: ['latin'], variable: '--font-source-sans' })
+const cormorant = Cormorant_Garamond({ weight: ['400', '500', '600', '700'], subsets: ['latin'], variable: '--font-cormorant', style: ['normal', 'italic'] })
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -64,7 +64,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${outfit.variable} ${greatVibes.variable}`}>
+    <html lang="en" className={`${sourceSans.variable} ${cormorant.variable}`}>
       <body>
         <main className="desktop-fallback">
           {/* Main Mobile Constraint Container */}

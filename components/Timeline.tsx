@@ -24,10 +24,10 @@ function TimelineItem({ milestone, isLast }: { milestone: Milestone; isLast: boo
                     initial={{ scale: 0 }}
                     animate={isInView ? { scale: 1 } : {}}
                     transition={{ duration: 1.2, type: "spring", bounce: 0.3 }}
-                    className="w-4 h-4 rounded-full bg-gradient-to-br from-[#FFB4A2] via-[#E5989B] to-[#B5838D] border-2 border-white shadow-sm z-10 shrink-0 mt-1"
+                    className="w-4 h-4 rounded-full bg-gradient-to-br from-[var(--color-primary)] via-[var(--color-secondary)] to-[var(--color-tertiary)] border-2 border-[var(--color-ivory)] shadow-sm z-10 shrink-0 mt-1"
                 />
                 {!isLast && (
-                    <div className="w-px flex-1 bg-gradient-to-b from-[#E5989B]/40 to-transparent min-h-[20px]" />
+                    <div className="w-px flex-1 bg-gradient-to-b from-[var(--color-secondary)]/40 to-transparent min-h-[20px]" />
                 )}
             </div>
 
@@ -39,17 +39,17 @@ function TimelineItem({ milestone, isLast }: { milestone: Milestone; isLast: boo
                 className="flex-1 pb-10"
             >
                 {/* Year Badge */}
-                <span className="inline-block bg-[#E5989B] text-white text-[9px] uppercase tracking-[0.2em] font-bold px-3 py-1 rounded-full shadow-sm mb-2">
+                <span className="inline-block bg-[var(--color-accent)] text-white text-[9px] uppercase tracking-[0.2em] font-bold px-3 py-1 rounded-full shadow-sm mb-2">
                     {milestone.year}
                 </span>
 
                 {/* Title */}
-                <h3 className="text-[#B5838D] font-script text-3xl leading-tight mb-2">
+                <h3 className="text-[var(--color-text)] font-serif italic text-3xl leading-tight mb-2">
                     {milestone.title}
                 </h3>
 
                 {/* Description - NO line-clamp, show full text */}
-                <p className="text-[#B5838D]/80 text-xs leading-relaxed font-sans font-medium">
+                <p className="text-[var(--color-text)]/80 text-xs leading-relaxed font-sans font-medium">
                     {milestone.description}
                 </p>
 
@@ -59,19 +59,19 @@ function TimelineItem({ milestone, isLast }: { milestone: Milestone; isLast: boo
                         initial={{ opacity: 0, y: 10 }}
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
                         transition={{ duration: 0.5, delay: 0.3 }}
-                        className="mt-4 rounded-2xl overflow-hidden border border-[#E5989B]/20 shadow-lg bg-white/50 relative aspect-[16/9] w-full flex items-center justify-center"
+                        className="mt-4 rounded-2xl overflow-hidden border border-[var(--color-secondary)]/20 earthy-shadow bg-white/50 relative aspect-[16/9] w-full flex items-center justify-center"
                     >
                         {/* Ambient Blurred Background (fills the borders softly) */}
                         <img
                             src={milestone.image_url}
                             alt=""
-                            className="absolute inset-0 w-full h-full object-cover blur-lg opacity-40 scale-110 pointer-events-none select-none"
+                            className="absolute inset-0 w-full h-full object-cover blur-lg opacity-40 scale-110 pointer-events-none select-none contrast-125 sepia-[.2]"
                         />
                         {/* Sharp Foreground Image (Full Uncropped Content) */}
                         <img
                             src={milestone.image_url}
                             alt={milestone.title}
-                            className="relative z-10 max-w-full max-h-full object-contain"
+                            className="relative z-10 max-w-full max-h-full object-contain contrast-125 sepia-[.2]"
                             loading="lazy"
                         />
                     </motion.div>
@@ -105,7 +105,7 @@ export default function Timeline() {
     if (loading) {
         return (
             <div className="flex justify-center py-12">
-                <div className="w-8 h-8 border-2 border-[#D4AF37]/30 border-t-[#D4AF37] rounded-full animate-spin" />
+                <div className="w-8 h-8 border-2 border-[var(--color-secondary)]/30 border-t-[var(--color-tertiary)] rounded-full animate-spin" />
             </div>
         )
     }
@@ -120,7 +120,7 @@ export default function Timeline() {
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
-                    className="text-[#E5989B] text-[9px] uppercase tracking-[0.3em] font-bold drop-shadow-sm"
+                    className="text-[var(--color-accent)] text-[9px] uppercase tracking-[0.3em] font-bold drop-shadow-sm font-sans"
                 >
                     A Journey of Blessing
                 </motion.span>
@@ -129,7 +129,7 @@ export default function Timeline() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.2, duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-                    className="text-gradient-gold font-script text-5xl mt-2 mb-3"
+                    className="text-gradient-earth font-serif text-5xl mt-2 mb-3"
                 >
                     70 Years of Grace
                 </motion.h2>
@@ -138,7 +138,7 @@ export default function Timeline() {
                     whileInView={{ scaleX: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.4, duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-                    className="w-12 h-px bg-gradient-to-r from-transparent via-[#E5989B] to-transparent mx-auto"
+                    className="w-12 h-px bg-gradient-to-r from-transparent via-[var(--color-tertiary)] to-transparent mx-auto opacity-70"
                 />
             </div>
 
@@ -161,11 +161,11 @@ export default function Timeline() {
                 transition={{ delay: 0.5 }}
                 className="text-center mt-8 px-4"
             >
-                <div className="border-t border-[#E5989B]/20 pt-8">
-                    <p className="text-[#B5838D]/80 text-lg italic font-script leading-relaxed">
+                <div className="border-t border-[var(--color-secondary)]/30 pt-8">
+                    <p className="text-[var(--color-text)]/80 text-lg italic font-serif leading-relaxed font-medium">
                         "He has made everything beautiful in its time."
                     </p>
-                    <p className="text-[#E5989B] text-[9px] uppercase tracking-widest mt-4 font-bold font-sans">
+                    <p className="text-[var(--color-tertiary)] text-[9px] uppercase tracking-widest mt-4 font-bold font-sans">
                         Ecclesiastes 3:11
                     </p>
                 </div>

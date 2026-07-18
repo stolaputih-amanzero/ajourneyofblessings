@@ -41,15 +41,15 @@ export default function Greeting({ guest }: GreetingProps) {
             className="w-full px-6 py-12 flex flex-col items-center"
         >
             {/* Header Section: Welcome --- Guest */}
-            <motion.div variants={itemVariants} className="w-full flex items-center justify-between mb-12 text-[10px] tracking-[0.2em] font-bold uppercase text-[var(--color-primary)]">
+            <motion.div variants={itemVariants} className="w-full flex items-center justify-between mb-12 text-[10px] tracking-[0.2em] font-bold uppercase text-[var(--color-text)] opacity-80">
                 <div className="w-1/3 text-left">
                     Welcome
                 </div>
                 <div className="flex-1 flex justify-center">
-                    <div className="w-8 h-px bg-[#E5989B]"></div>
+                    <div className="w-8 h-[1px] bg-[var(--color-tertiary)]"></div>
                 </div>
                 <div className="w-1/3 text-right">
-                    <span className="underline decoration-[#E5989B] decoration-2 underline-offset-4">
+                    <span className="underline decoration-[var(--color-tertiary)] decoration-2 underline-offset-4">
                         Guest
                     </span>
                 </div>
@@ -57,39 +57,39 @@ export default function Greeting({ guest }: GreetingProps) {
 
             {/* Name Section */}
             <motion.div variants={itemVariants} className="text-center mb-10">
-                <h2 className="text-2xl text-[#E5989B] mb-2 font-script drop-shadow-sm">Dearest</h2>
-                <h1 className="text-gradient-gold font-script text-4xl leading-tight tracking-tight px-2">
+                <h2 className="text-xl text-[var(--color-accent)] mb-2 font-serif italic drop-shadow-sm">Dearest</h2>
+                <h1 className="text-gradient-earth font-serif text-4xl leading-tight tracking-tight px-2 font-medium">
                     {guest.title ? `${guest.title} ` : ''}{guest.full_name}
                 </h1>
-                <div className="w-12 h-[2px] bg-gradient-to-r from-transparent via-[#E5989B] to-transparent mt-6 mx-auto"></div>
+                <div className="w-12 h-[2px] bg-gradient-to-r from-transparent via-[var(--color-secondary)] to-transparent mt-6 mx-auto opacity-70"></div>
             </motion.div>
 
-            {/* Premium Gold Frame Rectangle Card Section */}
+            {/* Premium Earthy Frame Rectangle Card Section */}
             <motion.div variants={itemVariants} className="relative w-full flex-1 mt-4 mb-8 flex justify-center">
-                <div className="premium-glass rounded-2xl flex flex-col items-center justify-center text-center px-6 py-10 w-full max-w-sm relative overflow-hidden border border-[#E5989B]/40 shadow-xl">
-                    {/* Soft Radial Floral-like Gradient instead of image watermark */}
-                    <div className="absolute inset-0 z-0 pointer-events-none select-none bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#FFB4A2]/10 via-[#FFCDB2]/5 to-transparent w-full h-full">
+                <div className="premium-glass rounded-2xl flex flex-col items-center justify-center text-center px-6 py-10 w-full max-w-sm relative overflow-hidden border border-[var(--color-secondary)]/30 earthy-shadow">
+                    {/* Soft Radial Botanical Gradient */}
+                    <div className="absolute inset-0 z-0 pointer-events-none select-none bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[var(--color-secondary)]/10 via-[var(--color-accent)]/5 to-transparent w-full h-full">
                     </div>
 
-                    <p className="text-[#B5838D]/90 text-sm font-sans font-light leading-relaxed mb-6 z-10">
+                    <p className="text-[var(--color-text)]/90 text-sm font-sans font-medium leading-relaxed mb-6 z-10">
                         We are deeply honored to invite you to the 70th Birthday Thanksgiving Service of
                     </p>
 
                     {/* Monogram 70 */}
-                    <div className="w-20 h-20 rounded-full border border-[#E5989B]/60 p-1 mb-4 shadow-md z-10 relative overflow-hidden bg-white/50">
-                        <div className="w-full h-full rounded-full overflow-hidden border border-white/40 shadow-inner select-none">
+                    <div className="w-20 h-20 rounded-full border-2 border-[var(--color-secondary)]/50 p-1 mb-4 shadow-md z-10 relative overflow-hidden bg-white/50">
+                        <div className="w-full h-full rounded-full overflow-hidden border border-white/60 shadow-inner select-none">
                             <img 
                                 src="/70.jpeg" 
                                 alt="70 Monogram" 
-                                className="w-full h-full object-cover mix-blend-multiply opacity-90"
+                                className="w-full h-full object-cover mix-blend-multiply opacity-90 contrast-125 sepia-[.3]"
                             />
                         </div>
                     </div>
 
-                    <h2 className="text-[#B5838D] font-script text-3xl px-2 leading-snug drop-shadow-sm z-10 relative">
+                    <h2 className="text-[var(--color-text)] font-serif text-3xl px-2 leading-snug drop-shadow-sm z-10 relative italic">
                         Yvonne Wakkary Rumambi
                     </h2>
-                    <p className="mt-4 text-[#E5989B] text-[9px] tracking-[0.2em] uppercase font-bold drop-shadow-sm z-10 relative">
+                    <p className="mt-4 text-[var(--color-accent)] text-[9px] tracking-[0.2em] uppercase font-bold drop-shadow-sm z-10 relative">
                         Honoring a life beautifully blessed
                     </p>
                 </div>

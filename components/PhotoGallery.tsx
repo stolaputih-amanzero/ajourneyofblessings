@@ -80,7 +80,7 @@ export default function PhotoGallery() {
   if (loading) {
     return (
       <div className="flex justify-center py-8">
-        <div className="w-6 h-6 border-2 border-[#D4AF37]/30 border-t-[#D4AF37] rounded-full animate-spin" />
+        <div className="w-6 h-6 border-2 border-[var(--color-secondary)]/30 border-t-[var(--color-tertiary)] rounded-full animate-spin" />
       </div>
     )
   }
@@ -122,14 +122,14 @@ export default function PhotoGallery() {
     <div className="py-8 w-full max-w-full font-sans">
       {/* Header */}
       <div className="flex items-center justify-center space-x-2 mb-6">
-        <Camera size={14} className="text-[#E5989B]" />
-        <span className="text-[#E5989B] text-[10px] uppercase tracking-[0.2em] font-bold">
+        <Camera size={14} className="text-[var(--color-tertiary)]" />
+        <span className="text-[var(--color-tertiary)] text-[10px] uppercase tracking-[0.2em] font-bold">
           A Journey of Blessing
         </span>
       </div>
 
       {/* Main Slideshow Viewport */}
-      <div className="relative w-full aspect-[4/5] rounded-3xl overflow-hidden border border-[#E5989B]/40 bg-white/60 shadow-lg group backdrop-blur-sm">
+      <div className="relative w-full aspect-[4/5] rounded-3xl overflow-hidden border border-[var(--color-secondary)]/40 bg-white/60 earthy-shadow group backdrop-blur-sm">
         <AnimatePresence initial={false} custom={direction}>
           <motion.div
             key={currentIndex}
@@ -145,7 +145,7 @@ export default function PhotoGallery() {
             <img
               src={activePhoto.image_url}
               alt={activePhoto.caption || 'Photo Gallery'}
-              className="w-full h-full object-contain select-none"
+              className="w-full h-full object-contain select-none contrast-125 sepia-[.2]"
               loading="eager"
             />
             {/* Glassmorphic Caption Overlay */}
@@ -158,7 +158,7 @@ export default function PhotoGallery() {
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2, duration: 0.4 }}
-                  className="text-[#B5838D] text-sm sm:text-base font-script leading-relaxed break-words px-2"
+                  className="text-[var(--color-text)] text-sm sm:text-base font-serif italic leading-relaxed break-words px-2"
                 >
                   "{activePhoto.caption}"
                 </motion.p>
@@ -168,20 +168,20 @@ export default function PhotoGallery() {
         </AnimatePresence>
 
         {/* Hover / Active Overlays (Chevrons & Zoom) */}
-        <div className="absolute top-4 right-4 bg-white/60 backdrop-blur-md border border-[#E5989B]/20 p-2 rounded-full text-[#B5838D]/80 hover:text-[#B5838D] hover:bg-white/90 cursor-pointer opacity-100 sm:opacity-0 group-hover:opacity-100 transition-all z-10" onClick={() => setSelectedPhoto(activePhoto)}>
-          <ZoomIn size={16} className="text-[#E5989B]" />
+        <div className="absolute top-4 right-4 bg-white/60 backdrop-blur-md border border-[var(--color-secondary)]/20 p-2 rounded-full text-[var(--color-text)]/80 hover:text-[var(--color-text)] hover:bg-white/90 cursor-pointer opacity-100 sm:opacity-0 group-hover:opacity-100 transition-all z-10" onClick={() => setSelectedPhoto(activePhoto)}>
+          <ZoomIn size={16} className="text-[var(--color-secondary)]" />
         </div>
 
         {/* Play/Pause control */}
         {photos.length > 1 && (
           <div 
-            className="absolute top-4 left-4 bg-white/60 backdrop-blur-md border border-[#E5989B]/20 p-2 rounded-full text-[#B5838D]/80 hover:text-[#B5838D] hover:bg-white/90 cursor-pointer transition-all z-10"
+            className="absolute top-4 left-4 bg-white/60 backdrop-blur-md border border-[var(--color-secondary)]/20 p-2 rounded-full text-[var(--color-text)]/80 hover:text-[var(--color-text)] hover:bg-white/90 cursor-pointer transition-all z-10"
             onClick={(e) => {
               e.stopPropagation()
               setIsPlaying(!isPlaying)
             }}
           >
-            {isPlaying ? <Pause size={14} /> : <Play size={14} className="text-[#E5989B]" />}
+            {isPlaying ? <Pause size={14} /> : <Play size={14} className="text-[var(--color-secondary)]" />}
           </div>
         )}
 
@@ -190,13 +190,13 @@ export default function PhotoGallery() {
           <>
             <button
               onClick={(e) => { e.stopPropagation(); handlePrev(); }}
-              className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/60 backdrop-blur-md border border-[#E5989B]/20 flex items-center justify-center text-[#B5838D]/80 hover:text-[#B5838D] hover:bg-white/90 transition-all z-10 cursor-pointer active:scale-95 shadow-sm"
+              className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/60 backdrop-blur-md border border-[var(--color-secondary)]/20 flex items-center justify-center text-[var(--color-text)]/80 hover:text-[var(--color-text)] hover:bg-white/90 transition-all z-10 cursor-pointer active:scale-95 shadow-sm"
             >
               <ChevronLeft size={20} />
             </button>
             <button
               onClick={(e) => { e.stopPropagation(); handleNext(); }}
-              className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/60 backdrop-blur-md border border-[#E5989B]/20 flex items-center justify-center text-[#B5838D]/80 hover:text-[#B5838D] hover:bg-white/90 transition-all z-10 cursor-pointer active:scale-95 shadow-sm"
+              className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/60 backdrop-blur-md border border-[var(--color-secondary)]/20 flex items-center justify-center text-[var(--color-text)]/80 hover:text-[var(--color-text)] hover:bg-white/90 transition-all z-10 cursor-pointer active:scale-95 shadow-sm"
             >
               <ChevronRight size={20} />
             </button>
@@ -213,8 +213,8 @@ export default function PhotoGallery() {
               onClick={() => handleDotClick(idx)}
               className={`h-1.5 transition-all rounded-full cursor-pointer
                 ${idx === currentIndex 
-                  ? 'w-6 bg-gradient-to-r from-[#FFB4A2] to-[#E5989B]' 
-                  : 'w-1.5 bg-[#B5838D]/20 hover:bg-[#B5838D]/40'
+                  ? 'w-6 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)]' 
+                  : 'w-1.5 bg-[var(--color-text)]/20 hover:bg-[var(--color-text)]/40'
                 }
               `}
             />
@@ -241,12 +241,12 @@ export default function PhotoGallery() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               transition={{ type: 'spring', damping: 25, stiffness: 220 }}
-              className="relative w-full max-w-lg bg-white border border-[#E5989B]/40 rounded-3xl overflow-hidden shadow-2xl z-10"
+              className="relative w-full max-w-lg bg-white border border-[var(--color-secondary)]/40 rounded-3xl overflow-hidden shadow-2xl z-10"
             >
               {/* Close Button */}
               <button
                 onClick={() => setSelectedPhoto(null)}
-                className="absolute top-4 right-4 bg-white/80 border border-[#E5989B]/20 text-[#B5838D] p-2 rounded-full hover:bg-white transition-colors z-20 cursor-pointer shadow-sm"
+                className="absolute top-4 right-4 bg-white/80 border border-[var(--color-secondary)]/20 text-[var(--color-text)] p-2 rounded-full hover:bg-white transition-colors z-20 cursor-pointer shadow-sm"
               >
                 <X size={18} />
               </button>
@@ -256,14 +256,14 @@ export default function PhotoGallery() {
                 <img
                   src={selectedPhoto.image_url}
                   alt={selectedPhoto.caption || 'Photo Gallery'}
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-contain contrast-125 sepia-[.2]"
                 />
               </div>
 
               {/* Caption */}
               {selectedPhoto.caption && (
-                <div className="p-6 bg-white border-t border-[#E5989B]/20 text-center">
-                  <p className="text-[#B5838D] font-script text-xl leading-relaxed">
+                <div className="p-6 bg-white border-t border-[var(--color-secondary)]/20 text-center">
+                  <p className="text-[var(--color-text)] font-serif italic text-xl leading-relaxed">
                     "{selectedPhoto.caption}"
                   </p>
                 </div>

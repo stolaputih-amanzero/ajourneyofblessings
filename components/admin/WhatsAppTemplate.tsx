@@ -247,7 +247,7 @@ export default function WhatsAppTemplate() {
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 font-sans">
 
       {/* Column 1: Template Composer */}
-      <div className="premium-glass bg-white/5 border border-white/10 rounded-2xl p-6 shadow-lg flex flex-col space-y-6">
+      <div className="backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-6 shadow-lg flex flex-col space-y-6">
         <div className="border-b border-white/5 pb-4">
           <h2 className="text-sm font-serif font-bold text-gradient-gold flex items-center">
             <MessageSquare className="w-4 h-4 mr-2" />
@@ -350,7 +350,7 @@ export default function WhatsAppTemplate() {
       </div>
 
       {/* Column 2: Live Preview & Sender */}
-      <div className="premium-glass bg-white/5 border border-white/10 rounded-2xl p-6 shadow-lg flex flex-col space-y-6">
+      <div className="backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-6 shadow-lg flex flex-col space-y-6">
         <div className="border-b border-white/5 pb-4">
           <h2 className="text-sm font-serif font-bold text-gradient-gold flex items-center">
             <Sparkles className="w-4 h-4 mr-2" />

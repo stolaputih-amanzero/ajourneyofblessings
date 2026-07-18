@@ -104,6 +104,11 @@ export async function generateMetadata({ params }: { params: Promise<{ token: st
     })
   }
 
+  // Ensure ogImageUrl is a fully qualified absolute URL
+  if (ogImageUrl.startsWith('/')) {
+    ogImageUrl = `${baseUrl}${ogImageUrl}`
+  }
+
   const descriptionText = `Dear ${guestName}, you are cordially invited to the 70th Birthday Thanksgiving Service of Yvonne Wakkary Rumambi.`
 
   return {

@@ -247,7 +247,7 @@ export default function GalleryPage() {
           <p className="text-xs text-white/50 tracking-widest uppercase font-bold">Memuat Galeri...</p>
         </div>
       ) : photos.length === 0 ? (
-        <div className="premium-glass bg-white/5 border border-white/10 rounded-2xl p-20 text-center flex flex-col items-center justify-center space-y-3">
+        <div className="backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-20 text-center flex flex-col items-center justify-center space-y-3">
           <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/30">
             <ImageIcon className="w-6 h-6" />
           </div>
@@ -261,7 +261,7 @@ export default function GalleryPage() {
           {photos.map((p) => (
             <div 
               key={p.id}
-              className="premium-glass bg-white/5 border border-white/10 hover:border-[#D4AF37]/35 rounded-2xl overflow-hidden flex flex-col justify-between shadow-md relative group transition-all"
+              className="backdrop-blur-md bg-white/5 border border-white/10 hover:border-[#D4AF37]/35 rounded-2xl overflow-hidden flex flex-col justify-between shadow-md relative group transition-all"
             >
               {/* Photo Image */}
               <div className="aspect-square relative w-full overflow-hidden bg-black">

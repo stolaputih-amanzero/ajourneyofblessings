@@ -220,7 +220,7 @@ export default function TimelinePage() {
           <p className="text-xs text-white/50 tracking-widest uppercase font-bold">Memuat Timeline...</p>
         </div>
       ) : milestones.length === 0 ? (
-        <div className="premium-glass bg-white/5 border border-white/10 rounded-2xl p-20 text-center flex flex-col items-center justify-center space-y-3">
+        <div className="backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-20 text-center flex flex-col items-center justify-center space-y-3">
           <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/30">
             <Milestone className="w-6 h-6" />
           </div>
@@ -234,7 +234,7 @@ export default function TimelinePage() {
           {milestones.map((m) => (
             <div 
               key={m.id} 
-              className="premium-glass bg-white/5 border border-white/10 hover:border-[#D4AF37]/35 rounded-2xl p-5 flex flex-col sm:flex-row gap-5 items-start sm:items-center justify-between shadow-md group transition-all"
+              className="backdrop-blur-md bg-white/5 border border-white/10 hover:border-[#D4AF37]/35 rounded-2xl p-5 flex flex-col sm:flex-row gap-5 items-start sm:items-center justify-between shadow-md group transition-all"
             >
               <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center w-full">
                 {/* Year tag & Photo row on mobile */}

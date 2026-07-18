@@ -264,7 +264,7 @@ export default function SettingsPage() {
       <form onSubmit={handleSaveSettings} className="space-y-6">
         
         {/* Section 1: Event Details */}
-        <div className="premium-glass bg-white/5 border border-white/10 rounded-2xl p-6 shadow-lg space-y-4">
+        <div className="backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-6 shadow-lg space-y-4">
           <h2 className="text-sm font-serif font-bold text-white/95 flex items-center border-b border-white/5 pb-3">
             <MapPin className="w-4 h-4 mr-2 text-[#D4AF37]" />
             Detail Informasi Acara
@@ -330,7 +330,7 @@ export default function SettingsPage() {
         </div>
 
         {/* Section 2: Video Tribute */}
-        <div className="premium-glass bg-white/5 border border-white/10 rounded-2xl p-6 shadow-lg space-y-4">
+        <div className="backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-6 shadow-lg space-y-4">
           <h2 className="text-sm font-serif font-bold text-white/95 flex items-center border-b border-white/5 pb-3">
             <Video className="w-4 h-4 mr-2 text-[#D4AF37]" />
             Integrasi Video Tribute (YouTube)
@@ -363,7 +363,7 @@ export default function SettingsPage() {
         </div>
 
         {/* Section 2.5: Hologram Greeting Video */}
-        <div className="premium-glass bg-white/5 border border-white/10 rounded-2xl p-6 shadow-lg space-y-4">
+        <div className="backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-6 shadow-lg space-y-4">
           <h2 className="text-sm font-serif font-bold text-white/95 flex items-center border-b border-white/5 pb-3">
             <Video className="w-4 h-4 mr-2 text-[#D4AF37]" />
             Hologram Transmission (Sapaan Hangat Video)
@@ -408,7 +408,7 @@ export default function SettingsPage() {
         </div>
 
         {/* Section 3: Audio & Social Media Metadata */}
-        <div className="premium-glass bg-white/5 border border-white/10 rounded-2xl p-6 shadow-lg space-y-4">
+        <div className="backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-6 shadow-lg space-y-4">
           <h2 className="text-sm font-serif font-bold text-white/95 flex items-center border-b border-white/5 pb-3">
             <Music className="w-4 h-4 mr-2 text-[#D4AF37]" />
             Audio Latar &amp; Gambar Sosial Media

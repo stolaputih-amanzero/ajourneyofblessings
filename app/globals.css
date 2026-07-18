@@ -40,6 +40,10 @@
     @apply bg-clip-text text-transparent bg-gradient-to-r from-[#BC6C25] via-[#D4A373] to-[#6B8E5F] drop-shadow-[0_1px_1px_rgba(212,163,115,0.2)];
   }
 
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#D4AF37] via-[#F3E5AB] to-[#D4AF37] drop-shadow-[0_1px_1px_rgba(212,175,55,0.3)];
+  }
+
   .premium-glass {
     @apply bg-white/60 backdrop-blur-md border border-white/80 shadow-[0_4px_24px_rgba(61,64,91,0.06)] shadow-inner drop-shadow-sm rounded-xl;
   }

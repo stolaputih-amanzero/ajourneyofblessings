@@ -602,7 +602,7 @@ God Bless You.`)
       )}
 
       {/* Main Table / Grid */}
-      <div className="premium-glass bg-white/5 border border-white/10 rounded-2xl overflow-hidden shadow-lg">
+      <div className="backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl overflow-hidden shadow-lg">
         {loading ? (
           <div className="p-20 flex flex-col items-center justify-center space-y-4">
             <Loader2 className="w-8 h-8 animate-spin text-[#D4AF37]" />
@@ -748,7 +748,7 @@ God Bless You.`)
                 const isDeclining = g.rsvp_status === false;
                 
                 return (
-                  <div key={g.id} className="premium-glass bg-white/3 border border-white/8 rounded-2xl p-4 space-y-4 hover:border-[#D4AF37]/30 transition-all duration-300 shadow-md">
+                  <div key={g.id} className="backdrop-blur-md bg-white/3 border border-white/8 rounded-2xl p-4 space-y-4 hover:border-[#D4AF37]/30 transition-all duration-300 shadow-md">
                     {/* Header: Checkbox + Name & Status Badge */}
                     <div className="flex items-start justify-between gap-3">
                       <div className="flex items-start space-x-3 min-w-0 flex-1">

@@ -120,7 +120,7 @@ export default async function AdminPage() {
       {/* Stats Grid */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Card 1: Total Guests */}
-        <div className="premium-glass bg-white/5 border border-white/10 rounded-2xl p-4 sm:p-5 flex flex-col justify-between shadow-lg">
+        <div className="backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-4 sm:p-5 flex flex-col justify-between shadow-lg">
           <div className="flex items-center justify-between">
             <span className="text-[9px] uppercase tracking-widest text-white/50 font-bold">Total Undangan</span>
             <span className="p-2 rounded-lg bg-white/5 border border-white/10 text-white/80">
@@ -134,7 +134,7 @@ export default async function AdminPage() {
         </div>
 
         {/* Card 2: Attending */}
-        <div className="premium-glass bg-white/5 border border-[#D4AF37]/20 rounded-2xl p-4 sm:p-5 flex flex-col justify-between shadow-lg">
+        <div className="backdrop-blur-md bg-white/5 border border-[#D4AF37]/20 rounded-2xl p-4 sm:p-5 flex flex-col justify-between shadow-lg">
           <div className="flex items-center justify-between">
             <span className="text-[9px] uppercase tracking-widest text-[#D4AF37] font-bold">Hadir (RSVP)</span>
             <span className="p-2 rounded-lg bg-[#D4AF37]/10 border border-[#D4AF37]/20 text-[#D4AF37]">
@@ -148,7 +148,7 @@ export default async function AdminPage() {
         </div>
 
         {/* Card 3: Declined */}
-        <div className="premium-glass bg-white/5 border border-rose-500/20 rounded-2xl p-4 sm:p-5 flex flex-col justify-between shadow-lg">
+        <div className="backdrop-blur-md bg-white/5 border border-rose-500/20 rounded-2xl p-4 sm:p-5 flex flex-col justify-between shadow-lg">
           <div className="flex items-center justify-between">
             <span className="text-[9px] uppercase tracking-widest text-rose-400 font-bold">Tidak Hadir</span>
             <span className="p-2 rounded-lg bg-rose-500/10 border border-rose-500/20 text-rose-400">
@@ -162,7 +162,7 @@ export default async function AdminPage() {
         </div>
 
         {/* Card 4: Pending */}
-        <div className="premium-glass bg-white/5 border border-slate-500/20 rounded-2xl p-4 sm:p-5 flex flex-col justify-between shadow-lg">
+        <div className="backdrop-blur-md bg-white/5 border border-slate-500/20 rounded-2xl p-4 sm:p-5 flex flex-col justify-between shadow-lg">
           <div className="flex items-center justify-between">
             <span className="text-[9px] uppercase tracking-widest text-slate-400 font-bold">Belum Respon</span>
             <span className="p-2 rounded-lg bg-slate-500/10 border border-slate-500/20 text-slate-400">
@@ -177,7 +177,7 @@ export default async function AdminPage() {
       </div>
 
       {/* Projected Headcount Summary Card */}
-      <div className="premium-glass bg-gradient-to-br from-[#0A192F] to-[#020C1B] border border-[#D4AF37]/35 rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-between shadow-2xl relative overflow-hidden">
+      <div className="backdrop-blur-md bg-gradient-to-br from-[#0A192F] to-[#020C1B] border border-[#D4AF37]/35 rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-between shadow-2xl relative overflow-hidden">
         {/* Decorative elements */}
         <div className="absolute right-0 top-0 transform translate-x-12 -translate-y-12 text-[#D4AF37]/5 pointer-events-none">
           <Sparkles className="w-64 h-64" />
@@ -203,7 +203,7 @@ export default async function AdminPage() {
       {/* Charts Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* RSVP Distribution (Pie) */}
-        <div className="premium-glass bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col shadow-lg">
+        <div className="backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col shadow-lg">
           <div className="border-b border-white/5 pb-4 mb-4">
             <h2 className="text-sm font-serif font-bold text-white/90 flex items-center">
               <Activity className="w-4 h-4 mr-2 text-[#D4AF37]" />
@@ -220,7 +220,7 @@ export default async function AdminPage() {
         </div>
 
         {/* RSVP Trend (Bar) */}
-        <div className="premium-glass bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col shadow-lg">
+        <div className="backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col shadow-lg">
           <div className="border-b border-white/5 pb-4 mb-4">
             <h2 className="text-sm font-serif font-bold text-white/90 flex items-center">
               <Activity className="w-4 h-4 mr-2 text-[#D4AF37]" />
@@ -236,7 +236,7 @@ export default async function AdminPage() {
       {/* Row 3: Activity Feed & Quick Actions */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Recent Activity */}
-        <div className="premium-glass bg-white/5 border border-white/10 rounded-2xl p-6 shadow-lg flex flex-col">
+        <div className="backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-6 shadow-lg flex flex-col">
           <div className="border-b border-white/5 pb-4 mb-4 flex items-center justify-between">
             <h2 className="text-sm font-serif font-bold text-white/90 flex items-center">
               <Activity className="w-4 h-4 mr-2 text-[#D4AF37]" />
@@ -278,7 +278,7 @@ export default async function AdminPage() {
         </div>
 
         {/* Quick Actions Panel */}
-        <div className="premium-glass bg-white/5 border border-white/10 rounded-2xl p-6 shadow-lg flex flex-col justify-between">
+        <div className="backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-6 shadow-lg flex flex-col justify-between">
           <div>
             <div className="border-b border-white/5 pb-4 mb-6">
               <h2 className="text-sm font-serif font-bold text-white/90 flex items-center">

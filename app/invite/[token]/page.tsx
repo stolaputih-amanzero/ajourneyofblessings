@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
+import { headers } from 'next/headers'
 import { createClient } from '@/utils/supabase/server'
 import Envelope from '@/components/landing/Envelope'
 import InvitationDetails from '@/components/landing/InvitationDetails'
@@ -73,6 +74,12 @@ function parseEventDateTimeToISO(dateStr: string, timeStr: string): string {
 export async function generateMetadata({ params }: { params: Promise<{ token: string }> }): Promise<Metadata> {
   const resolvedParams = await params
   const supabase = await createClient()
+  
+  const headerList = await headers()
+  const host = headerList.get('host') || 'yvonne.amanzero.space'
+  const protocol = headerList.get('x-forwarded-proto') || 'https'
+  const dynamicBaseUrl = `${protocol}://${host}`
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || dynamicBaseUrl
   
   const { data: guests } = await supabase.rpc('get_guest_by_token', { 
     p_token: resolvedParams.token 

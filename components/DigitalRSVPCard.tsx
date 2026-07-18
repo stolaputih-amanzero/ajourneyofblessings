@@ -26,8 +26,8 @@ export default function DigitalRSVPCard({ token, guestName, count }: DigitalRSVP
           width: 300,
           margin: 1.5,
           color: {
-            dark: '#D4AF37',   // Gold color code
-            light: '#19110B'  // Dark Earth background
+            dark: '#B5838D',   // Dusty Rose color code
+            light: '#FFFFFF'  // White background
           }
         })
         setQrCodeUrl(url)
@@ -45,7 +45,7 @@ export default function DigitalRSVPCard({ token, guestName, count }: DigitalRSVP
     try {
       const canvas = await html2canvas(cardRef.current, {
         scale: 2.5, // High resolution capture
-        backgroundColor: '#2C1E17', // Background matches parent wrapper
+        backgroundColor: '#FFFFFF', // Background matches parent wrapper
         logging: false,
         useCORS: true // Allow rendering QR code image correctly
       })
@@ -73,26 +73,26 @@ export default function DigitalRSVPCard({ token, guestName, count }: DigitalRSVP
         {/* VIP Pass Card */}
         <div 
           ref={cardRef}
-          className="w-full bg-[#19110B] relative flex flex-col items-center justify-center border border-[#D4AF37]/50 rounded-2xl overflow-hidden shadow-2xl shadow-[#D4AF37]/10"
+          className="w-full bg-white relative flex flex-col items-center justify-center border border-[#E5989B]/40 rounded-2xl overflow-hidden shadow-lg shadow-[#E5989B]/10"
         >
-          {/* Top Section - Gold Border Accent */}
-          <div className="w-full p-6 text-center border-b-[2px] border-dashed border-[#D4AF37]/35 bg-[#2C1E17]">
-            <span className="text-[#D4AF37] text-[8px] tracking-[0.4em] uppercase font-bold block mb-2">
+          {/* Top Section - Blush Border Accent */}
+          <div className="w-full p-6 text-center border-b-[2px] border-dashed border-[#E5989B]/40 bg-gradient-to-b from-white to-[#FAF0EB]">
+            <span className="text-[#E5989B] text-[8px] tracking-[0.4em] uppercase font-bold block mb-2">
               VIP Entry Pass
             </span>
-            <h3 className="text-xl font-serif text-[#FFDF73] italic leading-snug truncate px-1">
+            <h3 className="text-2xl font-script text-[#B5838D] px-1 truncate">
               {guestName}
             </h3>
-            <p className="text-white/50 text-[8px] uppercase tracking-[0.2em] font-semibold mt-2.5">
+            <p className="text-[#B5838D]/60 text-[8px] uppercase tracking-[0.2em] font-bold mt-2.5 font-sans">
               Confirmation: {count} Guests
             </p>
           </div>
 
           {/* Bottom Section */}
-          <div className="w-full p-6 flex flex-col items-center bg-gradient-to-b from-[#19110B] to-[#2C1E17]">
+          <div className="w-full p-6 flex flex-col items-center bg-white">
             
             {/* Real QR Code instead of static icon */}
-            <div className="w-32 h-32 p-1.5 bg-[#19110B] border border-[#D4AF37]/30 rounded-xl flex items-center justify-center mb-4 shadow-lg">
+            <div className="w-32 h-32 p-1.5 bg-white border border-[#E5989B]/40 rounded-xl flex items-center justify-center mb-4 shadow-sm">
               {qrCodeUrl ? (
                 <img 
                   src={qrCodeUrl} 
@@ -101,26 +101,26 @@ export default function DigitalRSVPCard({ token, guestName, count }: DigitalRSVP
                   crossOrigin="anonymous"
                 />
               ) : (
-                <div className="w-full h-full bg-[#2C1E17] animate-pulse rounded-lg" />
+                <div className="w-full h-full bg-gray-50 animate-pulse rounded-lg" />
               )}
             </div>
 
-            <p className="text-white/40 text-[7px] font-sans uppercase tracking-[0.3em] mb-1">
+            <p className="text-[#B5838D]/50 text-[7px] font-sans uppercase tracking-[0.3em] mb-1 font-bold">
               Thanksgiving Service
             </p>
-            <p className="text-[#D4AF37] text-xs font-serif italic mb-4 text-center">
+            <p className="text-[#E5989B] text-lg font-script mb-4 text-center">
               Yvonne Wakkary Rumambi
             </p>
             
             {/* Unique VIP Pass Hex Code */}
-            <div className="text-[8px] text-white/30 font-mono tracking-[0.3em]">
+            <div className="text-[8px] text-[#B5838D]/40 font-sans font-bold tracking-[0.3em]">
               PASS: {Math.abs(guestName.split('').reduce((a, b) => { a = ((a << 5) - a) + b.charCodeAt(0); return a & a }, 0)).toString(16).toUpperCase()}-{count}
             </div>
           </div>
           
           {/* Ticket Edge Cutouts */}
-          <div className="absolute top-[37.5%] -left-3.5 w-7 h-7 bg-[#2C1E17] border-r border-[#D4AF37]/50 rounded-full" />
-          <div className="absolute top-[37.5%] -right-3.5 w-7 h-7 bg-[#2C1E17] border-l border-[#D4AF37]/50 rounded-full" />
+          <div className="absolute top-[37.5%] -left-3.5 w-7 h-7 bg-white border-r border-[#E5989B]/40 rounded-full shadow-inner" />
+          <div className="absolute top-[37.5%] -right-3.5 w-7 h-7 bg-white border-l border-[#E5989B]/40 rounded-full shadow-inner" />
         </div>
       </motion.div>
 
@@ -128,9 +128,9 @@ export default function DigitalRSVPCard({ token, guestName, count }: DigitalRSVP
       <button
         onClick={handleDownload}
         disabled={isGenerating || !qrCodeUrl}
-        className="mt-6 flex items-center justify-center space-x-2 text-[9px] uppercase tracking-widest font-bold text-[#2C1E17] bg-gradient-to-r from-[#E6C875] via-[#D4AF37] to-[#B8860B] px-7 py-3.5 rounded-full hover:shadow-[0_0_20px_rgba(212,175,55,0.35)] transition-all active:scale-95 disabled:opacity-50 cursor-pointer"
+        className="mt-6 flex items-center justify-center space-x-2 text-[9px] uppercase tracking-widest font-bold text-white bg-gradient-to-r from-[#FFB4A2] to-[#E5989B] px-7 py-3.5 rounded-full hover:shadow-lg hover:shadow-[#E5989B]/30 transition-all active:scale-95 disabled:opacity-50 cursor-pointer shadow-md"
       >
-        <Download size={13} className="text-[#2C1E17]" />
+        <Download size={13} className="text-white" />
         <span>{isGenerating ? 'Saving...' : 'Download VIP Card'}</span>
       </button>
     </div>

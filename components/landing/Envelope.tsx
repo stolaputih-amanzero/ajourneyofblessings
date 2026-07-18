@@ -33,25 +33,20 @@ export default function Envelope({ guest, children }: EnvelopeProps) {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 1.05 }}
                     transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-                    className="flex flex-col items-center justify-center min-h-screen px-6 relative overflow-hidden bg-gradient-to-b from-[#2C1E17] to-[#120B07]"
+                    className="flex flex-col items-center justify-center min-h-screen px-6 relative overflow-hidden bg-gradient-to-b from-[var(--color-ivory)] to-[#FFCDB2]/30"
                 >
                     {/* Floating Petals Layer */}
                     <FloralPetals />
 
-                    {/* Floral Background Watermark */}
-                    <div className="fixed inset-0 pointer-events-none opacity-[0.08] z-0 select-none">
-                        <img 
-                            src="/images/floral_header.png" 
-                            alt="Floral background" 
-                            className="w-full h-full object-cover"
-                        />
-                    </div>
+                    {/* Soft CSS Floral Gradient Overlay */}
+                    <div className="fixed inset-0 pointer-events-none z-0 select-none bg-[radial-gradient(circle_at_top_left,_var(--tw-gradient-stops))] from-[#FFB4A2]/20 via-transparent to-transparent"></div>
+                    <div className="fixed inset-0 pointer-events-none z-0 select-none bg-[radial-gradient(circle_at_bottom_right,_var(--tw-gradient-stops))] from-[#E5989B]/15 via-transparent to-transparent"></div>
 
                     {/* Elegant Watercolor Floral Corner Ornaments */}
-                    <div className="absolute top-0 left-0 w-32 h-32 pointer-events-none opacity-45 z-10 select-none">
-                        <svg viewBox="0 0 120 120" fill="none" className="w-full h-full text-[#D4AF37]">
-                            <path d="M0,0 Q30,10 40,30 T20,70 Q10,40 0,0 Z" fill="currentColor" opacity="0.15"/>
-                            <path d="M0,0 Q10,30 30,40 T70,20 Q40,10 0,0 Z" fill="currentColor" opacity="0.15"/>
+                    <div className="absolute top-0 left-0 w-32 h-32 pointer-events-none opacity-60 z-10 select-none">
+                        <svg viewBox="0 0 120 120" fill="none" className="w-full h-full text-[#B5838D]">
+                            <path d="M0,0 Q30,10 40,30 T20,70 Q10,40 0,0 Z" fill="currentColor" opacity="0.25"/>
+                            <path d="M0,0 Q10,30 30,40 T70,20 Q40,10 0,0 Z" fill="currentColor" opacity="0.25"/>
                             <circle cx="20" cy="20" r="2" fill="currentColor"/>
                             <circle cx="35" cy="15" r="1.5" fill="currentColor"/>
                             <circle cx="15" cy="35" r="1.5" fill="currentColor"/>
@@ -60,10 +55,10 @@ export default function Envelope({ guest, children }: EnvelopeProps) {
                         </svg>
                     </div>
 
-                    <div className="absolute bottom-0 right-0 w-32 h-32 pointer-events-none opacity-45 rotate-180 z-10 select-none">
-                        <svg viewBox="0 0 120 120" fill="none" className="w-full h-full text-[#D4AF37]">
-                            <path d="M0,0 Q30,10 40,30 T20,70 Q10,40 0,0 Z" fill="currentColor" opacity="0.15"/>
-                            <path d="M0,0 Q10,30 30,40 T70,20 Q40,10 0,0 Z" fill="currentColor" opacity="0.15"/>
+                    <div className="absolute bottom-0 right-0 w-32 h-32 pointer-events-none opacity-60 rotate-180 z-10 select-none">
+                        <svg viewBox="0 0 120 120" fill="none" className="w-full h-full text-[#B5838D]">
+                            <path d="M0,0 Q30,10 40,30 T20,70 Q10,40 0,0 Z" fill="currentColor" opacity="0.25"/>
+                            <path d="M0,0 Q10,30 30,40 T70,20 Q40,10 0,0 Z" fill="currentColor" opacity="0.25"/>
                             <circle cx="20" cy="20" r="2" fill="currentColor"/>
                             <circle cx="35" cy="15" r="1.5" fill="currentColor"/>
                             <circle cx="15" cy="35" r="1.5" fill="currentColor"/>
@@ -88,30 +83,30 @@ export default function Envelope({ guest, children }: EnvelopeProps) {
                         }}
                         className="relative mb-8 flex flex-col items-center z-10"
                     >
-                        <div className="w-[290px] h-[390px] bg-gradient-to-br from-[#2C1E17] to-[#19110B] rounded-2xl shadow-2xl flex flex-col items-center justify-between py-10 px-6 relative overflow-hidden border border-[#D4AF37]/50 metallic-shadow">
-                            {/* Sweeping Gold Shine Reflection */}
+                        <div className="w-[290px] h-[390px] bg-gradient-to-br from-white to-[#FDFBF7] rounded-[24px] shadow-xl flex flex-col items-center justify-between py-10 px-6 relative overflow-hidden border border-[#E5989B]/40 shadow-[0_10px_40px_rgba(181,131,141,0.12)]">
+                            {/* Sweeping Soft Shine Reflection */}
                             <motion.div
                                 animate={{
                                     left: ['-100%', '200%']
                                 }}
                                 transition={{
-                                    duration: 4,
+                                    duration: 5,
                                     repeat: Infinity,
-                                    repeatDelay: 4,
+                                    repeatDelay: 5,
                                     ease: "easeInOut"
                                 }}
-                                className="absolute top-0 bottom-0 w-16 bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-12 pointer-events-none z-10"
+                                className="absolute top-0 bottom-0 w-24 bg-gradient-to-r from-transparent via-[#FFCDB2]/30 to-transparent skew-x-12 pointer-events-none z-10"
                             />
 
-                            {/* Luxury Double Frame */}
-                            <div className="absolute inset-2.5 border border-[#D4AF37]/20 rounded-xl pointer-events-none z-10" />
-                            <div className="absolute inset-3.5 border-2 border-[#D4AF37]/35 rounded-[10px] pointer-events-none z-10" />
+                            {/* Soft Floral Frame */}
+                            <div className="absolute inset-2.5 border border-[#E5989B]/30 rounded-xl pointer-events-none z-10" />
+                            <div className="absolute inset-3.5 border border-[#B5838D]/20 rounded-[10px] pointer-events-none z-10" />
 
                             {/* Classic Top Floral Vine Ornament */}
-                            <div className="w-24 h-10 text-[#D4AF37]/55 z-10 relative flex justify-center items-center">
+                            <div className="w-24 h-10 text-[#B5838D]/70 z-10 relative flex justify-center items-center">
                                 <svg viewBox="0 0 100 30" fill="currentColor" className="w-full h-full">
-                                    <path d="M50,15 C45,8 30,12 18,12 C28,12 40,17 50,15 Z" opacity="0.8"/>
-                                    <path d="M50,15 C55,8 70,12 82,12 C72,12 60,17 50,15 Z" opacity="0.8"/>
+                                    <path d="M50,15 C45,8 30,12 18,12 C28,12 40,17 50,15 Z" opacity="0.6"/>
+                                    <path d="M50,15 C55,8 70,12 82,12 C72,12 60,17 50,15 Z" opacity="0.6"/>
                                     <circle cx="50" cy="15" r="3.5"/>
                                     <circle cx="35" cy="11" r="1.5"/>
                                     <circle cx="65" cy="11" r="1.5"/>
@@ -120,22 +115,22 @@ export default function Envelope({ guest, children }: EnvelopeProps) {
                                 </svg>
                             </div>
 
-                            {/* Soft Radial Gold Glow behind text */}
-                            <div className="absolute w-36 h-36 rounded-full bg-gradient-to-r from-[#D4AF37]/10 to-transparent blur-2xl pointer-events-none z-0" />
+                            {/* Soft Radial Blush Glow behind text */}
+                            <div className="absolute w-40 h-40 rounded-full bg-gradient-to-r from-[#FFB4A2]/20 to-transparent blur-2xl pointer-events-none z-0" />
                             
                             {/* Guest Name - The Focal Point */}
                             <div className="w-full text-center z-20 px-4 flex-1 flex flex-col justify-center">
-                                <p className="text-[8px] text-[#D4AF37]/75 uppercase tracking-[0.4em] font-bold mb-2.5">Dear</p>
-                                <div className="w-8 h-px bg-[#D4AF37]/30 mx-auto mb-4"></div>
-                                <h3 className={`text-gradient-gold font-serif italic ${nameFontSizeClass} leading-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]`}>
+                                <p className="text-[8px] text-[#B5838D]/80 uppercase tracking-[0.4em] font-bold mb-2.5">Dear</p>
+                                <div className="w-8 h-px bg-[#E5989B]/60 mx-auto mb-4"></div>
+                                <h3 className={`text-gradient-gold font-script ${nameFontSizeClass} leading-tight drop-shadow-sm`}>
                                     {fullName}
                                 </h3>
-                                <div className="w-8 h-px bg-[#D4AF37]/30 mx-auto mt-4"></div>
+                                <div className="w-8 h-px bg-[#E5989B]/60 mx-auto mt-4"></div>
                             </div>
 
                             {/* Bottom Laurel Branch Wrapper framing the seal */}
-                            <div className="w-24 h-12 text-[#D4AF37]/30 z-10 relative flex justify-center items-center mb-6">
-                                <svg viewBox="0 0 100 40" fill="none" stroke="currentColor" strokeWidth="1" className="w-full h-full">
+                            <div className="w-24 h-12 text-[#B5838D]/50 z-10 relative flex justify-center items-center mb-6">
+                                <svg viewBox="0 0 100 40" fill="none" stroke="currentColor" strokeWidth="1.2" className="w-full h-full">
                                     <path d="M15,10 Q50,32 85,10" />
                                     <path d="M25,14 L20,9" />
                                     <path d="M38,20 L33,15" />
@@ -148,28 +143,28 @@ export default function Envelope({ guest, children }: EnvelopeProps) {
 
                         {/* Interactive Classic Wax Seal with Laurel Wreath Pattern */}
                         <div className="absolute -bottom-7 left-1/2 -translate-x-1/2 z-30 flex items-center justify-center">
-                            {/* Rotating Gold Accent Ring around Seal */}
+                            {/* Rotating Soft Accent Ring around Seal */}
                             <motion.div
                                 animate={{ rotate: 360 }}
                                 transition={{ duration: 24, repeat: Infinity, ease: "linear" }}
-                                className="absolute -inset-3.5 rounded-full border border-dashed border-[#D4AF37]/50 pointer-events-none"
+                                className="absolute -inset-3.5 rounded-full border border-dashed border-[#E5989B]/50 pointer-events-none"
                             />
                             {/* Subtle Breathing Glow to Indicate Interactivity */}
                             <motion.div
-                                animate={{ scale: [1, 1.12, 1], opacity: [0.1, 0.35, 0.1] }}
+                                animate={{ scale: [1, 1.12, 1], opacity: [0.1, 0.4, 0.1] }}
                                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                                className="absolute inset-0 rounded-full bg-[#D4AF37] pointer-events-none blur-[4px]"
+                                className="absolute inset-0 rounded-full bg-[#FFCDB2] pointer-events-none blur-[4px]"
                             />
                             <motion.button 
                                 onClick={() => setIsOpen(true)}
-                                whileHover={{ scale: 1.08, rotate: 6 }}
+                                whileHover={{ scale: 1.05, rotate: 3 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="relative w-15 h-15 bg-gradient-to-br from-[#E6C875] via-[#D4AF37] to-[#B8860B] rounded-full metallic-shadow flex items-center justify-center border border-white/30 shadow-[0_0_20px_rgba(212,175,55,0.35)] cursor-pointer z-10 overflow-hidden"
+                                className="relative w-15 h-15 bg-gradient-to-br from-[#FDFBF7] via-[#FFB4A2] to-[#E5989B] rounded-full flex items-center justify-center border border-white shadow-[0_0_15px_rgba(229,152,155,0.3)] cursor-pointer z-10 overflow-hidden"
                             >
                                 <img 
                                     src="/70.jpeg" 
                                     alt="70 Wax Seal" 
-                                    className="w-full h-full object-cover"
+                                    className="w-full h-full object-cover mix-blend-multiply opacity-80"
                                 />
                             </motion.button>
                         </div>
@@ -182,10 +177,10 @@ export default function Envelope({ guest, children }: EnvelopeProps) {
                         transition={{ delay: 0.5, duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
                         className="flex flex-col items-center mt-16 pb-8 z-10"
                     >
-                        <h2 className="text-gradient-gold font-serif italic text-3xl md:text-4xl leading-normal mb-1 drop-shadow-lg text-center px-4">
+                        <h2 className="text-gradient-gold font-script text-4xl md:text-5xl leading-normal mb-1 drop-shadow-sm text-center px-4">
                             A Journey of Blessing
                         </h2>
-                        <p className="text-[#D4AF37]/80 text-[8px] tracking-[0.3em] uppercase font-bold text-center mt-1">
+                        <p className="text-[#B5838D]/80 text-[8px] tracking-[0.3em] uppercase font-bold text-center mt-2">
                             Honoring a life beautifully blessed
                         </p>
                     </motion.div>
@@ -201,9 +196,9 @@ export default function Envelope({ guest, children }: EnvelopeProps) {
                             href="https://amanloka.com" 
                             target="_blank" 
                             rel="noopener noreferrer"
-                            className="text-[8px] tracking-[0.2em] text-white/30 hover:text-white/70 transition-all duration-300 font-sans uppercase font-medium"
+                            className="text-[8px] tracking-[0.2em] text-[var(--color-primary)]/40 hover:text-[var(--color-primary)]/80 transition-all duration-300 font-sans uppercase font-medium"
                         >
-                            exclusively designed by <span className="underline decoration-[#D4AF37]/45 hover:decoration-[#D4AF37] decoration-1 underline-offset-4 text-white/50">AMAN ecosystem</span>
+                            exclusively designed by <span className="underline decoration-[#B5838D]/40 hover:decoration-[#B5838D] decoration-1 underline-offset-4 text-[var(--color-primary)]/60">AMAN ecosystem</span>
                         </a>
                     </motion.div>
                 </motion.div>

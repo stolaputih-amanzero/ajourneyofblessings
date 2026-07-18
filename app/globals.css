@@ -1,51 +1,53 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: "Playfair Display", ui-serif, Georgia, serif;
+  --font-sans: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-great-vibes), cursive;
+  --font-script: var(--font-great-vibes), cursive;
   
-  --color-primary: #2C1E17;    /* Deep Earth Brown */
-  --color-accent: #D4AF37;     /* Warm Gold */
-  --color-background: #FAF0EB; /* Blush Cream */
-  --color-sage: #5F7A61;       /* Sage Green */
+  --color-primary: #B5838D;    /* Dusty Rose */
+  --color-accent: #E5989B;     /* Blush Pink */
+  --color-background: #FFB4A2; /* Light Pastel Peach/Pink */
+  --color-sage: #FFCDB2;       /* Champagne/Soft Ivory */
+  --color-ivory: #FDFBF7;      /* True Soft Ivory for base */
 }
 
 @layer base {
   body {
-    @apply bg-[#19110B] text-[var(--color-primary)] font-sans antialiased m-0 overflow-x-hidden;
+    @apply bg-[var(--color-ivory)] text-[var(--color-primary)] font-sans antialiased m-0 overflow-x-hidden;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-serif tracking-tight;
+    @apply font-script tracking-tight;
   }
 }
 
 /* Utilities for elegant animations and mobile constraints */
 @layer utilities {
   .mobile-container {
-    @apply max-w-[375px] mx-auto w-full min-h-screen bg-[var(--color-background)] shadow-2xl relative flex flex-col border-[8px] border-[#2C1E17] overflow-x-hidden;
+    @apply max-w-[375px] mx-auto w-full min-h-screen bg-[var(--color-ivory)] shadow-2xl relative flex flex-col border-[8px] border-white overflow-x-hidden;
   }
   
   /* The desktop fallback background */
   .desktop-fallback {
-    @apply bg-[#19110B] min-h-screen w-full flex justify-center items-center;
+    @apply bg-[#F4E1D2] min-h-screen w-full flex justify-center items-center;
   }
 
-  /* PREMIUM DESIGN UTILITIES */
+  /* PREMIUM DESIGN UTILITIES - Soft Romantic */
   .text-gradient-gold {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#E6C875] via-[#FFDF73] to-[#B8860B] drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)];
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#D4A373] via-[#E5989B] to-[#B5838D] drop-shadow-[0_1px_1px_rgba(181,131,141,0.3)];
   }
 
   .premium-glass {
-    @apply bg-[#2C1E17]/45 backdrop-blur-md border-t border-l border-white/10 border-r border-b border-black/20 shadow-[0_8px_32px_rgba(0,0,0,0.3)] shadow-inner drop-shadow-xl;
+    @apply bg-white/40 backdrop-blur-md border-t border-l border-white/60 border-r border-b border-[#B5838D]/20 shadow-[0_8px_32px_rgba(181,131,141,0.15)] shadow-inner drop-shadow-lg;
   }
 
   .bg-spotlight {
-    background-image: radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.18) 0%, rgba(44, 30, 23, 1) 65%);
+    background-image: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.8) 0%, rgba(253, 251, 247, 1) 65%);
   }
 
   .metallic-shadow {
-    @apply shadow-[inset_0_1px_1px_rgba(255,255,255,0.4),0_4px_12px_rgba(0,0,0,0.5)];
+    @apply shadow-[inset_0_1px_1px_rgba(255,255,255,0.8),0_4px_12px_rgba(181,131,141,0.2)];
   }
 }
 

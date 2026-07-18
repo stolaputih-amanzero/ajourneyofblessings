@@ -208,18 +208,13 @@ export default async function InvitePage({
 
   return (
     <>
-      <main className="relative mx-auto w-full flex min-h-screen max-w-md flex-col bg-[#2C1E17] bg-spotlight text-white overflow-x-hidden">
+      <main className="relative mx-auto w-full flex min-h-screen max-w-md flex-col bg-[var(--color-ivory)] bg-spotlight text-[var(--color-primary)] overflow-x-hidden">
         <GoldDust />
         <FloralPetals />
         
-        {/* Subtle Background Watermark */}
-        <div className="fixed inset-0 pointer-events-none opacity-[0.06] z-0 select-none">
-          <img 
-            src="/images/floral_header.png" 
-            alt="Floral background watermark" 
-            className="w-full h-full object-cover"
-          />
-        </div>
+        {/* Soft CSS Floral Gradient Overlay */}
+        <div className="fixed inset-0 pointer-events-none z-0 select-none bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-[#FFB4A2]/20 via-transparent to-transparent"></div>
+        <div className="fixed inset-0 pointer-events-none z-0 select-none bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-[#FFCDB2]/30 via-transparent to-transparent"></div>
 
         <Envelope guest={guest}>
           <InvitationDetails
@@ -234,7 +229,7 @@ export default async function InvitePage({
             initialPrayers={initialPrayers}
             token={resolvedParams.token}
           />
-          <div className="sticky bottom-2 left-1/2 -translate-x-1/2 w-32 h-1 bg-white/10 rounded-full mx-auto my-4 z-50"></div>
+          <div className="sticky bottom-2 left-1/2 -translate-x-1/2 w-32 h-1 bg-[var(--color-primary)]/20 rounded-full mx-auto my-4 z-50"></div>
         </Envelope>
       </main>
     </>

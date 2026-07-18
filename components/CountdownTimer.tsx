@@ -38,7 +38,7 @@ export default function CountdownTimer({ targetDate }: { targetDate: string }) {
 
   if (!timeLeft) {
     return (
-      <div className="flex justify-center space-x-4 mt-6 py-6 border-t border-white/10 opacity-0">
+      <div className="flex justify-center space-x-4 mt-6 py-6 border-t border-[#E5989B]/20 opacity-0">
         <div className="w-12 h-12"></div>
       </div>
     )
@@ -52,13 +52,13 @@ export default function CountdownTimer({ targetDate }: { targetDate: string }) {
   ]
 
   return (
-    <div className="flex justify-center space-x-4 mt-6 pt-6 border-t border-white/10">
+    <div className="flex justify-center space-x-4 mt-6 pt-6 border-t border-[#E5989B]/20">
       {units.map((unit) => (
         <div key={unit.label} className="flex flex-col items-center">
-          <div className="w-12 h-12 flex items-center justify-center rounded-full border border-[#D4AF37]/50 bg-white/5">
-            <span className="text-[#D4AF37] font-serif text-lg">{unit.value.toString().padStart(2, '0')}</span>
+          <div className="w-12 h-12 flex items-center justify-center rounded-full border border-[#E5989B]/50 bg-white/40 shadow-sm">
+            <span className="text-[#B5838D] font-script text-2xl mt-1">{unit.value.toString().padStart(2, '0')}</span>
           </div>
-          <span className="text-[8px] uppercase tracking-widest text-white/60 font-bold mt-2">{unit.label}</span>
+          <span className="text-[8px] uppercase tracking-widest text-[#B5838D]/70 font-bold mt-2">{unit.label}</span>
         </div>
       ))}
     </div>

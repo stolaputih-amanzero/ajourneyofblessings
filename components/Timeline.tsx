@@ -24,10 +24,10 @@ function TimelineItem({ milestone, isLast }: { milestone: Milestone; isLast: boo
                     initial={{ scale: 0 }}
                     animate={isInView ? { scale: 1 } : {}}
                     transition={{ duration: 1.2, type: "spring", bounce: 0.3 }}
-                    className="w-4 h-4 rounded-full bg-gradient-to-br from-[#E6C875] via-[#D4AF37] to-[#B8860B] border-2 border-[#2C1E17] metallic-shadow z-10 shrink-0 mt-1"
+                    className="w-4 h-4 rounded-full bg-gradient-to-br from-[#FFB4A2] via-[#E5989B] to-[#B5838D] border-2 border-white shadow-sm z-10 shrink-0 mt-1"
                 />
                 {!isLast && (
-                    <div className="w-px flex-1 bg-gradient-to-b from-[#D4AF37]/40 to-transparent min-h-[20px]" />
+                    <div className="w-px flex-1 bg-gradient-to-b from-[#E5989B]/40 to-transparent min-h-[20px]" />
                 )}
             </div>
 
@@ -39,17 +39,17 @@ function TimelineItem({ milestone, isLast }: { milestone: Milestone; isLast: boo
                 className="flex-1 pb-10"
             >
                 {/* Year Badge */}
-                <span className="inline-block bg-[#2C1E17] text-[#FFDF73] text-[9px] uppercase tracking-[0.2em] font-bold px-3 py-1 rounded-full border border-[#D4AF37]/50 mb-2 metallic-shadow">
+                <span className="inline-block bg-[#E5989B] text-white text-[9px] uppercase tracking-[0.2em] font-bold px-3 py-1 rounded-full shadow-sm mb-2">
                     {milestone.year}
                 </span>
 
                 {/* Title */}
-                <h3 className="text-white font-serif text-lg leading-tight mb-2">
+                <h3 className="text-[#B5838D] font-script text-3xl leading-tight mb-2">
                     {milestone.title}
                 </h3>
 
                 {/* Description - NO line-clamp, show full text */}
-                <p className="text-white/70 text-xs leading-relaxed font-sans">
+                <p className="text-[#B5838D]/80 text-xs leading-relaxed font-sans font-medium">
                     {milestone.description}
                 </p>
 
@@ -59,7 +59,7 @@ function TimelineItem({ milestone, isLast }: { milestone: Milestone; isLast: boo
                         initial={{ opacity: 0, y: 10 }}
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
                         transition={{ duration: 0.5, delay: 0.3 }}
-                        className="mt-4 rounded-xl overflow-hidden border border-[#D4AF37]/20 shadow-xl bg-[#19110B] relative aspect-[16/9] w-full flex items-center justify-center"
+                        className="mt-4 rounded-2xl overflow-hidden border border-[#E5989B]/20 shadow-lg bg-white/50 relative aspect-[16/9] w-full flex items-center justify-center"
                     >
                         {/* Ambient Blurred Background (fills the borders softly) */}
                         <img
@@ -120,7 +120,7 @@ export default function Timeline() {
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
-                    className="text-[#E6C875] text-[9px] uppercase tracking-[0.3em] font-bold drop-shadow-sm"
+                    className="text-[#E5989B] text-[9px] uppercase tracking-[0.3em] font-bold drop-shadow-sm"
                 >
                     A Journey of Blessing
                 </motion.span>
@@ -129,7 +129,7 @@ export default function Timeline() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.2, duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-                    className="text-gradient-gold font-serif italic text-3xl mt-2 mb-3"
+                    className="text-gradient-gold font-script text-5xl mt-2 mb-3"
                 >
                     70 Years of Grace
                 </motion.h2>
@@ -138,7 +138,7 @@ export default function Timeline() {
                     whileInView={{ scaleX: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.4, duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-                    className="w-12 h-px bg-gradient-to-r from-transparent via-[#FFDF73] to-transparent mx-auto"
+                    className="w-12 h-px bg-gradient-to-r from-transparent via-[#E5989B] to-transparent mx-auto"
                 />
             </div>
 
@@ -161,11 +161,11 @@ export default function Timeline() {
                 transition={{ delay: 0.5 }}
                 className="text-center mt-8 px-4"
             >
-                <div className="border-t border-[#D4AF37]/20 pt-8">
-                    <p className="text-white/60 text-xs italic font-serif leading-relaxed">
+                <div className="border-t border-[#E5989B]/20 pt-8">
+                    <p className="text-[#B5838D]/80 text-lg italic font-script leading-relaxed">
                         "He has made everything beautiful in its time."
                     </p>
-                    <p className="text-[#D4AF37] text-[9px] uppercase tracking-widest mt-4 font-bold">
+                    <p className="text-[#E5989B] text-[9px] uppercase tracking-widest mt-4 font-bold font-sans">
                         Ecclesiastes 3:11
                     </p>
                 </div>

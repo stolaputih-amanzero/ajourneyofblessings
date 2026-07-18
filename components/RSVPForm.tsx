@@ -59,7 +59,7 @@ export default function RSVPForm({
           particleCount: 120,
           spread: 80,
           origin: { y: 0.6 },
-          colors: ['#D4AF37', '#ffffff', '#2C1E17']
+          colors: ['#E5989B', '#B5838D', '#FFB4A2']
         })
       }
     }
@@ -69,19 +69,19 @@ export default function RSVPForm({
   if (isSuccess && !isOpen) {
     return (
       <div className="flex flex-col items-center w-full mt-6">
-        <div className="w-full border border-[#D4AF37]/30 p-6 text-center bg-white/5 backdrop-blur-sm rounded-lg">
-          <p className="text-[#D4AF37] text-[10px] uppercase tracking-[0.2em] font-bold mb-2">
+        <div className="w-full border border-[#E5989B]/40 p-6 text-center bg-white/60 backdrop-blur-md rounded-2xl shadow-md">
+          <p className="text-[#E5989B] text-[10px] uppercase tracking-[0.2em] font-bold mb-2">
             RSVP Confirmed
           </p>
-          <p className="text-white/90 text-lg font-serif italic mb-1">
+          <p className="text-[#B5838D] text-2xl font-script mb-1">
             {status ? `Joyfully attending (${count})` : 'Respectfully declining'}
           </p>
           {notes && (
-            <p className="text-white/50 text-xs mt-3 italic">"{notes}"</p>
+            <p className="text-[#B5838D]/70 text-xs mt-3 italic font-sans">"{notes}"</p>
           )}
           <button
             onClick={() => setIsOpen(true)}
-            className="text-[#D4AF37] text-[9px] uppercase tracking-widest underline underline-offset-4 mt-4 hover:text-white transition-colors"
+            className="text-[#E5989B] text-[9px] uppercase tracking-widest underline underline-offset-4 mt-4 hover:text-[#B5838D] transition-colors"
           >
             Update RSVP
           </button>
@@ -100,7 +100,7 @@ export default function RSVPForm({
     return (
       <button
         onClick={() => setIsOpen(true)}
-        className="w-full bg-gradient-to-r from-[#D4AF37] to-[#F3E5AB] text-[#2C1E17] py-4 mt-6 rounded-full text-xs font-bold uppercase tracking-[0.2em] hover:shadow-lg hover:shadow-amber-500/20 transition-all active:scale-95"
+        className="w-full bg-gradient-to-r from-[#FFB4A2] to-[#E5989B] text-white py-4 mt-6 rounded-full text-xs font-bold uppercase tracking-[0.2em] hover:shadow-lg hover:shadow-[#E5989B]/30 transition-all active:scale-95 shadow-md"
       >
         Confirm Attendance (RSVP)
       </button>
@@ -109,17 +109,17 @@ export default function RSVPForm({
 
   // Form view
   return (
-    <div className="mt-6 border border-[#D4AF37]/30 p-6 flex flex-col space-y-6 bg-white/5 backdrop-blur-sm rounded-lg">
+    <div className="mt-6 border border-[#E5989B]/30 p-6 flex flex-col space-y-6 bg-white/60 backdrop-blur-md rounded-2xl shadow-lg">
       <div className="flex flex-col space-y-4">
-        <span className="text-[#D4AF37] text-[10px] uppercase tracking-[0.2em] font-bold text-center">
+        <span className="text-[#E5989B] text-[10px] uppercase tracking-[0.2em] font-bold text-center">
           Will you be attending?
         </span>
         <div className="flex space-x-3">
           <button
             onClick={() => setStatus(true)}
             className={`flex-1 py-3 text-[10px] uppercase tracking-widest font-bold rounded-full border transition-all ${status === true
-                ? 'bg-[#D4AF37] text-[#2C1E17] border-[#D4AF37] shadow-lg shadow-amber-500/20'
-                : 'bg-transparent text-white border-white/20 hover:border-[#D4AF37]/50'
+                ? 'bg-[#E5989B] text-white border-[#E5989B] shadow-md shadow-[#E5989B]/30'
+                : 'bg-white/50 text-[#B5838D] border-[#E5989B]/30 hover:border-[#E5989B]'
               }`}
           >
             Yes, Attending
@@ -127,8 +127,8 @@ export default function RSVPForm({
           <button
             onClick={() => setStatus(false)}
             className={`flex-1 py-3 text-[10px] uppercase tracking-widest font-bold rounded-full border transition-all ${status === false
-                ? 'bg-[#D4AF37] text-[#2C1E17] border-[#D4AF37] shadow-lg shadow-amber-500/20'
-                : 'bg-transparent text-white border-white/20 hover:border-[#D4AF37]/50'
+                ? 'bg-[#E5989B] text-white border-[#E5989B] shadow-md shadow-[#E5989B]/30'
+                : 'bg-white/50 text-[#B5838D] border-[#E5989B]/30 hover:border-[#E5989B]'
               }`}
           >
             Regretfully Declining
@@ -137,21 +137,21 @@ export default function RSVPForm({
       </div>
 
       {status === true && (
-        <div className="flex flex-col space-y-4 items-center border-t border-white/10 pt-6">
-          <span className="text-[#D4AF37] text-[10px] uppercase tracking-[0.2em] font-bold text-center">
+        <div className="flex flex-col space-y-4 items-center border-t border-[#E5989B]/20 pt-6">
+          <span className="text-[#E5989B] text-[10px] uppercase tracking-[0.2em] font-bold text-center">
             Number of Guests
           </span>
           <div className="flex items-center space-x-6">
             <button
               onClick={() => setCount(Math.max(1, count - 1))}
-              className="w-10 h-10 rounded-full border border-white/30 text-white flex items-center justify-center text-xl font-serif hover:border-[#D4AF37] hover:text-[#D4AF37] transition-colors"
+              className="w-10 h-10 rounded-full border border-[#E5989B]/50 bg-white/50 text-[#B5838D] flex items-center justify-center text-xl font-sans hover:bg-[#E5989B] hover:text-white hover:border-[#E5989B] transition-colors shadow-sm"
             >
               -
             </button>
-            <span className="text-2xl font-serif text-white w-6 text-center">{count}</span>
+            <span className="text-2xl font-sans font-medium text-[#B5838D] w-6 text-center">{count}</span>
             <button
               onClick={() => setCount(Math.min(5, count + 1))}
-              className="w-10 h-10 rounded-full border border-white/30 text-white flex items-center justify-center text-xl font-serif hover:border-[#D4AF37] hover:text-[#D4AF37] transition-colors"
+              className="w-10 h-10 rounded-full border border-[#E5989B]/50 bg-white/50 text-[#B5838D] flex items-center justify-center text-xl font-sans hover:bg-[#E5989B] hover:text-white hover:border-[#E5989B] transition-colors shadow-sm"
             >
               +
             </button>
@@ -160,15 +160,15 @@ export default function RSVPForm({
       )}
 
       {/* Special wishes block */}
-      <div className="flex flex-col space-y-2 border-t border-white/10 pt-6">
-        <span className="text-[#D4AF37] text-[10px] uppercase tracking-[0.2em] font-bold text-center">
+      <div className="flex flex-col space-y-2 border-t border-[#E5989B]/20 pt-6">
+        <span className="text-[#E5989B] text-[10px] uppercase tracking-[0.2em] font-bold text-center">
           Special Notes / Wishes (Optional)
         </span>
         <textarea
           value={notes}
           onChange={(e) => setNotes(e.target.value)}
           placeholder="Write a message or prayer for Ibu Yvonne..."
-          className="w-full bg-[#2C1E17]/50 border border-white/10 rounded-lg p-3 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#D4AF37] transition-colors resize-none h-20"
+          className="w-full bg-white/50 border border-[#E5989B]/30 rounded-xl p-3 text-sm text-[#B5838D] placeholder-[#B5838D]/40 focus:outline-none focus:border-[#E5989B] focus:ring-1 focus:ring-[#E5989B]/50 transition-all resize-none h-20 shadow-inner"
         />
       </div>
 
@@ -178,14 +178,14 @@ export default function RSVPForm({
         <button
           onClick={handleUpdate}
           disabled={status === null || isSubmitting}
-          className="w-full bg-gradient-to-r from-[#D4AF37] to-[#F3E5AB] text-[#2C1E17] py-4 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] hover:shadow-lg hover:shadow-amber-500/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed active:scale-95"
+          className="w-full bg-gradient-to-r from-[#FFB4A2] to-[#E5989B] text-white py-4 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] hover:shadow-lg hover:shadow-[#E5989B]/30 transition-all disabled:opacity-50 disabled:cursor-not-allowed active:scale-95 shadow-md"
         >
           {isSubmitting ? 'Submitting...' : 'Submit Confirmation'}
         </button>
         {isSuccess && (
           <button
             onClick={() => setIsOpen(false)}
-            className="text-white/60 text-[9px] uppercase tracking-widest py-2 hover:text-white transition-colors"
+            className="text-[#B5838D]/60 text-[9px] uppercase tracking-widest py-2 hover:text-[#B5838D] transition-colors"
           >
             Cancel
           </button>
